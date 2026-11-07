@@ -6,7 +6,7 @@ export function SiteHeader() {
     <header className="bg-white border-b border-line">
       <div className="mx-auto max-w-6xl px-6 py-4 flex flex-wrap items-center justify-between gap-4">
         <Link href="/" aria-label="oenodPay home">
-          <Image src="/oenodpay-wordmark.svg" alt="oenodPay" width={142} height={40} priority />
+          <Image src="/oenodpay-logo.svg" alt="OENODPAY" width={200} height={20} priority />
         </Link>
         <nav aria-label="Primary" className="flex flex-wrap gap-6 text-[15px] font-medium">
           <Link href="/#send" className="hover:text-brand">Send money</Link>

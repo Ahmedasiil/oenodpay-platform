@@ -23,9 +23,9 @@ export default function Home() {
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
         <View style={{ gap: 6 }}>
           <Image
-            source={require('@/assets/brand/oenodpay-wordmark-1600.png')}
-            accessibilityLabel="oenodPay"
-            style={{ width: 120, height: 34 }}
+            source={require('@/assets/brand/oenodpay-logo-1600.png')}
+            accessibilityLabel="OENODPAY"
+            style={{ width: 160, height: 16 }}
             resizeMode="contain"
           />
           <Text style={{ fontSize: 13, color: colors.muted }}>Good evening</Text>
