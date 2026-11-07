@@ -1,0 +1,45 @@
+{
+  "expo": {
+    "name": "oenodPay",
+    "slug": "oenodpay",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/brand/app-icon-ios-1024.png",
+    "scheme": "oenodpay",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "bundleIdentifier": "com.oenodpay.app",
+      "infoPlist": {
+        "NSFaceIDUsageDescription": "OenodPay uses Face ID to confirm payments and protect your account."
+      }
+    },
+    "android": {
+      "predictiveBackGestureEnabled": false,
+      "package": "com.oenodpay.app",
+      "allowBackup": false,
+      "icon": "./assets/brand/app-icon-android-512.png"
+    },
+    "web": {
+      "output": "single",
+      "favicon": "./assets/brand/favicon-32.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#0B1020",
+          "image": "./assets/brand/icon-rounded-512.png",
+          "imageWidth": 120
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    },
+    "extra": {
+      "apiUrl": "http://localhost:4000"
+    }
+  }
+}

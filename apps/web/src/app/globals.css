@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-brand: #3530D9;
+  --color-brand-dark: #221EA8;
+  --color-brand-soft: #ECEBFF;
+  --color-ink: #0B1020;
+  --color-muted: #4A5368;
+  --color-mist: #B9C0D4;
+  --color-canvas: #F4F5F9;
+  --color-line: #E3E6EE;
+  --color-mint: #7CE0C3;
+  --color-positive: #0B7A6B;
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-space-grotesk);
+}
+
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+}
