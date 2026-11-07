@@ -9,10 +9,10 @@ export const sampleActivity = [
 ];
 
 export const sampleContacts = [
-  { handle: 'sara', initials: 'SK', name: 'Sara', color: '#3530D9' },
-  { handle: 'omar', initials: 'OM', name: 'Omar', color: '#0B7A6B' },
-  { handle: 'lina', initials: 'LI', name: 'Lina', color: '#9A3412' },
-  { handle: 'james', initials: 'JD', name: 'James', color: '#0B1020' },
+  { handle: 'sara', initials: 'SK', name: 'Sara', color: '#1E3A78' },
+  { handle: 'omar', initials: 'OM', name: 'Omar', color: '#000000' },
+  { handle: 'lina', initials: 'LI', name: 'Lina', color: '#2C4C8C' },
+  { handle: 'james', initials: 'JD', name: 'James', color: '#13295A' },
 ];
 
 export const sampleBills = [

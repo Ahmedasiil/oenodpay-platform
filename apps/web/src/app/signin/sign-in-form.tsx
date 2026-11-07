@@ -64,13 +64,13 @@ export function SignInForm() {
       role="tab"
       aria-selected={mode === m}
       onClick={() => { setMode(m); setError(null); }}
-      className={`flex-1 h-10 rounded-[11px] text-sm font-semibold ${mode === m ? "bg-white text-ink shadow-sm" : "text-muted"}`}
+      className={`flex-1 h-10 rounded-[11px] text-sm font-semibold ${mode === m ? "bg-brand text-navy shadow-sm" : "text-muted"}`}
     >
       {label}
     </button>
   );
 
-  const field = "h-12 rounded-[14px] border border-[#D5D9E4] bg-white px-4 text-[15px] outline-none focus:border-brand focus:ring-2 focus:ring-brand-soft";
+  const field = "h-12 rounded-[14px] border border-line bg-navy px-4 text-[15px] placeholder:text-muted outline-none focus:border-brand focus:ring-2 focus:ring-brand-soft";
 
   return (
     <div className="flex flex-col gap-5">
@@ -79,7 +79,7 @@ export function SignInForm() {
         <p className="text-muted">One oenodPay account for the website and the iOS and Android apps.</p>
       </div>
 
-      <div role="tablist" className="flex gap-1 rounded-[14px] bg-[#E9EBF2] p-1">
+      <div role="tablist" className="flex gap-1 rounded-[14px] bg-surface p-1">
         {tab("signin", "Sign in")}
         {tab("signup", "Create account")}
       </div>
@@ -90,7 +90,7 @@ export function SignInForm() {
             type="button"
             onClick={passkey}
             disabled={busy}
-            className="h-13 min-h-[52px] rounded-2xl bg-ink text-white font-semibold flex items-center justify-center gap-2 disabled:opacity-60"
+            className="h-13 min-h-[52px] rounded-2xl bg-black text-white font-semibold flex items-center justify-center gap-2 disabled:opacity-60"
           >
             <svg aria-hidden width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="9" cy="8" r="4"/><path d="M3 21v-1a6 6 0 0 1 9-5.2"/><circle cx="18" cy="15" r="2.5"/><path d="M18 17.5V22m0-2h2"/></svg>
             Sign in with a passkey
@@ -99,7 +99,7 @@ export function SignInForm() {
         </>
       ) : null}
 
-      <form action={submit} className="flex flex-col gap-3 rounded-3xl border border-line bg-white p-5">
+      <form action={submit} className="flex flex-col gap-3 rounded-3xl border border-line bg-surface p-5">
         {mode === "signup" ? (
           <label className="flex flex-col gap-1.5 text-sm text-muted">Full legal name
             <input name="fullName" required autoComplete="name" placeholder="As shown on your ID" className={field} />
@@ -112,8 +112,8 @@ export function SignInForm() {
           <input name="password" type="password" required minLength={mode === "signup" ? 12 : undefined}
             autoComplete={mode === "signup" ? "new-password" : "current-password"} className={field} />
         </label>
-        {error ? <p role="alert" className="text-sm text-[#B42318]">{error}</p> : null}
-        <button type="submit" disabled={busy} className="h-[52px] rounded-2xl bg-brand text-white font-semibold hover:bg-brand-dark disabled:opacity-60">
+        {error ? <p role="alert" className="text-sm text-[#FF8A8A]">{error}</p> : null}
+        <button type="submit" disabled={busy} className="h-[52px] rounded-2xl bg-brand text-navy font-semibold hover:bg-brand-dark disabled:opacity-60">
           {busy ? "Please wait…" : mode === "signin" ? "Sign in" : "Create account"}
         </button>
       </form>

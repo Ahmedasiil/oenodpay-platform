@@ -27,7 +27,7 @@ export default function Home() {
       <main className="flex-1">
         <section className="mx-auto max-w-6xl px-6 pt-16 pb-14 grid gap-12 md:grid-cols-[1.2fr_1fr] items-center">
           <div className="flex flex-col gap-6">
-            <span className="self-start text-[13px] font-semibold text-brand-dark bg-brand-soft rounded-full px-3 py-1.5">Launching in Canada</span>
+            <span className="self-start text-[13px] font-semibold text-white bg-brand-soft rounded-full px-3 py-1.5">Launching in Canada</span>
             <h1 className="font-display text-4xl sm:text-5xl md:text-[56px] leading-[1.05] font-semibold tracking-tight">
               One app to pay, send, travel and grow your money.
             </h1>
@@ -36,24 +36,24 @@ export default function Home() {
               card, check your credit and invest. On iPhone, Android and the web, with one secure account.
             </p>
             <div id="download" className="flex flex-wrap gap-3">
-              <a href="#" className="h-13 px-6 rounded-2xl bg-ink text-white flex items-center font-semibold">Download for iPhone</a>
-              <a href="#" className="h-13 px-6 rounded-2xl bg-ink text-white flex items-center font-semibold">Download for Android</a>
-              <Link href="/app" className="h-13 px-6 rounded-2xl border border-ink flex items-center font-semibold">Open web app</Link>
+              <a href="#" className="h-13 px-6 rounded-2xl bg-black text-white flex items-center font-semibold">Download for iPhone</a>
+              <a href="#" className="h-13 px-6 rounded-2xl bg-black text-white flex items-center font-semibold">Download for Android</a>
+              <Link href="/app" className="h-13 px-6 rounded-2xl border border-black flex items-center font-semibold">Open web app</Link>
             </div>
           </div>
           <div className="flex justify-center">
-            <div className="w-[300px] rounded-[40px] bg-ink p-3.5">
+            <div className="w-[300px] rounded-[40px] bg-black p-3.5">
               <div className="rounded-[28px] bg-canvas p-5 flex flex-col gap-3.5">
                 <span className="text-[13px] text-muted">Good evening, Ahmed</span>
-                <div className="rounded-2xl bg-ink text-white p-4 flex flex-col gap-2">
-                  <span className="text-xs text-mist">oenodPay wallet · CAD</span>
-                  <span className="font-display text-3xl font-semibold">$2,480.50</span>
+                <div className="rounded-[22px] bg-brand text-navy p-4 flex flex-col gap-2">
+                  <span className="text-xs font-semibold opacity-75">Total balance · CAD</span>
+                  <span className="font-display text-[34px] leading-none font-bold tracking-tight">$2,480.50</span>
                 </div>
-                <div className="rounded-2xl bg-white border border-line p-3">
+                <div className="rounded-2xl bg-surface border border-line p-3">
                   <p className="text-[13px] font-semibold">Maria, Philippines</p>
                   <p className="text-xs text-muted">Sent to mobile wallet · arrived in 2 min</p>
                 </div>
-                <div className="rounded-2xl bg-white border border-line p-3">
+                <div className="rounded-2xl bg-surface border border-line p-3">
                   <p className="text-[13px] font-semibold">Electricity bill</p>
                   <p className="text-xs text-muted">Paid · auto-pay on</p>
                 </div>
@@ -62,7 +62,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="send" className="bg-ink text-white">
+        <section id="send" className="bg-black text-white">
           <div className="mx-auto max-w-6xl px-6 py-16 flex flex-col gap-6">
             <h2 className="font-display text-3xl md:text-4xl font-semibold tracking-tight">Pick a country. See every way to send.</h2>
             <p className="max-w-2xl text-lg leading-relaxed text-mist">
@@ -75,7 +75,7 @@ export default function Home() {
                   {c.countryName}
                 </li>
               ))}
-              <li className="h-11 px-4 rounded-full bg-brand flex items-center font-semibold">More coming</li>
+              <li className="h-11 px-4 rounded-full bg-brand text-navy flex items-center font-semibold">More coming</li>
             </ul>
           </div>
         </section>
@@ -84,7 +84,7 @@ export default function Home() {
           <h2 className="font-display text-3xl md:text-4xl font-semibold tracking-tight">Everything in one place</h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {features.map((f) => (
-              <div key={f.title} className="bg-white border border-line rounded-3xl p-6 flex flex-col gap-2">
+              <div key={f.title} className="bg-surface border border-line rounded-3xl p-6 flex flex-col gap-2">
                 <h3 className="text-lg font-semibold">{f.title}</h3>
                 <p className="text-[15px] leading-relaxed text-muted">{f.body}</p>
               </div>
@@ -93,7 +93,7 @@ export default function Home() {
         </section>
 
         <section id="loans" className="mx-auto max-w-6xl px-6 pb-16 grid gap-4 md:grid-cols-2">
-          <div className="bg-white border border-line rounded-3xl p-8 flex flex-col gap-3">
+          <div className="bg-surface border border-line rounded-3xl p-8 flex flex-col gap-3">
             <span className="text-sm font-semibold text-brand">Borrow</span>
             <h2 className="font-display text-3xl font-semibold">Loans that build your future</h2>
             <p className="leading-relaxed text-muted">
@@ -101,7 +101,7 @@ export default function Home() {
               Check your rate without affecting your score.
             </p>
           </div>
-          <div className="bg-ink text-white rounded-3xl p-8 flex flex-col gap-3">
+          <div className="bg-black text-white rounded-3xl p-8 flex flex-col gap-3">
             <span className="text-sm font-semibold text-mint">Lend and earn</span>
             <h2 className="font-display text-3xl font-semibold">Fund loans, earn interest</h2>
             <p className="leading-relaxed text-mist">
@@ -111,7 +111,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="security" className="bg-white border-y border-line">
+        <section id="security" className="bg-surface border-y border-line">
           <div className="mx-auto max-w-6xl px-6 py-16 flex flex-col gap-8">
             <div className="max-w-2xl flex flex-col gap-3">
               <h2 className="font-display text-3xl md:text-4xl font-semibold tracking-tight">Security built in from day one</h2>

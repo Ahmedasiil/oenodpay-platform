@@ -3,10 +3,10 @@ import { Link, router, type Href } from 'expo-router';
 import { Image, Pressable, Text, View } from 'react-native';
 import { formatMoney } from '@oenodpay/shared';
 
-import { Body, Button, Card, Heading, ListRow, Screen, styles as ui } from '@/components/ui';
+import { Body, Button, Card, Heading, ListRow, Screen } from '@/components/ui';
 import { api, hasSession } from '@/lib/api';
 import { sampleActivity, sampleUser } from '@/lib/sample';
-import { colors } from '@/lib/theme';
+import { colors, radius } from '@/lib/theme';
 
 const actions: { label: string; short: string; href: Href }[] = [
   { label: 'Send', short: 'SE', href: '/send' },
@@ -26,7 +26,7 @@ function NextStep({ account }: { account: Account }) {
   if (account === 'verified') return null;
   const guest = account === 'guest';
   return (
-    <Card style={{ borderColor: colors.primary, borderWidth: 1.5 }}>
+    <Card style={{ borderColor: colors.ink, borderWidth: 1.5 }}>
       <Heading>{guest ? 'Open your oenodPay account' : 'Verify your identity'}</Heading>
       <Body muted>
         {guest
@@ -51,51 +51,72 @@ export default function Home() {
   return (
     <Screen>
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-        <View style={{ gap: 6 }}>
-          <Image
-            source={require('@/assets/brand/oenodpay-logo-2000.png')}
-            accessibilityLabel="OENODPAY"
-            style={{ width: 133, height: 28 }}
-            resizeMode="contain"
-          />
-          <Text style={{ fontSize: 13, color: colors.muted }}>Good evening</Text>
-          <Text style={{ fontSize: 18, fontWeight: '700', color: colors.ink }}>{sampleUser.firstName}</Text>
-        </View>
+        <Image
+          source={require('@/assets/brand/oenodpay-logo-white-2000.png')}
+          accessibilityLabel="OENODPAY"
+          style={{ width: 133, height: 28 }}
+          resizeMode="contain"
+        />
         <Link href="/security" asChild>
-          <Pressable accessibilityRole="button" accessibilityLabel="Security center" style={ui.iconButton}>
-            <Text style={{ fontSize: 12, fontWeight: '700', color: colors.positive }}>SAFE</Text>
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel="Security center"
+            style={{ width: 44, height: 44, borderRadius: 22, backgroundColor: colors.surface, alignItems: 'center', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 14, fontWeight: '700', color: colors.ink }}>{sampleUser.firstName.slice(0, 2).toUpperCase()}</Text>
           </Pressable>
         </Link>
       </View>
 
-      <Card dark>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-          <Text style={{ color: '#B9C0D4', fontSize: 13 }}>oenodPay wallet · CAD</Text>
-          <Text style={{ backgroundColor: colors.mint, color: colors.ink, fontSize: 12, fontWeight: '600', paddingHorizontal: 10, paddingVertical: 3, borderRadius: 999, overflow: 'hidden' }}>
-            Verified
-          </Text>
+      <View style={{ backgroundColor: colors.primary, borderRadius: radius.hero, padding: 24, gap: 6 }}>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+          <Text style={{ color: colors.navy, fontSize: 14, fontWeight: '600', opacity: 0.75 }}>Total balance · CAD</Text>
+          <Text style={{ color: colors.navy, fontSize: 12, fontWeight: '700' }}>Hi {sampleUser.firstName}</Text>
         </View>
-        <Text style={{ color: '#FFFFFF', fontSize: 40, fontWeight: '700', letterSpacing: -0.5 }} accessibilityLabel="Wallet balance">
+        <Text
+          style={{ color: colors.navy, fontSize: 50, fontWeight: '800', letterSpacing: -2 }}
+          adjustsFontSizeToFit
+          numberOfLines={1}
+          accessibilityLabel="Wallet balance">
           {formatMoney({ minor: sampleUser.balanceMinor, currency: 'CAD' })}
         </Text>
-        <View style={{ flexDirection: 'row', gap: 10 }}>
-          <View style={{ flex: 1 }}><Button label="Add money" /></View>
-          <View style={{ flex: 1 }}><Button label="Send" variant="soft" onPress={() => router.push('/send')} /></View>
+        <View style={{ flexDirection: 'row', gap: 10, paddingTop: 8 }}>
+          <Pressable accessibilityRole="button" style={{ flex: 1, minHeight: 50, borderRadius: 999, backgroundColor: colors.navy, alignItems: 'center', justifyContent: 'center' }}>
+            <Text style={{ color: '#FFFFFF', fontSize: 15, fontWeight: '700' }}>Add money</Text>
+          </Pressable>
+          <Pressable accessibilityRole="button" onPress={() => router.push('/send')} style={{ flex: 1, minHeight: 50, borderRadius: 999, backgroundColor: colors.black, alignItems: 'center', justifyContent: 'center' }}>
+            <Text style={{ color: '#FFFFFF', fontSize: 15, fontWeight: '700' }}>Send</Text>
+          </Pressable>
         </View>
-      </Card>
+      </View>
 
-      <View style={{ flexDirection: 'row', flexWrap: 'wrap', rowGap: 14 }}>
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginHorizontal: -5 }}>
         {actions.map((a) => (
           <Link key={a.label} href={a.href} asChild>
-            <Pressable accessibilityRole="button" style={{ width: '25%', alignItems: 'center', gap: 6 }}>
-              <View style={{ width: 56, height: 56, borderRadius: 18, backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.border, alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ fontSize: 13, fontWeight: '700', color: colors.primary }}>{a.short}</Text>
+            <Pressable accessibilityRole="button" style={{ width: '25%', padding: 5 }}>
+              <View style={{ height: 82, borderRadius: 24, backgroundColor: colors.surface, alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+                <Text style={{ fontSize: 13, fontWeight: '800', color: colors.ink, letterSpacing: 1 }}>{a.short}</Text>
+                <Text style={{ fontSize: 12, fontWeight: '600', color: colors.ink }}>{a.label}</Text>
               </View>
-              <Text style={{ fontSize: 12, fontWeight: '500', color: colors.ink }}>{a.label}</Text>
             </Pressable>
           </Link>
         ))}
       </View>
+
+      <Link href="/card" asChild>
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel="Visa debit card ending 2049"
+          style={{ height: 150, borderRadius: radius.xxl, backgroundColor: colors.black, borderWidth: 1, borderColor: '#1F2A44', padding: 22, justifyContent: 'space-between' }}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+            <Image source={require('@/assets/brand/oenodpay-logo-white-2000.png')} style={{ width: 95, height: 20 }} resizeMode="contain" />
+            <Text style={{ color: '#B9C0D4', fontSize: 11, fontWeight: '700', letterSpacing: 2 }}>DEBIT</Text>
+          </View>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+            <Text style={{ color: '#FFFFFF', fontSize: 16, letterSpacing: 3 }}>•••• 2049</Text>
+            <Text style={{ color: '#FFFFFF', fontSize: 22, fontWeight: '800', fontStyle: 'italic' }}>VISA</Text>
+          </View>
+        </Pressable>
+      </Link>
 
       <NextStep account={account} />
 

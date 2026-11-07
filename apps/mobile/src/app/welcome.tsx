@@ -40,7 +40,7 @@ export default function Welcome() {
     <Screen>
       <View style={{ alignItems: 'center', gap: 10, paddingTop: 24, paddingBottom: 8 }}>
         <Image
-          source={require('@/assets/brand/oenodpay-stacked-2000.png')}
+          source={require('@/assets/brand/oenodpay-stacked-white-2000.png')}
           accessibilityLabel="OENODPAY"
           style={{ width: 160, height: 108 }}
           resizeMode="contain"

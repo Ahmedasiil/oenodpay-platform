@@ -85,17 +85,17 @@ export function SecurityPanel() {
   if (state === "loading") return <p className="text-muted">Loading your security settings…</p>;
   if (state === "signed_out" || state === "offline") {
     return (
-      <div className="rounded-3xl border border-line bg-white p-6 flex flex-col gap-3">
+      <div className="rounded-3xl border border-line bg-surface p-6 flex flex-col gap-3">
         <h1 className="font-display text-2xl font-semibold">{state === "signed_out" ? "Sign in to continue" : "Can’t reach oenodPay"}</h1>
         <p className="text-muted">{state === "signed_out" ? "Your security settings are only shown to you." : "The service isn’t responding. Try again shortly."}</p>
-        <Link href="/signin" className="self-start h-11 px-5 rounded-xl bg-brand text-white flex items-center font-semibold">Sign in</Link>
+        <Link href="/signin" className="self-start h-11 px-5 rounded-xl bg-brand text-navy flex items-center font-semibold">Sign in</Link>
       </div>
     );
   }
 
-  const card = "rounded-3xl border border-line bg-white p-6 flex flex-col gap-4";
+  const card = "rounded-3xl border border-line bg-surface p-6 flex flex-col gap-4";
   const row = "flex flex-wrap items-center justify-between gap-3 py-3 border-t border-line first:border-t-0";
-  const ghost = "h-10 px-4 rounded-xl border border-[#D5D9E4] text-sm font-semibold hover:border-ink";
+  const ghost = "h-10 px-4 rounded-xl border border-line text-sm font-semibold hover:border-black";
 
   return (
     <div className="flex flex-col gap-6">
@@ -119,7 +119,7 @@ export function SecurityPanel() {
             <h2 id="pk" className="font-semibold text-lg">Passkeys</h2>
             <p className="text-sm text-muted">Sign in with Face ID, Touch ID, your fingerprint or Windows Hello. Nothing to phish, nothing to leak.</p>
           </div>
-          <button onClick={addPasskey} className="h-11 px-5 rounded-xl bg-brand text-white font-semibold hover:bg-brand-dark">Add a passkey</button>
+          <button onClick={addPasskey} className="h-11 px-5 rounded-xl bg-brand text-navy font-semibold hover:bg-brand-dark">Add a passkey</button>
         </div>
         {notice ? <p role="status" className="text-sm text-positive">{notice}</p> : null}
         <div>

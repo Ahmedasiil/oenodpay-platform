@@ -6,7 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/brand/app-icon-ios-1024.png",
     "scheme": "oenodpay",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "dark",
     "ios": {
       "bundleIdentifier": "com.oenodpay.app",
       "infoPlist": {
@@ -28,8 +28,8 @@
       [
         "expo-splash-screen",
         {
-          "backgroundColor": "#FFFFFF",
-          "image": "./assets/brand/oenodpay-stacked-2000.png",
+          "backgroundColor": "#0A1B3D",
+          "image": "./assets/brand/oenodpay-stacked-white-2000.png",
           "imageWidth": 200
         }
       ]

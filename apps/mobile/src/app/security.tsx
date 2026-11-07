@@ -81,7 +81,7 @@ export default function Security() {
             title={d.current ? `${d.deviceName} · this device` : d.deviceName}
             subtitle={ago(d.lastUsedAt)}
             trailing={d.current ? undefined : (
-              <View style={{ width: 96 }}><Button label="Sign out" variant="secondary" onPress={() => remove(d.id)} /></View>
+              <View style={{ width: 112 }}><Button label="Sign out" variant="secondary" onPress={() => remove(d.id)} /></View>
             )}
           />
         ))}

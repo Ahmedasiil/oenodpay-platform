@@ -67,7 +67,7 @@ export default function Global() {
         <QuoteLine label="You send" value={formatMoney(quote.send)} />
         <QuoteLine label="Fee" value={formatMoney(quote.fee)} />
         <QuoteLine label="Rate" value={`1 CAD = ${quote.rate} ${quote.receive.currency}`} />
-        <View style={{ height: 1, backgroundColor: '#2A3048' }} />
+        <View style={{ height: 1, backgroundColor: '#1F2A44' }} />
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline' }}>
           <Text style={{ color: '#B9C0D4', fontSize: 14 }}>They receive</Text>
           <Text style={{ color: colors.mint, fontSize: 22, fontWeight: '700' }}>{formatMoney(quote.receive)}</Text>

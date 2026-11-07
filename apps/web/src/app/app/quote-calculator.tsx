@@ -14,7 +14,7 @@ export function QuoteCalculator() {
   const quote = useMemo(() => quoteTransfer(corridor.countryCode, method.id, amountMinor), [corridor, method, amountMinor]);
 
   return (
-    <section className="rounded-3xl bg-white border border-line p-6 flex flex-col gap-5" aria-labelledby="send-abroad">
+    <section className="rounded-3xl bg-surface border border-line p-6 flex flex-col gap-5" aria-labelledby="send-abroad">
       <h2 id="send-abroad" className="font-display text-2xl font-semibold">Send abroad</h2>
       <label className="flex flex-col gap-1.5 text-sm text-muted">
         Country
@@ -25,7 +25,7 @@ export function QuoteCalculator() {
             setCountryCode(next.countryCode);
             setMethodId(next.methods[0]!.id);
           }}
-          className="h-12 rounded-xl border border-[#D5D9E4] px-3 text-base text-ink bg-white"
+          className="h-12 rounded-xl border border-line px-3 text-base text-ink bg-navy"
         >
           {CORRIDORS.map((c) => (
             <option key={c.countryCode} value={c.countryCode}>{c.countryName}</option>
@@ -57,13 +57,13 @@ export function QuoteCalculator() {
             type="button"
             onClick={() => setAmountMinor(a)}
             aria-pressed={a === amountMinor}
-            className={`h-11 rounded-xl font-semibold border ${a === amountMinor ? "bg-ink text-white border-ink" : "bg-white border-[#D5D9E4]"}`}
+            className={`h-11 rounded-xl font-semibold border ${a === amountMinor ? "bg-brand text-navy border-brand" : "bg-surface border-line"}`}
           >
             {formatMoney({ minor: a, currency: "CAD" }).replace(".00", "")}
           </button>
         ))}
       </div>
-      <dl className="rounded-2xl bg-ink text-white p-5 grid grid-cols-2 gap-y-2 text-sm">
+      <dl className="rounded-2xl bg-black text-white p-5 grid grid-cols-2 gap-y-2 text-sm">
         <dt className="text-mist">You send</dt><dd className="text-right">{formatMoney(quote.send)}</dd>
         <dt className="text-mist">Fee</dt><dd className="text-right">{formatMoney(quote.fee)}</dd>
         <dt className="text-mist">Rate</dt><dd className="text-right">1 CAD = {quote.rate} {quote.receive.currency}</dd>

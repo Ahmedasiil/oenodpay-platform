@@ -136,7 +136,7 @@ export function Field({ label, ...props }: TextInputProps & { label: string }) {
       <Text style={styles.fieldLabel}>{label}</Text>
       <TextInput
         accessibilityLabel={label}
-        placeholderTextColor="#8A91A3"
+        placeholderTextColor="#7F8BA6"
         style={styles.input}
         {...props}
       />
@@ -160,49 +160,49 @@ export const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.background },
   scroll: { padding: space.xl, gap: space.lg, paddingBottom: 48 },
   header: { flexDirection: 'row', alignItems: 'center', gap: space.md },
-  title: { fontSize: 26, fontWeight: '700', color: colors.ink, letterSpacing: -0.3 },
+  title: { fontSize: 28, fontWeight: '800', color: colors.ink, letterSpacing: -0.6 },
   iconButton: {
     width: 44, height: 44, borderRadius: radius.md, borderWidth: 1, borderColor: colors.border,
     backgroundColor: colors.surface, alignItems: 'center', justifyContent: 'center',
   },
   backGlyph: { fontSize: 28, lineHeight: 30, color: colors.ink },
-  card: { backgroundColor: colors.surface, borderRadius: radius.xl, borderWidth: 1, borderColor: colors.border, padding: space.lg, gap: space.md },
-  cardDark: { backgroundColor: colors.ink, borderColor: colors.ink },
+  card: { backgroundColor: colors.surface, borderRadius: radius.xxl, borderWidth: 1, borderColor: colors.border, padding: space.lg, gap: space.md },
+  cardDark: { backgroundColor: colors.black, borderColor: '#1F2A44' },
   heading: { fontSize: 17, fontWeight: '600', color: colors.ink },
   body: { fontSize: 14, color: colors.ink, lineHeight: 20 },
   muted: { color: colors.muted },
   light: { color: '#B9C0D4' },
-  button: { minHeight: 52, borderRadius: 16, alignItems: 'center', justifyContent: 'center', paddingHorizontal: space.lg },
+  button: { minHeight: 54, borderRadius: radius.pill, alignItems: 'center', justifyContent: 'center', paddingHorizontal: space.lg },
   btn_primary: { backgroundColor: colors.primary },
-  btn_secondary: { backgroundColor: colors.surface, borderWidth: 1, borderColor: '#D5D9E4' },
+  btn_secondary: { backgroundColor: 'transparent', borderWidth: 1.5, borderColor: colors.ink },
   btn_soft: { backgroundColor: colors.primarySoft },
   btn_danger: { backgroundColor: colors.danger },
   buttonText: { fontSize: 16, fontWeight: '600' },
-  btnText_primary: { color: '#FFFFFF' },
+  btnText_primary: { color: colors.onPrimary },
   btnText_secondary: { color: colors.ink },
-  btnText_soft: { color: colors.primary },
+  btnText_soft: { color: colors.ink },
   btnText_danger: { color: '#FFFFFF' },
   pressed: { opacity: 0.7 },
-  segmented: { flexDirection: 'row', backgroundColor: '#E9EBF2', borderRadius: radius.md, padding: 4, gap: 4 },
+  segmented: { flexDirection: 'row', backgroundColor: colors.surface, borderRadius: radius.md, padding: 4, gap: 4 },
   segment: { flex: 1, minHeight: 40, borderRadius: 11, alignItems: 'center', justifyContent: 'center' },
-  segmentSelected: { backgroundColor: colors.surface },
+  segmentSelected: { backgroundColor: colors.primary },
   segmentText: { fontSize: 13, fontWeight: '600', color: colors.muted },
-  segmentTextSelected: { color: colors.ink },
+  segmentTextSelected: { color: colors.onPrimary },
   row: { flexDirection: 'row', alignItems: 'center', gap: space.md, paddingVertical: space.md, minHeight: 44 },
   avatar: { width: 40, height: 40, borderRadius: 12, backgroundColor: colors.background, alignItems: 'center', justifyContent: 'center' },
-  avatarText: { fontSize: 12, fontWeight: '700', color: colors.primary },
+  avatarText: { fontSize: 12, fontWeight: '700', color: colors.ink },
   rowTitle: { fontSize: 14, fontWeight: '600', color: colors.ink },
   rowSubtitle: { fontSize: 12, color: colors.muted },
   rowTrailing: { fontSize: 14, fontWeight: '600', color: colors.ink },
   fieldLabel: { fontSize: 13, color: colors.muted },
   input: {
-    minHeight: 48, borderRadius: radius.md, borderWidth: 1, borderColor: '#D5D9E4', paddingHorizontal: 14,
-    fontSize: 15, backgroundColor: colors.surface, color: colors.ink,
+    minHeight: 48, borderRadius: radius.md, borderWidth: 1, borderColor: colors.border, paddingHorizontal: 14,
+    fontSize: 15, backgroundColor: colors.background, color: colors.ink,
   },
   chip: {
     minHeight: 44, paddingHorizontal: 14, borderRadius: radius.pill, borderWidth: 1, borderColor: colors.border,
     backgroundColor: colors.surface, alignItems: 'center', justifyContent: 'center',
   },
-  chipSelected: { borderWidth: 2, borderColor: colors.primary, backgroundColor: colors.primarySoft },
+  chipSelected: { borderWidth: 2, borderColor: colors.ink, backgroundColor: colors.primarySoft },
   chipText: { fontSize: 13, fontWeight: '600', color: colors.ink },
 });
