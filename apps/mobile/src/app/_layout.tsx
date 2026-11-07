@@ -15,6 +15,8 @@ export default function RootLayout() {
         <Stack.Screen name="travel" />
         <Stack.Screen name="esim" />
         <Stack.Screen name="security" />
+        <Stack.Screen name="welcome" />
+        <Stack.Screen name="verify" />
       </Stack>
     </SafeAreaProvider>
   );

@@ -1,4 +1,4 @@
-import { randomUUID } from 'node:crypto';
+import { createHash, randomUUID } from 'node:crypto';
 import type { Currency } from '@oenodpay/shared';
 
 /**
@@ -33,13 +33,40 @@ export interface EntryLine {
 export interface JournalEntry {
   id: string;
   idempotencyKey: string;
+  requestHash: string;
   description: string;
   lines: EntryLine[];
   createdAt: string;
 }
 
+export type LedgerErrorCode =
+  | 'unbalanced' | 'insufficient_funds' | 'unknown_account' | 'invalid_amount'
+  | 'currency_mismatch' | 'duplicate_account' | 'idempotency_conflict';
+
+/** Fingerprint of what an entry does, so a reused idempotency key with a different request is refused. */
+export function requestHash(description: string, lines: EntryLine[]): string {
+  const canonical = JSON.stringify([description, [...lines].sort((a, b) => a.accountId.localeCompare(b.accountId)).map((l) => [l.accountId, l.amountMinor])]);
+  return createHash('sha256').update(canonical).digest('hex');
+}
+
+/** Checks the shape of an entry. Shared by the in-memory and PostgreSQL ledgers. */
+export function validateLines(lines: EntryLine[]): void {
+  if (lines.length < 2) throw new LedgerError('unbalanced', 'An entry needs at least two lines');
+  const seen = new Set<string>();
+  let sum = 0;
+  for (const line of lines) {
+    if (!Number.isSafeInteger(line.amountMinor) || line.amountMinor === 0) {
+      throw new LedgerError('invalid_amount', 'Amounts must be non-zero whole minor units');
+    }
+    if (seen.has(line.accountId)) throw new LedgerError('duplicate_account', 'Each account may appear once per entry');
+    seen.add(line.accountId);
+    sum += line.amountMinor;
+  }
+  if (sum !== 0) throw new LedgerError('unbalanced', 'Entry lines must sum to zero');
+}
+
 export class LedgerError extends Error {
-  constructor(public code: 'unbalanced' | 'insufficient_funds' | 'unknown_account' | 'invalid_amount' | 'currency_mismatch', message: string) {
+  constructor(public code: LedgerErrorCode, message: string) {
     super(message);
   }
 }
@@ -75,23 +102,21 @@ export class Ledger {
 
   /** Posts an entry atomically: either every line applies, or none do. */
   post(idempotencyKey: string, description: string, lines: EntryLine[]): JournalEntry {
+    const hash = requestHash(description, lines);
     const existing = this.byIdempotencyKey.get(idempotencyKey);
-    if (existing) return existing;
+    if (existing) {
+      if (existing.requestHash !== hash) throw new LedgerError('idempotency_conflict', 'This idempotency key was used for a different request');
+      return existing;
+    }
 
-    if (lines.length < 2) throw new LedgerError('unbalanced', 'An entry needs at least two lines');
+    validateLines(lines);
     const currencies = new Set<Currency>();
-    let sum = 0;
     for (const line of lines) {
-      if (!Number.isSafeInteger(line.amountMinor) || line.amountMinor === 0) {
-        throw new LedgerError('invalid_amount', 'Amounts must be non-zero whole minor units');
-      }
       const account = this.accounts.get(line.accountId);
       if (!account) throw new LedgerError('unknown_account', 'Account not found');
       currencies.add(account.currency);
-      sum += line.amountMinor;
     }
     if (currencies.size !== 1) throw new LedgerError('currency_mismatch', 'Convert currency through FX accounts, not in one entry');
-    if (sum !== 0) throw new LedgerError('unbalanced', 'Entry lines must sum to zero');
 
     // Check every resulting balance before applying anything.
     const next = new Map<string, number>();
@@ -106,7 +131,7 @@ export class Ledger {
       }
     }
 
-    const entry: JournalEntry = { id: randomUUID(), idempotencyKey, description, lines, createdAt: new Date().toISOString() };
+    const entry: JournalEntry = { id: randomUUID(), idempotencyKey, requestHash: hash, description, lines, createdAt: new Date().toISOString() };
     for (const [accountId, value] of next) this.balances.set(accountId, value);
     this.entries.push(entry);
     this.byIdempotencyKey.set(idempotencyKey, entry);

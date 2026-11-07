@@ -11,6 +11,19 @@ permissions:
 jobs:
   checks:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: oenodpay
+          POSTGRES_PASSWORD: oenodpay
+          POSTGRES_DB: oenodpay_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U oenodpay" --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      # API tests run against both the in-memory store and this real PostgreSQL database.
+      TEST_DATABASE_URL: postgres://oenodpay:oenodpay@localhost:5432/oenodpay_test
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
