@@ -25,7 +25,7 @@ export function QuoteCalculator() {
             setCountryCode(next.countryCode);
             setMethodId(next.methods[0]!.id);
           }}
-          className="h-12 rounded-xl border border-line px-3 text-base text-ink bg-navy"
+          className="h-12 rounded-xl border border-line px-3 text-base text-ink bg-white"
         >
           {CORRIDORS.map((c) => (
             <option key={c.countryCode} value={c.countryCode}>{c.countryName}</option>
@@ -57,7 +57,7 @@ export function QuoteCalculator() {
             type="button"
             onClick={() => setAmountMinor(a)}
             aria-pressed={a === amountMinor}
-            className={`h-11 rounded-xl font-semibold border ${a === amountMinor ? "bg-brand text-navy border-brand" : "bg-surface border-line"}`}
+            className={`h-11 rounded-xl font-semibold border ${a === amountMinor ? "bg-brand text-white border-brand" : "bg-surface border-line"}`}
           >
             {formatMoney({ minor: a, currency: "CAD" }).replace(".00", "")}
           </button>

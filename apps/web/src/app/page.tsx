@@ -27,7 +27,7 @@ export default function Home() {
       <main className="flex-1">
         <section className="mx-auto max-w-6xl px-6 pt-16 pb-14 grid gap-12 md:grid-cols-[1.2fr_1fr] items-center">
           <div className="flex flex-col gap-6">
-            <span className="self-start text-[13px] font-semibold text-white bg-brand-soft rounded-full px-3 py-1.5">Launching in Canada</span>
+            <span className="self-start text-[13px] font-semibold text-ink bg-brand-soft rounded-full px-3 py-1.5">Launching in Canada</span>
             <h1 className="font-display text-4xl sm:text-5xl md:text-[56px] leading-[1.05] font-semibold tracking-tight">
               One app to pay, send, travel and grow your money.
             </h1>
@@ -45,7 +45,7 @@ export default function Home() {
             <div className="w-[300px] rounded-[40px] bg-black p-3.5">
               <div className="rounded-[28px] bg-canvas p-5 flex flex-col gap-3.5">
                 <span className="text-[13px] text-muted">Good evening, Ahmed</span>
-                <div className="rounded-[22px] bg-brand text-navy p-4 flex flex-col gap-2">
+                <div className="rounded-[22px] bg-navy text-white p-4 flex flex-col gap-2">
                   <span className="text-xs font-semibold opacity-75">Total balance · CAD</span>
                   <span className="font-display text-[34px] leading-none font-bold tracking-tight">$2,480.50</span>
                 </div>
@@ -75,7 +75,7 @@ export default function Home() {
                   {c.countryName}
                 </li>
               ))}
-              <li className="h-11 px-4 rounded-full bg-brand text-navy flex items-center font-semibold">More coming</li>
+              <li className="h-11 px-4 rounded-full bg-white text-black flex items-center font-semibold">More coming</li>
             </ul>
           </div>
         </section>

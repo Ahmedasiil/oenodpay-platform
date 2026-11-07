@@ -64,13 +64,13 @@ export function SignInForm() {
       role="tab"
       aria-selected={mode === m}
       onClick={() => { setMode(m); setError(null); }}
-      className={`flex-1 h-10 rounded-[11px] text-sm font-semibold ${mode === m ? "bg-brand text-navy shadow-sm" : "text-muted"}`}
+      className={`flex-1 h-10 rounded-[11px] text-sm font-semibold ${mode === m ? "bg-brand text-white shadow-sm" : "text-muted"}`}
     >
       {label}
     </button>
   );
 
-  const field = "h-12 rounded-[14px] border border-line bg-navy px-4 text-[15px] placeholder:text-muted outline-none focus:border-brand focus:ring-2 focus:ring-brand-soft";
+  const field = "h-12 rounded-[14px] border border-line bg-white px-4 text-[15px] placeholder:text-muted outline-none focus:border-brand focus:ring-2 focus:ring-brand-soft";
 
   return (
     <div className="flex flex-col gap-5">
@@ -79,7 +79,7 @@ export function SignInForm() {
         <p className="text-muted">One oenodPay account for the website and the iOS and Android apps.</p>
       </div>
 
-      <div role="tablist" className="flex gap-1 rounded-[14px] bg-surface p-1">
+      <div role="tablist" className="flex gap-1 rounded-[14px] bg-brand-soft p-1">
         {tab("signin", "Sign in")}
         {tab("signup", "Create account")}
       </div>
@@ -113,7 +113,7 @@ export function SignInForm() {
             autoComplete={mode === "signup" ? "new-password" : "current-password"} className={field} />
         </label>
         {error ? <p role="alert" className="text-sm text-[#FF8A8A]">{error}</p> : null}
-        <button type="submit" disabled={busy} className="h-[52px] rounded-2xl bg-brand text-navy font-semibold hover:bg-brand-dark disabled:opacity-60">
+        <button type="submit" disabled={busy} className="h-[52px] rounded-2xl bg-brand text-white font-semibold hover:bg-brand-dark disabled:opacity-60">
           {busy ? "Please wait…" : mode === "signin" ? "Sign in" : "Create account"}
         </button>
       </form>

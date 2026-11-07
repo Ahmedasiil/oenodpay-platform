@@ -52,7 +52,7 @@ export default function Home() {
     <Screen>
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
         <Image
-          source={require('@/assets/brand/oenodpay-logo-white-2000.png')}
+          source={require('@/assets/brand/oenodpay-logo-2000.png')}
           accessibilityLabel="OENODPAY"
           style={{ width: 133, height: 28 }}
           resizeMode="contain"
@@ -61,27 +61,27 @@ export default function Home() {
           <Pressable
             accessibilityRole="button"
             accessibilityLabel="Security center"
-            style={{ width: 44, height: 44, borderRadius: 22, backgroundColor: colors.surface, alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={{ fontSize: 14, fontWeight: '700', color: colors.ink }}>{sampleUser.firstName.slice(0, 2).toUpperCase()}</Text>
+            style={{ width: 44, height: 44, borderRadius: 22, backgroundColor: colors.navy, alignItems: 'center', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 14, fontWeight: '700', color: '#FFFFFF' }}>{sampleUser.firstName.slice(0, 2).toUpperCase()}</Text>
           </Pressable>
         </Link>
       </View>
 
-      <View style={{ backgroundColor: colors.primary, borderRadius: radius.hero, padding: 24, gap: 6 }}>
+      <View style={{ backgroundColor: colors.navy, borderRadius: radius.hero, padding: 24, gap: 6 }}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Text style={{ color: colors.navy, fontSize: 14, fontWeight: '600', opacity: 0.75 }}>Total balance · CAD</Text>
-          <Text style={{ color: colors.navy, fontSize: 12, fontWeight: '700' }}>Hi {sampleUser.firstName}</Text>
+          <Text style={{ color: '#B9C3D9', fontSize: 14, fontWeight: '600' }}>Total balance · CAD</Text>
+          <Text style={{ color: '#FFFFFF', fontSize: 12, fontWeight: '700' }}>Hi {sampleUser.firstName}</Text>
         </View>
         <Text
-          style={{ color: colors.navy, fontSize: 50, fontWeight: '800', letterSpacing: -2 }}
+          style={{ color: '#FFFFFF', fontSize: 50, fontWeight: '800', letterSpacing: -2 }}
           adjustsFontSizeToFit
           numberOfLines={1}
           accessibilityLabel="Wallet balance">
           {formatMoney({ minor: sampleUser.balanceMinor, currency: 'CAD' })}
         </Text>
         <View style={{ flexDirection: 'row', gap: 10, paddingTop: 8 }}>
-          <Pressable accessibilityRole="button" style={{ flex: 1, minHeight: 50, borderRadius: 999, backgroundColor: colors.navy, alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={{ color: '#FFFFFF', fontSize: 15, fontWeight: '700' }}>Add money</Text>
+          <Pressable accessibilityRole="button" style={{ flex: 1, minHeight: 50, borderRadius: 999, backgroundColor: '#FFFFFF', alignItems: 'center', justifyContent: 'center' }}>
+            <Text style={{ color: colors.navy, fontSize: 15, fontWeight: '700' }}>Add money</Text>
           </Pressable>
           <Pressable accessibilityRole="button" onPress={() => router.push('/send')} style={{ flex: 1, minHeight: 50, borderRadius: 999, backgroundColor: colors.black, alignItems: 'center', justifyContent: 'center' }}>
             <Text style={{ color: '#FFFFFF', fontSize: 15, fontWeight: '700' }}>Send</Text>

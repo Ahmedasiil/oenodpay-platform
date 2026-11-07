@@ -12,9 +12,9 @@ export default function TabsLayout() {
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: colors.primary,
-        tabBarInactiveTintColor: colors.muted,
-        tabBarStyle: { backgroundColor: colors.black, borderTopColor: colors.black },
+        tabBarActiveTintColor: '#FFFFFF',
+        tabBarInactiveTintColor: '#8C98B3',
+        tabBarStyle: { backgroundColor: colors.navy, borderTopColor: colors.navy },
         tabBarLabelStyle: { fontSize: 11, fontWeight: '600' },
         tabBarIcon: ({ color, focused }) => <Dot color={color} focused={focused} />,
       }}>
