@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Image, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { router } from 'expo-router';
 
 import { Body, Button, Card, Field, Screen, Segmented } from '@/components/ui';
@@ -39,12 +39,8 @@ export default function Welcome() {
   return (
     <Screen>
       <View style={{ alignItems: 'center', gap: 10, paddingTop: 24, paddingBottom: 8 }}>
-        <Image
-          source={require('@/assets/brand/oenodpay-logo-1600.png')}
-          accessibilityLabel="OENODPAY"
-          style={{ width: 220, height: 22 }}
-          resizeMode="contain"
-        />
+        {/* Text placeholder until the final logo is chosen. */}
+        <Text style={{ fontSize: 22, fontWeight: '700', letterSpacing: 4, color: colors.ink }}>OENODPAY</Text>
         <Text style={{ fontSize: 15, color: colors.muted, textAlign: 'center' }}>Send, pay, travel and grow your money. One secure app.</Text>
       </View>
 
