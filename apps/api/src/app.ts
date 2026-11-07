@@ -263,6 +263,7 @@ export async function buildApp(
     const check = await repo.latestKycCheck(req.user!.id);
     return {
       kycStatus: req.user!.kycStatus,
+      sandbox: kyc.name === 'sandbox' && config.NODE_ENV !== 'production',
       latestCheck: check ? { id: check.id, status: check.status, reason: check.reason, createdAt: check.createdAt } : null,
     };
   });

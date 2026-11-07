@@ -1,8 +1,10 @@
+import { useEffect, useState } from 'react';
 import { Link, router, type Href } from 'expo-router';
 import { Image, Pressable, Text, View } from 'react-native';
 import { formatMoney } from '@oenodpay/shared';
 
-import { Button, Card, Heading, ListRow, Screen, styles as ui } from '@/components/ui';
+import { Body, Button, Card, Heading, ListRow, Screen, styles as ui } from '@/components/ui';
+import { api, hasSession } from '@/lib/api';
 import { sampleActivity, sampleUser } from '@/lib/sample';
 import { colors } from '@/lib/theme';
 
@@ -17,7 +19,35 @@ const actions: { label: string; short: string; href: Href }[] = [
   { label: 'Invest', short: 'IN', href: '/invest' },
 ];
 
+type Account = 'guest' | 'unverified' | 'verified';
+
+/** Nudges the person to the next step: create an account, then verify their identity. */
+function NextStep({ account }: { account: Account }) {
+  if (account === 'verified') return null;
+  const guest = account === 'guest';
+  return (
+    <Card style={{ borderColor: colors.primary, borderWidth: 1.5 }}>
+      <Heading>{guest ? 'Open your oenodPay account' : 'Verify your identity'}</Heading>
+      <Body muted>
+        {guest
+          ? 'You’re exploring a demo with sample money. Create an account in under a minute.'
+          : 'One quick ID check and you can send money, pay bills and get your card.'}
+      </Body>
+      <Button label={guest ? 'Create account or sign in' : 'Verify now · 2 min'} onPress={() => router.push(guest ? '/welcome' : '/verify')} />
+    </Card>
+  );
+}
+
 export default function Home() {
+  const [account, setAccount] = useState<Account>('guest');
+  useEffect(() => {
+    void (async () => {
+      if (!(await hasSession())) return;
+      const me = await api<{ user: { kycStatus: string } }>('/v1/me').catch(() => null);
+      if (me) setAccount(me.user.kycStatus === 'verified' ? 'verified' : 'unverified');
+    })();
+  }, []);
+
   return (
     <Screen>
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -66,6 +96,8 @@ export default function Home() {
           </Link>
         ))}
       </View>
+
+      <NextStep account={account} />
 
       <Card>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>

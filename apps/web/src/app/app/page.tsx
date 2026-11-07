@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
 import { QuoteCalculator } from "./quote-calculator";
 
@@ -15,10 +16,14 @@ export default function WebApp() {
             <span className="text-xs text-mist">Sample balance. Sign-in connects to the same account as the mobile app.</span>
           </div>
           <div className="rounded-3xl bg-white border border-line p-6 flex flex-col gap-2">
-            <h2 className="font-semibold">Sign in</h2>
+            <h2 className="font-semibold">Your account</h2>
             <p className="text-sm text-muted">
-              Passkey sign-in for the web is coming next. It uses the same oenodPay account and backend as the iOS and Android apps.
+              Sign in with a passkey or password. It&apos;s the same oenodPay account and backend as the iOS and Android apps.
             </p>
+            <div className="flex flex-wrap gap-2 pt-1">
+              <Link href="/signin" className="h-11 px-4 rounded-xl bg-brand text-white flex items-center font-semibold hover:bg-brand-dark">Sign in</Link>
+              <Link href="/app/security" className="h-11 px-4 rounded-xl border border-[#D5D9E4] flex items-center font-semibold">Security &amp; devices</Link>
+            </div>
           </div>
         </section>
         <QuoteCalculator />

@@ -15,7 +15,7 @@ export function SiteHeader() {
           <Link href="/#security" className="hover:text-brand">Security</Link>
         </nav>
         <div className="flex gap-2">
-          <Link href="/app" className="h-11 px-4 rounded-xl border border-[#D5D9E4] flex items-center font-semibold">Sign in</Link>
+          <Link href="/signin" className="h-11 px-4 rounded-xl border border-[#D5D9E4] flex items-center font-semibold">Sign in</Link>
           <Link href="/#download" className="h-11 px-4 rounded-xl bg-brand text-white flex items-center font-semibold hover:bg-brand-dark">Get the app</Link>
         </div>
       </div>
