@@ -4,7 +4,7 @@
     "slug": "oenodpay",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/placeholder/icon-1024.png",
+    "icon": "./assets/brand/app-icon-ios-1024.png",
     "scheme": "oenodpay",
     "userInterfaceStyle": "light",
     "ios": {
@@ -17,20 +17,20 @@
       "predictiveBackGestureEnabled": false,
       "package": "com.oenodpay.app",
       "allowBackup": false,
-      "icon": "./assets/placeholder/icon-512.png"
+      "icon": "./assets/brand/app-icon-android-512.png"
     },
     "web": {
       "output": "single",
-      "favicon": "./assets/placeholder/favicon-32.png"
+      "favicon": "./assets/brand/favicon-32.png"
     },
     "plugins": [
       "expo-router",
       [
         "expo-splash-screen",
         {
-          "backgroundColor": "#0B1020",
-          "image": "./assets/placeholder/icon-rounded-512.png",
-          "imageWidth": 120
+          "backgroundColor": "#FFFFFF",
+          "image": "./assets/brand/oenodpay-stacked-2000.png",
+          "imageWidth": 200
         }
       ]
     ],
