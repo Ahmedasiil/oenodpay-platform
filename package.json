@@ -1,0 +1,16 @@
+{
+  "name": "oenodpay-platform",
+  "private": true,
+  "version": "0.1.0",
+  "description": "OenodPay: one app to pay, send, travel and grow your money. iOS, Android and web on one backend.",
+  "packageManager": "pnpm@10.28.0",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "dev:api": "pnpm --filter @oenodpay/api dev",
+    "dev:web": "pnpm --filter web dev",
+    "dev:mobile": "pnpm --filter mobile start",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint"
+  }
+}
