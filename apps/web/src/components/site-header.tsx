@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export function SiteHeader() {
@@ -5,8 +6,7 @@ export function SiteHeader() {
     <header className="bg-white border-b border-line">
       <div className="mx-auto max-w-6xl px-6 py-4 flex flex-wrap items-center justify-between gap-4">
         <Link href="/" aria-label="oenodPay home">
-          {/* Text placeholder until the final logo is chosen. */}
-          <span className="font-display text-xl font-semibold tracking-[0.18em]">OENODPAY</span>
+          <Image src="/oenodpay-logo.svg" alt="OENODPAY" width={172} height={36} priority />
         </Link>
         <nav aria-label="Primary" className="flex flex-wrap gap-6 text-[15px] font-medium">
           <Link href="/#send" className="hover:text-brand">Send money</Link>
