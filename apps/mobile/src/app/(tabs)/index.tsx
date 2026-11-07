@@ -1,5 +1,5 @@
 import { Link, router, type Href } from 'expo-router';
-import { Image, Pressable, Text, View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 import { formatMoney } from '@oenodpay/shared';
 
 import { Button, Card, Heading, ListRow, Screen, styles as ui } from '@/components/ui';
@@ -22,12 +22,8 @@ export default function Home() {
     <Screen>
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
         <View style={{ gap: 6 }}>
-          <Image
-            source={require('@/assets/brand/oenodpay-logo-1600.png')}
-            accessibilityLabel="OENODPAY"
-            style={{ width: 160, height: 16 }}
-            resizeMode="contain"
-          />
+          {/* Text placeholder until the final logo is chosen. */}
+          <Text style={{ fontSize: 15, fontWeight: '700', letterSpacing: 3, color: colors.ink }}>OENODPAY</Text>
           <Text style={{ fontSize: 13, color: colors.muted }}>Good evening</Text>
           <Text style={{ fontSize: 18, fontWeight: '700', color: colors.ink }}>{sampleUser.firstName}</Text>
         </View>
