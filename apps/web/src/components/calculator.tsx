@@ -3,9 +3,11 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { CORRIDORS, formatMoney, quoteTransfer, type Quote } from "@oenodpay/shared";
+import { en } from "@/i18n/en";
+import type { Dict } from "@/i18n/types";
 
 /** Live price calculator. Prices come from the oenodPay API, the same maths the app uses. */
-export function Calculator({ country = "PH", compact }: { country?: string; compact?: boolean }) {
+export function Calculator({ country = "PH", compact, t = en.calc, joinHref = "/#join" }: { country?: string; compact?: boolean; t?: Dict["calc"]; joinHref?: string }) {
   const [code, setCode] = useState(country);
   const corridor = useMemo(() => CORRIDORS.find((c) => c.countryCode === code) ?? CORRIDORS[0]!, [code]);
   const [methodId, setMethodId] = useState(corridor.methods[0]!.id);
@@ -15,8 +17,8 @@ export function Calculator({ country = "PH", compact }: { country?: string; comp
   const method = corridor.methods.find((m) => m.id === methodId) ?? corridor.methods[0]!;
   const cents = Math.round(Number(amount.replace(/[^0-9.]/g, "")) * 100) || 0;
   const key = `${code}|${method.id}|${cents}`;
-  const error = cents <= method.feeMinor ? `Enter more than ${formatMoney({ minor: method.feeMinor, currency: "CAD" })}`
-    : cents > 300000 ? "New accounts can send up to $3,000 per transfer" : null;
+  const error = cents <= method.feeMinor ? `${t.min} ${formatMoney({ minor: method.feeMinor, currency: "CAD" })}`
+    : cents > 300000 ? t.max : null;
   // Instant local estimate (same shared maths), replaced by the server's price when it arrives.
   const local = useMemo(() => (error ? null : quoteTransfer(code, method.id, cents)), [error, code, method.id, cents]);
   const live = server?.key === key;
@@ -43,19 +45,19 @@ export function Calculator({ country = "PH", compact }: { country?: string; comp
     <div className={`calc${compact ? " compact" : ""}`}>
       <div className="calc-row">
         <label className="calc-in">
-          <span>You send</span>
+          <span>{t.send}</span>
           <input inputMode="decimal" value={amount} onChange={(e) => setAmount(e.target.value)} aria-label="Amount in Canadian dollars" />
         </label>
         <span className="calc-cur"><i className="flag">🇨🇦</i>CAD</span>
       </div>
       <div className="calc-mid">
-        <div><span>Fee</span><b className="num">{formatMoney({ minor: method.feeMinor, currency: "CAD" })}</b></div>
-        <div><span>Rate</span><b className="num">1 CAD = {corridor.sampleRate} {corridor.currency}</b></div>
-        <div><span>Arrives</span><b>{method.eta}</b></div>
+        <div><span>{t.fee}</span><b className="num">{formatMoney({ minor: method.feeMinor, currency: "CAD" })}</b></div>
+        <div><span>{t.rate}</span><b className="num">1 CAD = {corridor.sampleRate} {corridor.currency}</b></div>
+        <div><span>{t.arrives}</span><b>{method.eta}</b></div>
       </div>
       <div className="calc-row out">
         <label className="calc-in">
-          <span>They get</span>
+          <span>{t.get}</span>
           <output className="num">{quote ? (quote.receive.minor / 100).toLocaleString("en-CA", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "—"}</output>
         </label>
         <select className="calc-cur" value={code} aria-label="Destination country"
@@ -69,8 +71,8 @@ export function Calculator({ country = "PH", compact }: { country?: string; comp
         ))}
       </div>
       {error ? <p className="calc-err" role="alert">{error}</p> : null}
-      <Link href="/#join" className="btn pri calc-cta">Get early access</Link>
-      <p className="calc-note">{live ? "Priced by our servers." : "Estimate."} Example rate; you see the live rate before you pay. The fee is included in what you send.</p>
+      <Link href={joinHref} className="btn pri calc-cta">{t.cta}</Link>
+      <p className="calc-note">{live ? t.live : t.est} {t.note}</p>
     </div>
   );
 }

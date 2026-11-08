@@ -1,6 +1,9 @@
 /** State for the website's feature demos. Pretend money only, kept in cents to avoid rounding errors. */
 export type FeatureId = "send" | "card" | "bills" | "esim" | "travel" | "invest" | "lend" | "credit";
 
+/** Each demo's full feature page. */
+export const PAGE: Record<FeatureId, string> = { send: "send-money-abroad", card: "debit-card", bills: "pay-bills", esim: "esim", travel: "travel", invest: "invest", lend: "lend", credit: "credit-score" };
+
 export const ORDER: FeatureId[] = ["send", "bills", "card", "esim", "travel", "invest", "lend", "credit"];
 
 export const FEATURES: Record<FeatureId, { name: string; points: number; hint: string }> = {

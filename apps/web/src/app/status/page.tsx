@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
 import { StatusBoard } from "@/components/status-board";
@@ -10,7 +11,7 @@ export default function Status() {
       <section className="pg">
         <div className="wrap" style={{ maxWidth: 860 }}>
           <StatusBoard />
-          <p className="note" style={{ marginTop: 24 }}>If something isn&apos;t working and this page says everything is fine, please <a href="/contact?topic=support">tell us</a>.</p>
+          <p className="note" style={{ marginTop: 24 }}>If something isn&apos;t working and this page says everything is fine, please <Link href="/contact?topic=support">tell us</Link>.</p>
         </div>
       </section>
     </PageShell>

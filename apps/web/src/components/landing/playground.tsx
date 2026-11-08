@@ -3,11 +3,10 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { DEMOS } from "./demos";
-import { FEATURES, ORDER, cad, initialState, type FeatureId } from "./demo-state";
+import { FEATURES, ORDER, PAGE, cad, initialState, type FeatureId } from "./demo-state";
 
 interface Tile { id: FeatureId; span: 4 | 5 | 7; cat: string; title: string; body: string; dark?: boolean; preview: React.ReactNode }
 
-const PAGE: Record<FeatureId, string> = { send: "send-money-abroad", card: "debit-card", bills: "pay-bills", esim: "esim", travel: "travel", invest: "invest", lend: "lend", credit: "credit-score" };
 
 const TILES: Tile[] = [
   { id: "send", span: 7, cat: "Move money", title: "Send money abroad", body: "Seven countries. See the rate and fee first, then pick wallet, bank or cash pickup.",
@@ -29,7 +28,9 @@ const TILES: Tile[] = [
 ];
 
 /** The features grid plus the "Try it now" demos. Demos use pretend money and never call the API. */
-export function Playground() {
+export interface PlayText { try: string; more: string; tried: string; tiles?: Partial<Record<FeatureId, { cat: string; title: string; body: string }>> }
+
+export function Playground({ t }: { t?: PlayText }) {
   const [s, set] = useState(initialState);
   const [open, setOpen] = useState<FeatureId | null>(null);
   const opener = useRef<HTMLElement | null>(null);
@@ -57,23 +58,23 @@ export function Playground() {
   return (
     <>
       <div className="bento">
-        {TILES.map((t) => (
-          <article key={t.id} className={`tile s${t.span}${t.dark ? " dark" : ""}`}>
-            <div className="vis">{t.preview}</div>
+        {TILES.map((base) => { const tx = t?.tiles?.[base.id]; const tile = tx ? { ...base, ...tx } : base; return (
+          <article key={tile.id} className={`tile s${tile.span}${tile.dark ? " dark" : ""}`}>
+            <div className="vis">{tile.preview}</div>
             <div className="tx">
-              <span className="cat">{t.cat}</span>
-              <h3>{t.title}</h3>
-              <p>{t.body}</p>
+              <span className="cat">{tile.cat}</span>
+              <h3>{tile.title}</h3>
+              <p>{tile.body}</p>
               <div className="tfoot">
-                <button type="button" className="try" onClick={(e) => { opener.current = e.currentTarget; setOpen(t.id); }}>
-                  Try it now <span aria-hidden="true">→</span>
+                <button type="button" className="try" onClick={(e) => { opener.current = e.currentTarget; setOpen(tile.id); }}>
+                  {t?.try ?? "Try it now"} <span aria-hidden="true">→</span>
                 </button>
-                <Link href={`/features/${PAGE[t.id]}`} className="tmore">Learn more</Link>
-                <span className="tried">{s.tried[t.id] ? "✓ Tried" : ""}</span>
+                <Link href={`/features/${PAGE[tile.id]}`} className="tmore">{t?.more ?? "Learn more"}</Link>
+                <span className="tried">{s.tried[tile.id] ? (t?.tried ?? "✓ Tried") : ""}</span>
               </div>
             </div>
           </article>
-        ))}
+        ); })}
       </div>
 
       {open && demo && (
