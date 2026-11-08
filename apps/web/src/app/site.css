@@ -208,7 +208,7 @@ select.calc-cur{cursor:pointer;appearance:auto}
 .st-bad{color:var(--bad);font-weight:600}
 
 /* cookie banner */
-.cookie{position:fixed;z-index:60;left:16px;right:16px;bottom:16px;max-width:520px;background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:var(--shadow-lg);font:14px/1.5 var(--sans)}
+.cookie{--accent:#2252D1;--accent-soft:#E7EDFC;--ink:#0B1B3F;--muted:#5A6480;--line:#E2E6EE;position:fixed;z-index:60;left:16px;right:16px;bottom:16px;max-width:520px;background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:var(--shadow-lg);font:14px/1.5 var(--sans)}
 .cookie h2{font-size:16px;margin:0 0 6px;font-weight:600}
 .cookie p{margin:0 0 14px;color:var(--muted)}
 .cookie .row{display:flex;gap:8px;flex-wrap:wrap}

@@ -9,7 +9,7 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "i18n:record": "rm -f .i18n-record.jsonl && I18N_RECORD=$PWD/.i18n-record.jsonl next build && tsx scripts/i18n.ts source .i18n-record.jsonl",
+    "i18n:record": "tsx scripts/i18n.ts demo && rm -f .i18n-record.jsonl && I18N_RECORD=$PWD/.i18n-record.jsonl next build && tsx scripts/i18n.ts source .i18n-record.jsonl",
     "i18n:check": "tsx scripts/i18n.ts check"
   },
   "dependencies": {

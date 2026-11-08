@@ -1,5 +1,3 @@
-ukccui	page	About us
-j8ui10	page	Who we are, where we operate and how we're regulated.
 r7spkj	page	oenodPay for Business
 hvg5rl	page	Business accounts, team cards, international supplier payments and invoicing. Coming after our personal launch.
 2o6tyw	page	Careers
@@ -12,6 +10,8 @@ u1k6p6	page	Features
 11gswwn	page	Answers about accounts, identity verification, sending money, your card, security and fees.
 1pq2h0q	page	Legal
 afej1l	page	Every oenodPay agreement, policy and disclosure in one place.
+ukccui	page	About us
+j8ui10	page	Who we are, where we operate and how we're regulated.
 l4l2wc	page	New to Canada
 11vvln9	page	Open an account with your passport or PR card, send money home, and start building Canadian credit.
 1ni13dg	page	Press
@@ -67,36 +67,6 @@ uvz7s7	page	Cookie policy
 v7k33k	page	Acceptable use policy
 e7z8s3	page	Anti-money laundering and sanctions statement
 1euloqj	page	All legal documents
-1c7mjng	page	Agreements
-kcpxg6	page	The rules for using the oenodPay website and apps.
-j0uvb	page	On this page
-1dgad6z	legal	Who we are
-zznf1n	legal	Who can use oenodPay
-4cg6m9	legal	Your account
-wmee2	legal	Acceptable use
-1n37sf2	legal	Our service
-19dclpa	legal	Other agreements
-mfybj8	legal	Liability
-k843ur	legal	Changes and contact
-kukogo	page	Related
-1f3p7vu	page	Electronic communications consent
-1etaww0	legal	Draft for counsel review. This document will be finalized before oenodPay opens accounts. Last updated November 2026.
-lshj	legal	oenodPay is a financial app made by OENOD. In these terms, "we" means the oenodPay company that provides the service, and "you" means the person using it. The legal name and registered address of that company will be shown here before launch.
-10r99wv	legal	You must be at least 18 (or the age of majority in your province), live in Canada and be able to enter a binding contract. Some features have extra requirements, which we explain on each feature's page.
-1yv53mv	legal	You must give true, current information, keep it up to date and keep your sign-in methods safe. Tell us right away if you think someone else has accessed your account.
-n95qra	legal	We verify your identity before you can move money, as Canadian law requires. We may refuse, limit or close an account if we can't verify it, if we suspect fraud, or if the law requires it.
-1adwogi	legal	You agree not to use oenodPay for anything illegal, to break our acceptable use policy, or to interfere with the service or other people's accounts.
-1uv2s5m	legal	We work hard to keep oenodPay available and secure, but we can't promise it will never be interrupted. We may change or stop features, and we'll give notice when the change affects you.
-12ectx0	legal	Using a specific product means you also agree to its own terms, such as the account agreement, the cardholder agreement or the Lend terms. If those terms conflict with these, the product terms apply.
-ohxbs8	legal	Nothing in these terms limits rights you have under consumer protection law in your province. Otherwise, we're not responsible for indirect losses, and our total responsibility is limited to the fees you paid us in the 12 months before the claim.
-1yml2fb	legal	We'll give you at least 30 days' notice before changes to these terms take effect, as provincial law requires. You can reach us in the app under Help, or through the contact page at oenodpay.com/contact.
-1jz601i	legal	← All agreements and policies
-dfc3fw	page	Breadcrumb
-n0mxf2	page	Home
-pkbcu1	page	Ready when you are.
-1m2l81	page	Join early access and be one of the first in Canada to open an oenodPay account.
-l5u18e	page	Get early access
-l2t5g0	page	Talk to us
 zsx56h	page	Press and media
 im7vcm	page	Facts about oenodPay, and how to reach our team.
 yeze1y	page	Media enquiries
@@ -118,6 +88,12 @@ aw1jp7	page	November 2026
 u9vrme	page	Brand
 4el6o6	page	Name
 1ul11kc	page	Write it as oenodPay: lowercase “oenod”, capital P. Our logo and media kit will be published here at launch.
+dfc3fw	page	Breadcrumb
+n0mxf2	page	Home
+pkbcu1	page	Ready when you are.
+1m2l81	page	Join early access and be one of the first in Canada to open an oenodPay account.
+l5u18e	page	Get early access
+l2t5g0	page	Talk to us
 1hra0d8	page	Company
 131bdwd	page	One app for all your money,
 zltkof	page	made in Canada.
@@ -175,6 +151,30 @@ m75tww	page	Quebec AMF
 166k6k8	page	Required for investing
 1g9kpdw	page	Before investing launches
 ycliul	page	oenodPay is not a bank and does not take deposits. See <0>licences and registrations</0> for details.
+1c7mjng	page	Agreements
+kcpxg6	page	The rules for using the oenodPay website and apps.
+j0uvb	page	On this page
+1dgad6z	legal	Who we are
+zznf1n	legal	Who can use oenodPay
+4cg6m9	legal	Your account
+wmee2	legal	Acceptable use
+1n37sf2	legal	Our service
+19dclpa	legal	Other agreements
+mfybj8	legal	Liability
+k843ur	legal	Changes and contact
+kukogo	page	Related
+1f3p7vu	page	Electronic communications consent
+1etaww0	legal	Draft for counsel review. This document will be finalized before oenodPay opens accounts. Last updated November 2026.
+lshj	legal	oenodPay is a financial app made by OENOD. In these terms, "we" means the oenodPay company that provides the service, and "you" means the person using it. The legal name and registered address of that company will be shown here before launch.
+10r99wv	legal	You must be at least 18 (or the age of majority in your province), live in Canada and be able to enter a binding contract. Some features have extra requirements, which we explain on each feature's page.
+1yv53mv	legal	You must give true, current information, keep it up to date and keep your sign-in methods safe. Tell us right away if you think someone else has accessed your account.
+n95qra	legal	We verify your identity before you can move money, as Canadian law requires. We may refuse, limit or close an account if we can't verify it, if we suspect fraud, or if the law requires it.
+1adwogi	legal	You agree not to use oenodPay for anything illegal, to break our acceptable use policy, or to interfere with the service or other people's accounts.
+1uv2s5m	legal	We work hard to keep oenodPay available and secure, but we can't promise it will never be interrupted. We may change or stop features, and we'll give notice when the change affects you.
+12ectx0	legal	Using a specific product means you also agree to its own terms, such as the account agreement, the cardholder agreement or the Lend terms. If those terms conflict with these, the product terms apply.
+ohxbs8	legal	Nothing in these terms limits rights you have under consumer protection law in your province. Otherwise, we're not responsible for indirect losses, and our total responsibility is limited to the fees you paid us in the 12 months before the claim.
+1yml2fb	legal	We'll give you at least 30 days' notice before changes to these terms take effect, as provincial law requires. You can reach us in the app under Help, or through the contact page at oenodpay.com/contact.
+1jz601i	legal	← All agreements and policies
 1hcyv4u	page	Getting started
 lnwjto	page	Opening an account and who can join.
 v722ex	page	Who can open an oenodPay account?
@@ -208,6 +208,7 @@ p96fnp	page	Up to $3,000 per transfer while your account is new. Limits grow wit
 2b8ghr	page	Card
 1scvgm6	page	Your Visa debit card, PIN and payments.
 if4qdp	page	My card is lost or stolen.
+hrtjn5	page	Every price, in one place
 vzc23y	page	Freeze it right away in the app under Card. If you don't find it, report it lost and we'll cancel it and send a new one.
 haohcr	page	A payment was declined.
 1o0nwnl	page	Check that the card isn't frozen, that you have enough balance, and that the type of payment (online, contactless, ATM, foreign) is turned on in your card settings.
@@ -225,19 +226,15 @@ gfe3dz	page	Fees and your account
 jcq6ds	page	Where can I see all the fees?
 1cm2a68	page	On the fees and limits page, and before every payment in the app.
 d6919z	page	Is my money safe?
+1t5c6k8	page	/month
 1p4o8xs	page	Your balance is held separately from oenodPay's own money at a Canadian financial institution, as the Retail Payment Activities Act requires. It isn't a bank deposit, so it isn't covered by CDIC.
 ay2wyn	page	How do I close my account?
 yi4lxh	page	Go to Settings, then Close account. We'll send any remaining balance to a Canadian bank account in your name.
+q10glp	page	Opening an account
+7va5tn	page	Free
 txsyvc	page	Support
 yydla1	page	How can we help?
 1rtmado	page	Answers to the questions people ask most. Can't find yours? Contact us and a person will reply.
-1frj2zu	page	{n} articles
-1a1o1cl	page	Browse →
-1trt1k3	page	Popular questions
-hrtjn5	page	Every price, in one place
-1t5c6k8	page	/month
-q10glp	page	Opening an account
-7va5tn	page	Free
 mbx6cf	page	Sending to oenodPay users
 insjic	page	Free, instant
 1l2csez	page	Card fee
@@ -245,12 +242,15 @@ deku7v	page	None
 1sqgkh3	page	Inactivity fee
 11k4c8z	page	No monthly fee and no hidden exchange markups. If something costs money, it's on this page and shown before you confirm.
 oyp43g	page	Account
+1frj2zu	page	{n} articles
 1trrgy2	page	Monthly fee
+1a1o1cl	page	Browse →
 qqwihc	page	Add money (bank transfer, direct deposit, Interac e-Transfer)
 25ykca	page	Sending in Canada
 yg2qcz	page	To another oenodPay user
 qpqogx	page	To a Canadian bank (first 5 each month)
 18h4j6e	page	To a Canadian bank (after 5)
+1trt1k3	page	Popular questions
 1fisoy	page	Sending abroad
 gx20b9	page	United Kingdom, bank
 t3t61w	page	India, bank (NEFT)
@@ -275,60 +275,6 @@ rgumgz	page	First free, then $10
 1bomsrk	page	Card spending per day
 1tm546m	page	ATM per day
 1oz4k70	page	Exchange rates on international transfers are shown before you send and locked for 30 minutes. Limits go up as your account history grows, and can be lowered at any time in Settings. See the <0>account agreement</0> and <1>cardholder agreement</1> for full terms. Fees for loans, investing and Lend are set out in their own disclosures.
-5dt4od	page	Stay safe
-1a55n2e	page	Spot a scam
-sxprjo	page	before it costs you.
-1mkvkrw	page	Scammers are good at sounding official and urgent. Here's what they look like in Canada and exactly what to do.
-1thfg5y	page	oenodPay will never
-vdl75x	page	Ask for a one-time code
-nzxbmq	page	Ask you to approve a sign-in you didn't start
-175c628	page	Ask you to move money to a “safe account”
-17x2url	page	Call you about a prize or refund
-1d2kc99	page	Ask for your card PIN
-2jvthx	page	Common scams
-xw7d1v	page	Six to know
-aard9m	page	Government impersonation
-1cwmcq6	page	Someone says they're from the CRA, IRCC, Service Canada or the police and that you owe money or will be deported or arrested. Real agencies never demand payment by transfer, gift card or crypto.
-6h5kun	page	“This is oenodPay security”
-6gpy7s	page	A call or text says your account is at risk and asks for a code, your passkey approval or to move money to a “safe account”. We will never ask for any of these.
-n3atsf	page	Romance and friendship
-gepogz	page	Someone you met online, often never in person, asks for money for an emergency, a ticket or an investment.
-qtbo5a	page	Investment and crypto
-1cgxbyk	page	Guaranteed high returns, pressure to act fast, or a “mentor” on social media. If it sounds too good to be true, it is.
-s7zgnn	page	Job offers
-10tp2zw	page	A job that pays you to receive money and send it on is money laundering, and you can be held responsible.
-rkznfe	page	Online shopping
-1yw613l	page	Deals on marketplaces where the seller insists on a transfer instead of a protected payment, then disappears.
-os0x7e	page	If it happened to you
-q8disr	page	Act fast
-1d6rr03	page	The sooner you tell us, the better the chance of stopping a payment. You won't be judged; scams catch careful people every day.
-1y8t8xx	page	Freeze your card
-t1pbar	page	One tap in the app stops new card payments.
-19327u9	page	Open Help in the app or use our <0>contact form</0>. Tell us what happened and when.
-1vzdqus	page	Report it
-157mp9v	page	Report to the Canadian Anti-Fraud Centre at 1-888-495-8501 and to your local police.
-26hqp7	page	Business
-1w76lrz	page	Coming after launch
-1jbzucn	page	oenodPay for Business.
-1gb5ybe	page	Built for owners.
-hiuimn	page	Everything a small business needs to get paid, pay people and see where money goes. Business accounts open after our personal launch.
-dyybcq	page	Register interest
-11z649y	page	See personal pricing
-15ioppz	page	What's planned
-lpzksn	page	One account for the whole business
-1whjcds	page	Business account
-1fugbp9	page	A CAD account for your company, with direct deposit details for customers and payment processors.
-1sgh9gr	page	Team cards
-1jg3qxc	page	Visa debit cards for employees with their own limits, merchant controls and instant freeze.
-15lr7md	page	Pay suppliers abroad
-fdb3j9	page	The same clear fees and rates as personal transfers, with bulk payments by file upload.
-b83w4h	page	Invoices and receipts
-chhjsh	page	Send invoices, match payments automatically and attach receipts to card spending from your phone.
-14sh17b	page	Accounting sync
-1ednhq8	page	Export to the accounting software you already use, with categories and GST/HST captured.
-n6ugy2	page	Works with OENOD
-byduas	page	Already on OENOD for point of sale, payroll or HR? Your oenodPay Business account will connect directly.
-1i87dxw	page	Business accounts are not available yet. Features and pricing may change before launch, and business customers will need to verify the company and its owners, as Canadian law requires.
 1nykvfh	page	How your oenodPay balance works, including adding, holding and sending money.
 17wbrq7	legal	What your account is
 17ldcl4	legal	Adding money
@@ -361,7 +307,106 @@ nic3ie	legal	Disputes and refunds
 12iwtv2	legal	No monthly fee. Foreign currency purchases cost the Visa rate plus 1.5%. ATM withdrawals: 2 free per month in Canada, then $2.00; $3.00 outside Canada. ATM owners may charge their own fee. A replacement card is free the first time, then $10.
 kkz0of	legal	If a merchant charges you wrongly, try to resolve it with them first. If that fails, dispute the charge in the app within 60 days of the statement date and we'll raise it through Visa.
 1au0jd8	legal	The card is valid until the date shown on it. You can cancel it at any time in the app. Your balance stays in your oenodPay account.
+26hqp7	page	Business
+1w76lrz	page	Coming after launch
+1jbzucn	page	oenodPay for Business.
+1gb5ybe	page	Built for owners.
+hiuimn	page	Everything a small business needs to get paid, pay people and see where money goes. Business accounts open after our personal launch.
+dyybcq	page	Register interest
+11z649y	page	See personal pricing
+15ioppz	page	What's planned
+lpzksn	page	One account for the whole business
+1whjcds	page	Business account
+1fugbp9	page	A CAD account for your company, with direct deposit details for customers and payment processors.
+1sgh9gr	page	Team cards
+1jg3qxc	page	Visa debit cards for employees with their own limits, merchant controls and instant freeze.
+15lr7md	page	Pay suppliers abroad
+fdb3j9	page	The same clear fees and rates as personal transfers, with bulk payments by file upload.
+b83w4h	page	Invoices and receipts
+chhjsh	page	Send invoices, match payments automatically and attach receipts to card spending from your phone.
+14sh17b	page	Accounting sync
+1ednhq8	page	Export to the accounting software you already use, with categories and GST/HST captured.
+n6ugy2	page	Works with OENOD
+byduas	page	Already on OENOD for point of sale, payroll or HR? Your oenodPay Business account will connect directly.
+1i87dxw	page	Business accounts are not available yet. Features and pricing may change before launch, and business customers will need to verify the company and its owners, as Canadian law requires.
 1th4hrb	page	Privacy
+1xjzdwq	page	How the website uses cookies and similar technology.
+nhyse8	legal	Essential cookies
+1gcnwh7	legal	Analytics
+192ejii	legal	Your choices
+hrfnol	legal	We use secure, HttpOnly cookies to keep you signed in and to protect against fraud and forged requests. The site can't work without them, so they can't be turned off.
+6pzr87	legal	With your consent, we use privacy-friendly analytics to understand which pages help people. We don't use advertising cookies or sell browsing data.
+1ale7ts	legal	You can change your choice at any time from the cookie settings link in the footer, or block cookies in your browser.
+ga6eza	page	Your agreement to receive documents and notices electronically.
+x3vj3p	legal	What you agree to
+6mcspe	legal	Paper copies
+22xjhp	legal	By opening an account you agree that we can give you agreements, statements, receipts, disclosures and notices electronically, in the app or by email.
+slmvq6	legal	You can ask for a paper copy of any document at no cost, and you can withdraw this consent. If you do, we may need to close your account, because oenodPay is an app-based service.
+11h6eh6	page	What oenodPay can't be used for.
+127aj4y	legal	Not allowed
+18h80at	legal	What happens if the policy is broken
+yzomx0	legal	Anything illegal, including money laundering, terrorist financing, fraud and scams.
+1uktd8	legal	Payments to or for people or countries under Canadian sanctions.
+m4lqo5	legal	Unlicensed gambling, illegal drugs, weapons trafficking, and adult content involving non-consent or minors.
+5veisc	legal	Using someone else's identity or account, or letting others use yours.
+aa2n5j	legal	Buying or selling on behalf of a business without a business account.
+bvk5jj	legal	We may stop a payment, freeze funds while we investigate, close the account and report activity to FINTRAC or the police, as the law requires.
+5dt4od	page	Stay safe
+1a55n2e	page	Spot a scam
+sxprjo	page	before it costs you.
+1mkvkrw	page	Scammers are good at sounding official and urgent. Here's what they look like in Canada and exactly what to do.
+1thfg5y	page	oenodPay will never
+vdl75x	page	Ask for a one-time code
+nzxbmq	page	Ask you to approve a sign-in you didn't start
+175c628	page	Ask you to move money to a “safe account”
+17x2url	page	Call you about a prize or refund
+1d2kc99	page	Ask for your card PIN
+2jvthx	page	Common scams
+xw7d1v	page	Six to know
+aard9m	page	Government impersonation
+1cwmcq6	page	Someone says they're from the CRA, IRCC, Service Canada or the police and that you owe money or will be deported or arrested. Real agencies never demand payment by transfer, gift card or crypto.
+6h5kun	page	“This is oenodPay security”
+6gpy7s	page	A call or text says your account is at risk and asks for a code, your passkey approval or to move money to a “safe account”. We will never ask for any of these.
+n3atsf	page	Romance and friendship
+gepogz	page	Someone you met online, often never in person, asks for money for an emergency, a ticket or an investment.
+qtbo5a	page	Investment and crypto
+1cgxbyk	page	Guaranteed high returns, pressure to act fast, or a “mentor” on social media. If it sounds too good to be true, it is.
+s7zgnn	page	Job offers
+10tp2zw	page	A job that pays you to receive money and send it on is money laundering, and you can be held responsible.
+rkznfe	page	Online shopping
+1yw613l	page	Deals on marketplaces where the seller insists on a transfer instead of a protected payment, then disappears.
+os0x7e	page	If it happened to you
+q8disr	page	Act fast
+1d6rr03	page	The sooner you tell us, the better the chance of stopping a payment. You won't be judged; scams catch careful people every day.
+1y8t8xx	page	Freeze your card
+t1pbar	page	One tap in the app stops new card payments.
+19327u9	page	Open Help in the app or use our <0>contact form</0>. Tell us what happened and when.
+1vzdqus	page	Report it
+157mp9v	page	Report to the Canadian Anti-Fraud Centre at 1-888-495-8501 and to your local police.
+1cv6yt4	page	How to raise a complaint and how we handle it.
+1tl0qxv	legal	Step 1: Tell us
+1p0v87h	legal	Step 2: Our complaints officer
+1f989qa	legal	Step 3: Outside help
+1251lfm	legal	How we use complaints
+1lqh7y	page	Accessibility statement
+23ycz8	page	Responsible disclosure
+1pg8u58	legal	Contact support in the app or on the contact page. Most issues are solved in the first conversation. We confirm every complaint within 2 business days.
+1iq5831	legal	If you're not satisfied, ask for your complaint to be escalated. Our complaints officer reviews it and gives you a written answer within 30 days.
+8ylx73	legal	If you're still not satisfied, you can contact the external complaints body named in our final answer. For privacy concerns, you can contact the Office of the Privacy Commissioner of Canada. In Quebec, you can also contact the Autorité des marchés financiers.
+22rr99	legal	We record every complaint, look for patterns and fix their causes. Complaint records are kept as regulators require.
+1wn8zm2	page	Compliance
+17xel4r	page	How we prevent money laundering, terrorist financing and sanctions breaches.
+c3vrkw	legal	Our obligations
+1f4lo2s	legal	Our compliance program
+d9vb91	legal	Knowing our customers
+afnzj4	legal	Monitoring and reporting
+2foum5	legal	Sanctions
+1dx4432	page	Licences and registrations
+ja6i9k	legal	oenodPay will be registered with the Financial Transactions and Reports Analysis Centre of Canada (FINTRAC) as a money services business before launch, and will follow the Proceeds of Crime (Money Laundering) and Terrorist Financing Act and its regulations.
+fahgmy	legal	A named compliance officer, written policies and procedures, a documented risk assessment, ongoing staff training, and an independent effectiveness review at least every two years.
+mlwrkp	legal	We verify every customer's identity using government ID and biometric checks before they can move money, check for politically exposed persons, and keep records as required.
+1wrkw8a	legal	We monitor transactions for unusual activity and report to FINTRAC as required, including suspicious transactions, large cash and large virtual currency transactions, and international electronic funds transfers of $10,000 or more.
+pckuyi	legal	We screen customers and recipients against Canadian sanctions lists and ministerial directives, and block payments that would break them.
 1wsbym8	page	What personal information we collect, why, and the choices you have.
 5nvyua	legal	Our commitment
 104k1kf	legal	What we collect
@@ -387,104 +432,6 @@ iexlks	legal	We store personal information in Canada. If a service provider proc
 68xirg	legal	We keep records for as long as your account is open and then for the periods the law requires, usually five years for financial records. Then we securely delete or anonymize them.
 4ut7yf	legal	You can ask to see, correct or delete your information, withdraw consent for optional uses, and ask how an automated decision about you was made. Ask in the app or on the contact page. We reply within 30 days.
 1rwo8xx	legal	Our privacy officer is responsible for this policy. If you're not satisfied with our answer, you can complain to the Office of the Privacy Commissioner of Canada or, in Quebec, the Commission d'accès à l'information.
-1xjzdwq	page	How the website uses cookies and similar technology.
-nhyse8	legal	Essential cookies
-1gcnwh7	legal	Analytics
-192ejii	legal	Your choices
-hrfnol	legal	We use secure, HttpOnly cookies to keep you signed in and to protect against fraud and forged requests. The site can't work without them, so they can't be turned off.
-6pzr87	legal	With your consent, we use privacy-friendly analytics to understand which pages help people. We don't use advertising cookies or sell browsing data.
-1ale7ts	legal	You can change your choice at any time from the cookie settings link in the footer, or block cookies in your browser.
-ga6eza	page	Your agreement to receive documents and notices electronically.
-x3vj3p	legal	What you agree to
-6mcspe	legal	Paper copies
-22xjhp	legal	By opening an account you agree that we can give you agreements, statements, receipts, disclosures and notices electronically, in the app or by email.
-slmvq6	legal	You can ask for a paper copy of any document at no cost, and you can withdraw this consent. If you do, we may need to close your account, because oenodPay is an app-based service.
-11h6eh6	page	What oenodPay can't be used for.
-127aj4y	legal	Not allowed
-18h80at	legal	What happens if the policy is broken
-yzomx0	legal	Anything illegal, including money laundering, terrorist financing, fraud and scams.
-1uktd8	legal	Payments to or for people or countries under Canadian sanctions.
-m4lqo5	legal	Unlicensed gambling, illegal drugs, weapons trafficking, and adult content involving non-consent or minors.
-5veisc	legal	Using someone else's identity or account, or letting others use yours.
-aa2n5j	legal	Buying or selling on behalf of a business without a business account.
-bvk5jj	legal	We may stop a payment, freeze funds while we investigate, close the account and report activity to FINTRAC or the police, as the law requires.
-1cv6yt4	page	How to raise a complaint and how we handle it.
-1tl0qxv	legal	Step 1: Tell us
-1p0v87h	legal	Step 2: Our complaints officer
-1f989qa	legal	Step 3: Outside help
-1251lfm	legal	How we use complaints
-1lqh7y	page	Accessibility statement
-23ycz8	page	Responsible disclosure
-1pg8u58	legal	Contact support in the app or on the contact page. Most issues are solved in the first conversation. We confirm every complaint within 2 business days.
-1iq5831	legal	If you're not satisfied, ask for your complaint to be escalated. Our complaints officer reviews it and gives you a written answer within 30 days.
-8ylx73	legal	If you're still not satisfied, you can contact the external complaints body named in our final answer. For privacy concerns, you can contact the Office of the Privacy Commissioner of Canada. In Quebec, you can also contact the Autorité des marchés financiers.
-22rr99	legal	We record every complaint, look for patterns and fix their causes. Complaint records are kept as regulators require.
-1wn8zm2	page	Compliance
-17xel4r	page	How we prevent money laundering, terrorist financing and sanctions breaches.
-c3vrkw	legal	Our obligations
-1f4lo2s	legal	Our compliance program
-d9vb91	legal	Knowing our customers
-afnzj4	legal	Monitoring and reporting
-2foum5	legal	Sanctions
-1dx4432	page	Licences and registrations
-ja6i9k	legal	oenodPay will be registered with the Financial Transactions and Reports Analysis Centre of Canada (FINTRAC) as a money services business before launch, and will follow the Proceeds of Crime (Money Laundering) and Terrorist Financing Act and its regulations.
-fahgmy	legal	A named compliance officer, written policies and procedures, a documented risk assessment, ongoing staff training, and an independent effectiveness review at least every two years.
-mlwrkp	legal	We verify every customer's identity using government ID and biometric checks before they can move money, check for politically exposed persons, and keep records as required.
-1wrkw8a	legal	We monitor transactions for unusual activity and report to FINTRAC as required, including suspicious transactions, large cash and large virtual currency transactions, and international electronic funds transfers of $10,000 or more.
-pckuyi	legal	We screen customers and recipients against Canadian sanctions lists and ministerial directives, and block payments that would break them.
-kg1vux	page	Built to keep
-4jk3t7	page	your money safe.
-t4uqph	page	Always on
-1lw3lfn	page	Passkeys, not passwords
-jyzo54	page	AES-256 encryption at rest
-u70c2s	page	Data kept in Canada
-nskjlq	page	Customer funds held separately
-1ytetx6	page	An alert for every payment
-1g3qxdv	page	Security isn't a feature we added later. Here is exactly how we protect your account, your money and your data.
-9i65n3	page	Layer {n} of {total}
-1m1lepg	page	Protecting your account
-1s2c7mg	page	Passkey sign-in
-x2g38g	page	Sign in with Face ID, your fingerprint or your device PIN. There's no password to phish or leak.
-1xhw6nk	page	New device approval
-1n5fs7v	page	A new phone or computer must be approved from a device you already trust.
-bv35qo	page	Step-up checks
-zux33b	page	Large or unusual payments ask you to confirm with your passkey again.
-2vd64u	page	Session control
-1sdypm5	page	See every signed-in device and sign any of them out from Settings.
-z3l0x3	page	Protecting your money
-1tpfi0o	page	Safeguarded funds
-4u8l4z	page	Customer money is held separately from our own at a Canadian financial institution, as the Retail Payment Activities Act requires.
-1ekh0wv	page	Card controls
-opa64q	page	Freeze your card, block online or overseas payments and set limits instantly.
-1eeg9lg	page	Real-time alerts
-pr5gne	page	A notification for every payment, so you spot anything strange in seconds.
-1mwaftx	page	Fraud monitoring
-1b0o66g	page	Automated checks watch for unusual activity around the clock and can pause a payment before it leaves.
-pmvs3x	page	Protecting your data
-1jjth6k	page	Encryption
-1kwkdmx	page	Data is encrypted in transit with TLS 1.2+ and at rest with AES-256.
-bawbit	page	Stored in Canada
-g858pe	page	Customer data is stored in Canadian data centres.
-15bmjlw	page	Least access
-1l19k9b	page	Staff only see the data their job needs, and every access is logged.
-14wyhhq	page	No selling data
-1gv4c54	page	We never sell your personal information. See the privacy policy.
-fgrq72	page	Protecting how we build
-1q5uizl	page	Secure development
-w143qg	page	Code review, automated security tests and dependency scanning on every change.
-130wvfh	page	Independent testing
-156g228	page	Regular penetration tests by outside security firms.
-15w7jtv	page	Card security
-1eeqxop	page	Card data is handled by our PCI DSS certified card processor and never touches our servers.
-4n3gfy	page	Incident response
-1slf2qx	page	A tested plan to contain and report incidents, including notice to the Bank of Canada and affected customers.
-9rypes	page	How to stay safe
-19tu6ym	page	We will never ask for your passkey, a one-time code or your card PIN by phone, email or text.
-x69q67	page	Only download oenodPay from the App Store, Google Play or oenodpay.com.
-1lxoune	page	Be wary of anyone who pressures you to send money quickly, even if they say they're from oenodPay, the CRA or the police.
-1avk750	page	Turn on notifications so you see every payment.
-y5il7r	page	Report a problem
-vwh7yt	page	Think someone accessed your account? Freeze your card in the app and <0>contact us</0>. Found a security flaw? Follow our <1>responsible disclosure policy</1>.
 3v67bp	page	Help build the money app for everyone in Canada
 q1kxdr	page	We're a small team building payments, cards, travel and investing in one secure app.
 r8wfro	page	Open roles
@@ -565,6 +512,95 @@ ydtnt0	legal	Our goal
 nqrowe	legal	Tell us
 19xw5ku	legal	We design oenodPay to meet the Web Content Accessibility Guidelines (WCAG) 2.2 at level AA, and to work with screen readers, larger text and keyboard navigation.
 14jupso	legal	If something is hard to use, contact us and we'll help you complete your task another way and fix the problem.
+kg1vux	page	Built to keep
+4jk3t7	page	your money safe.
+t4uqph	page	Always on
+1lw3lfn	page	Passkeys, not passwords
+jyzo54	page	AES-256 encryption at rest
+u70c2s	page	Data kept in Canada
+nskjlq	page	Customer funds held separately
+1ytetx6	page	An alert for every payment
+1g3qxdv	page	Security isn't a feature we added later. Here is exactly how we protect your account, your money and your data.
+9i65n3	page	Layer {n} of {total}
+1m1lepg	page	Protecting your account
+1s2c7mg	page	Passkey sign-in
+x2g38g	page	Sign in with Face ID, your fingerprint or your device PIN. There's no password to phish or leak.
+1xhw6nk	page	New device approval
+1n5fs7v	page	A new phone or computer must be approved from a device you already trust.
+bv35qo	page	Step-up checks
+zux33b	page	Large or unusual payments ask you to confirm with your passkey again.
+2vd64u	page	Session control
+1sdypm5	page	See every signed-in device and sign any of them out from Settings.
+z3l0x3	page	Protecting your money
+1tpfi0o	page	Safeguarded funds
+4u8l4z	page	Customer money is held separately from our own at a Canadian financial institution, as the Retail Payment Activities Act requires.
+1ekh0wv	page	Card controls
+opa64q	page	Freeze your card, block online or overseas payments and set limits instantly.
+1eeg9lg	page	Real-time alerts
+pr5gne	page	A notification for every payment, so you spot anything strange in seconds.
+1mwaftx	page	Fraud monitoring
+1b0o66g	page	Automated checks watch for unusual activity around the clock and can pause a payment before it leaves.
+pmvs3x	page	Protecting your data
+1jjth6k	page	Encryption
+1kwkdmx	page	Data is encrypted in transit with TLS 1.2+ and at rest with AES-256.
+bawbit	page	Stored in Canada
+g858pe	page	Customer data is stored in Canadian data centres.
+15bmjlw	page	Least access
+1l19k9b	page	Staff only see the data their job needs, and every access is logged.
+14wyhhq	page	No selling data
+1gv4c54	page	We never sell your personal information. See the privacy policy.
+fgrq72	page	Protecting how we build
+1q5uizl	page	Secure development
+w143qg	page	Code review, automated security tests and dependency scanning on every change.
+130wvfh	page	Independent testing
+156g228	page	Regular penetration tests by outside security firms.
+15w7jtv	page	Card security
+1eeqxop	page	Card data is handled by our PCI DSS certified card processor and never touches our servers.
+4n3gfy	page	Incident response
+1slf2qx	page	A tested plan to contain and report incidents, including notice to the Bank of Canada and affected customers.
+9rypes	page	How to stay safe
+19tu6ym	page	We will never ask for your passkey, a one-time code or your card PIN by phone, email or text.
+x69q67	page	Only download oenodPay from the App Store, Google Play or oenodpay.com.
+1lxoune	page	Be wary of anyone who pressures you to send money quickly, even if they say they're from oenodPay, the CRA or the police.
+1avk750	page	Turn on notifications so you see every payment.
+y5il7r	page	Report a problem
+vwh7yt	page	Think someone accessed your account? Freeze your card in the app and <0>contact us</0>. Found a security flaw? Follow our <1>responsible disclosure policy</1>.
+g3lfb1	page	Your name
+inbfc7	page	Email
+2vdtoo	page	What is it about?
+1cam7ic	page	Message
+183zrrc	page	Don't include card numbers or passwords.
+ze8jl6	page	Enter a valid email address.
+c5adjf	page	Enter your name.
+mvz7l0	page	Check the form and try again.
+1w7fok2	page	Too many messages. Wait a minute and try again.
+i60g28	page	We couldn't send your message. Try again in a moment.
+1h17g40	page	Something went wrong.
+3cyff4	page	Thanks, we've got your message. Your reference is {reference}. We'll reply by email within one business day.
+15r3dgd	page	Sending…
+1ocggf0	page	Send message
+1ep00tr	page	Help with my account
+ef7o34	page	Privacy or my personal information
+jhj2ql	page	Make a complaint
+zzgdq9	page	Report a security issue
+12pivz4	page	Partnerships
+1k38tcb	page	A real person reads every message. We reply within one business day.
+705o9l	page	Send us a message
+uk4geb	page	Loading form…
+3f65lt	page	Already a customer?
+wjm08h	page	The fastest way to get help is in the app: open Help and start a chat. We can see your account there, so you won't have to repeat yourself.
+1yy25tp	page	Lost card or suspicious payment
+1urc5cb	page	Freeze your card in the app right away, then contact us. You aren't responsible for payments you didn't make, as set out in the <0>cardholder agreement</0>.
+1slf6hv	page	Choose “Make a complaint”. Our <0>complaint process</0> explains each step and your right to go to an external body.
+1kfqel2	page	Choose “Privacy” to reach our Privacy Officer, ask for a copy of your data or have it corrected. See our <0>privacy policy</0>.
+1c7jt4k	page	Security researchers
+11eg1r0	page	Read our <0>responsible disclosure policy</0>, then choose “Report a security issue”.
+4dh1sd	page	This document is available in English and French. The English version is shown below. <0>Contact us</0> if you need help understanding it.
+jstj1j	page	How security researchers can report a vulnerability.
+u7u0ct	legal	Reporting
+b0ddk8	legal	Our promise
+1lxhadw	legal	If you find a security vulnerability, report it through the contact page and choose Security. Include steps to reproduce it. Don't access other people's data, disrupt the service or make the issue public before we fix it.
+wk8ost	legal	We'll confirm your report within 2 business days, keep you updated, and won't take legal action against good-faith research that follows these rules.
 1jdx6f8	page	Send money to {country}
 ziwid8	page	Mobile wallet
 10ejm2f	page	Send Canadian dollars and your recipient gets {currency}. The most popular way is: {method}.
@@ -619,47 +655,6 @@ x5k6k9	page	Bank payouts need the IBAN.
 1icz49l	page	Mobile wallet payouts go to wallets registered with the recipient's CNIC.
 kdibu0	page	Bank payouts need the 10-digit NUBAN account number and bank name.
 1llibcb	page	Payouts are made in naira.
-g3lfb1	page	Your name
-inbfc7	page	Email
-2vdtoo	page	What is it about?
-1cam7ic	page	Message
-183zrrc	page	Don't include card numbers or passwords.
-ze8jl6	page	Enter a valid email address.
-c5adjf	page	Enter your name.
-mvz7l0	page	Check the form and try again.
-1w7fok2	page	Too many messages. Wait a minute and try again.
-i60g28	page	We couldn't send your message. Try again in a moment.
-1h17g40	page	Something went wrong.
-3cyff4	page	Thanks, we've got your message. Your reference is {reference}. We'll reply by email within one business day.
-15r3dgd	page	Sending…
-1ocggf0	page	Send message
-1ep00tr	page	Help with my account
-ef7o34	page	Privacy or my personal information
-jhj2ql	page	Make a complaint
-zzgdq9	page	Report a security issue
-12pivz4	page	Partnerships
-1k38tcb	page	A real person reads every message. We reply within one business day.
-705o9l	page	Send us a message
-uk4geb	page	Loading form…
-3f65lt	page	Already a customer?
-wjm08h	page	The fastest way to get help is in the app: open Help and start a chat. We can see your account there, so you won't have to repeat yourself.
-1yy25tp	page	Lost card or suspicious payment
-1urc5cb	page	Freeze your card in the app right away, then contact us. You aren't responsible for payments you didn't make, as set out in the <0>cardholder agreement</0>.
-1slf6hv	page	Choose “Make a complaint”. Our <0>complaint process</0> explains each step and your right to go to an external body.
-1kfqel2	page	Choose “Privacy” to reach our Privacy Officer, ask for a copy of your data or have it corrected. See our <0>privacy policy</0>.
-1c7jt4k	page	Security researchers
-11eg1r0	page	Read our <0>responsible disclosure policy</0>, then choose “Report a security issue”.
-4dh1sd	page	This document is available in English and French. The English version is shown below. <0>Contact us</0> if you need help understanding it.
-jstj1j	page	How security researchers can report a vulnerability.
-u7u0ct	legal	Reporting
-b0ddk8	legal	Our promise
-1lxhadw	legal	If you find a security vulnerability, report it through the contact page and choose Security. Include steps to reproduce it. Don't access other people's data, disrupt the service or make the issue public before we fix it.
-wk8ost	legal	We'll confirm your report within 2 business days, keep you updated, and won't take legal action against good-faith research that follows these rules.
-1uy968l	page	Cash pickup needs the recipient's national ID card or passport.
-136puwv	page	Bank payouts need the 18-digit CLABE.
-np5vl4	page	Cash pickup is available at partner stores nationwide.
-1cc1ek9	page	Bank payouts need the sort code and account number.
-1kdydnc	page	Most payments arrive within minutes, 24/7.
 w9lb54	page	Send money abroad
 bkohp1	page	Send money home, with the price shown before you pay.
 1x865ug	page	Send money from Canada to family and friends in seven countries. Pick how they receive it: a bank account, a mobile wallet or cash pickup. You see the exchange rate, the fee and the arrival time before you confirm, and you can track every transfer until it arrives.
@@ -815,6 +810,11 @@ r38mzi	page	Expiry
 fxvoqk	page	What isn't eligible?
 1wolblb	page	Cash withdrawals, transfers, gambling, money orders and refunded purchases don't earn points.
 6k7suj	page	Spend & travel
+136puwv	page	Bank payouts need the 18-digit CLABE.
+np5vl4	page	Cash pickup is available at partner stores nationwide.
+1cc1ek9	page	Bank payouts need the sort code and account number.
+1kdydnc	page	Most payments arrive within minutes, 24/7.
+1uy968l	page	Cash pickup needs the recipient's national ID card or passport.
 1xecjdi	page	Credit score
 1ua0402	page	Your score for free. Checking never lowers it.
 em06tp	page	See your Canadian credit score and report in the app, updated monthly. Get alerts when something changes, and clear tips on what will raise it.
@@ -1010,3 +1010,130 @@ np071u	page	Watch out for scams
 mnt48q	page	You file a Canadian tax return each spring, even in your first year. It can unlock benefits like the GST/HST credit.
 18e8jvs	page	Credit starts at zero
 1w37w0c	page	Your credit history from home doesn't transfer. Paying bills on time and using a small credit product builds it from scratch.
+8qzyhb	page	Active
+1wu8u9t	page	All your Canadian billers in one list. Pay now, or turn on autopay and stop thinking about it.
+5vavdk	page	Already lent
+khormv	page	Amount to lend
+thzi0w	page	Approved. {what} · {amount}. You earned 1% back in points.
+8md94n	page	Arrives
+ky0q28	page	Autopay
+c4sq3q	page	Autopay for all bills
+ao2tit	page	Autopay off
+1o52zrt	page	Autopay on
+192q8xj	page	Bank
+1eskqn5	page	Book for {amount}
+1genx8b	page	Book trips inside the app and pay with your balance, your reward points, or both.
+nm4b7g	page	Booked: {flight}. Your boarding pass is in the app.
+1sqharz	page	Bought {ticker} · part of a share
+1muuymq	page	Buy Canadian and US stocks from $1 with part shares. Here every buy is $25.
+1hh0gdy	page	Buy online · Headphones {amount}
+12qx72l	page	Buy {amount}
+v0bekx	page	Buy {plan} for {amount}
+1dxkej9	page	Car insurance
+1qgjrgb	page	Card frozen
+1hspy74	page	Card unfrozen
+11xwquh	page	Choose where you're going and a plan, then buy it.
+10hqtmi	page	Close demo
+7ywged	page	Coffee · Balzac's
+1diicx	page	Country
+u60yp5	page	Daily limit
+199u2o	page	Declined: online payments are turned off.
+ci9knw	page	Declined: over your daily limit of {limit}.
+1f0cwrr	page	Declined: your card is frozen. Unfreeze it above to pay.
+1vzdly	page	Demo balance
+15720c5	page	Demo · {n} of 8 · pretend money
+yefnp8	page	Direct
+13cn9g1	page	Done
+mfn5p3	page	Due Nov 14
+j3rxdf	page	Due Nov 18
+1hi64s9	page	Due Nov 30
+1mw6km1	page	Excellent
+12ir4g3	page	FROZEN
+10cagcz	page	Fair
+ezeh2u	page	Features tried
+1bb62b6	page	Fee (included)
+jrff9h	page	Fee {amount}
+sw0ek4	page	Freeze card
+ngqdzq	page	Freeze it, block online payments or set a limit, instantly. Then try paying and see what happens.
+6s9hn9	page	From
+y03t2w	page	Good
+sxop42	page	Headphones · online
+klmjbp	page	Holdings: {n}
+1fkqh09	page	How they receive it: {country}
+193rgu3	page	Japan
+isc045	page	Keep card use under 30%
+1tjkp28	page	Land with data already working. Pick where you're going, choose a plan, scan the code.
+dgzm2w	page	Lend {amount}
+j4jlrj	page	Lending carries risk. Rates shown are examples.
+1mwobkb	page	Lent across {n} loans · {months} months
+w6mtf6	page	Lisbon
+gn84v6	page	Lisbon · Dec 12
+sy6ykx	page	Lost it? Freeze it, then unfreeze when you find it.
+18wlddk	page	Lower use shows you don't rely on credit.
+1mioy72	page	Maria gets
+ucmtqt	page	Next: {name} →
+nih14h	page	Not enough demo money.
+h1q4ty	page	Not enough demo money. Lower the amount or start over.
+1a1hr3r	page	Not owned
+q7bqh9	page	Nov 18
+1qu1l1j	page	Nov 30
+1fwdanh	page	Online payments
+1m0mo8g	page	Open a credit builder
+1w0n607	page	Paid
+fuhal3	page	Paid {biller}
+arcyd2	page	Paid. Thank you.
+1i7coq1	page	Pay
+1qgxg7k	page	Pay everything on time
+1abc9aa	page	Pay your bills
+5ly94k	page	Payment history matters most.
+motfnw	page	Pick a country and see exactly how your family gets paid. The fee and rate are shown before you send.
+zpxm76	page	Pick a country, choose how they receive it, then press Send.
+v0333k	page	Pick a flight, switch on reward points, then book.
+ap23k7	page	Portugal
+rgyrwd	page	Press Buy $25 on any stock to own part of a share.
+2ttiny	page	Press Pay on any bill, or turn on autopay.
+cycex3	page	Rate
+13woufb	page	Recent activity
+hble4p	page	Score {score} of 900
+1f8gtcp	page	Send {amount}
+1tv7u1	page	Sent to Maria · {country} · {method}
+hxdng1	page	Sent. Maria gets {amount}. Arrives: {eta}. +50 points.
+lklhxy	page	Slide to pick an amount, choose a term, then press Lend.
+1hi9dtg	page	Small monthly savings reported to the bureaus.
+1fywuif	page	Spread across
+k0vw58	page	Spread across {n} loans
+a17t5z	page	Start over
+llzzas	page	Tap to pay · Coffee {amount}
+9pdy47	page	Term
+17yn4q7	page	They get
+iaukp0	page	To
+qdjjru	page	Try this
+mwbb4e	page	Turn off when you're not shopping online.
+99neas	page	Turn on Freeze, then tap to pay for a coffee and see it get declined.
+1vfrbks	page	Turn the habits on and off and watch the score change.
+7tkm24	page	United States
+11gaoho	page	Use my reward points
+1ijll96	page	Use reward points
+1pc6rmq	page	Very good
+1uol49c	page	We pay each bill 2 days before it's due.
+15simz8	page	What you do shows up here.
+p8iety	page	You earn
+1gtc70q	page	You send
+1nozzvx	page	You send (CAD)
+vvc1qe	page	Your Canadian credit score for free. Checking never lowers it. Flip the habits and watch what moves it.
+igu86t	page	Your Visa debit card
+1pmdqnw	page	Your amount is split across many small, checked loans to other members, and you earn the interest they pay.
+1svqbse	page	Your portfolio
+820gsx	page	Your {plan} eSIM is ready. Scan the code in your phone settings and it turns on when you land.
+uzx9e2	page	a year on {amount} · {n} months
+1kuiziu	page	scale 300 to 900
+1hsbeg0	page	{airline}, Toronto to Lisbon
+mjp3ne	page	{amount} owned ({shares} sh)
+1yu6b2m	page	{days} days · {amount}
+709fl1	page	{days} days · {place}
+143hvf0	page	{n} loans
+pr1xwm	page	{n} months · {rate}%
+1q92ays	page	{n} of 8
+u5r48t	page	{points} points = {amount} off. Try other features to earn more.
+bt84ue	page	{points} reward points
+cfsqf4	page	← Previous

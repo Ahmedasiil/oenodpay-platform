@@ -1,4 +1,7 @@
 /** State for the website's feature demos. Pretend money only, kept in cents to avoid rounding errors. */
+/** Marks text for translation (see demo-text.tsx). It returns the English unchanged. */
+export const m = (s: string) => s;
+
 export type FeatureId = "send" | "card" | "bills" | "esim" | "travel" | "invest" | "lend" | "credit";
 
 /** Each demo's full feature page. */
@@ -7,14 +10,14 @@ export const PAGE: Record<FeatureId, string> = { send: "send-money-abroad", card
 export const ORDER: FeatureId[] = ["send", "bills", "card", "esim", "travel", "invest", "lend", "credit"];
 
 export const FEATURES: Record<FeatureId, { name: string; points: number; hint: string }> = {
-  send: { name: "Send money abroad", points: 50, hint: "Pick a country, choose how they receive it, then press Send." },
-  bills: { name: "Pay bills", points: 30, hint: "Press Pay on any bill, or turn on autopay." },
-  card: { name: "Visa debit card", points: 20, hint: "Turn on Freeze, then tap to pay for a coffee and see it get declined." },
-  esim: { name: "Travel eSIM", points: 25, hint: "Choose where you're going and a plan, then buy it." },
-  travel: { name: "Flights & hotels", points: 40, hint: "Pick a flight, switch on reward points, then book." },
-  invest: { name: "Stocks & ETFs", points: 25, hint: "Press Buy $25 on any stock to own part of a share." },
-  lend: { name: "oenodPay Lend", points: 35, hint: "Slide to pick an amount, choose a term, then press Lend." },
-  credit: { name: "Credit score", points: 15, hint: "Turn the habits on and off and watch the score change." },
+  send: { name: m("Send money abroad"), points: 50, hint: m("Pick a country, choose how they receive it, then press Send.") },
+  bills: { name: m("Pay bills"), points: 30, hint: m("Press Pay on any bill, or turn on autopay.") },
+  card: { name: m("Visa debit card"), points: 20, hint: m("Turn on Freeze, then tap to pay for a coffee and see it get declined.") },
+  esim: { name: m("Travel eSIM"), points: 25, hint: m("Choose where you're going and a plan, then buy it.") },
+  travel: { name: m("Flights & hotels"), points: 40, hint: m("Pick a flight, switch on reward points, then book.") },
+  invest: { name: m("Stocks & ETFs"), points: 25, hint: m("Press Buy $25 on any stock to own part of a share.") },
+  lend: { name: m("oenodPay Lend"), points: 35, hint: m("Slide to pick an amount, choose a term, then press Lend.") },
+  credit: { name: m("Credit score"), points: 15, hint: m("Turn the habits on and off and watch the score change.") },
 };
 
 export const START_CENTS = 250_000;

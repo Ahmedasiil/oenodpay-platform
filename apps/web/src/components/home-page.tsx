@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { L } from "@/i18n/t";
 import { calcProps } from "@/i18n/server";
+import { L, getT } from "@/i18n/t";
+import { DEMO_STRINGS } from "@/components/landing/demo-strings.gen";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Calculator } from "@/components/calculator";
@@ -30,6 +31,11 @@ export function HomePage({ lang }: { lang: Locale }) {
       return [id, { cat: cat[f.group], title: t.f[f.slug as keyof typeof t.f].n, body: t.f[f.slug as keyof typeof t.f].t }];
     })),
   };
+
+  // The demos run in the browser, so they get their words up front: every demo string plus the
+  // country, payout method and arrival-time names they share with the calculator.
+  const tr = getT(lang);
+  const words = lang === "en" ? undefined : { ...calcProps(lang).names, ...Object.fromEntries(DEMO_STRINGS.map((s) => [s, tr(s)])) };
 
   return (
     <div className="lp" style={{ flex: 1 }} lang={lang} dir={dir}>
@@ -113,7 +119,7 @@ export function HomePage({ lang }: { lang: Locale }) {
             <div><span className="eyebrow">{t.bento.eyebrow}</span><h2>{t.bento.h2}</h2></div>
             <p>{t.bento.p}</p>
           </div>
-          <Playground t={play} />
+          <Playground t={play} words={words} base={lang === "en" ? "" : `/${lang}`} />
         </div>
       </section>
 
