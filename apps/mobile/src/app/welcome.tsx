@@ -46,21 +46,17 @@ export default function Welcome() {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }} edges={['bottom']}>
         <View style={{ flex: 1, alignItems: 'center' }}>
-          <Image source={require('@/assets/ui/welcome-hero.png')} style={{ width: w, height: w * (800 / 780), marginTop: -20 }} resizeMode="cover" accessibilityIgnoresInvertColors />
-          <SafeAreaView edges={['top']} style={{ position: 'absolute', top: 0, left: 0, right: 0, alignItems: 'center' }}>
-            <Image source={require('@/assets/brand/oenodpay-logo-white-2000.png')} accessibilityLabel="OENODPAY" style={{ marginTop: 14, width: 123, height: 20 }} resizeMode="contain" />
-          </SafeAreaView>
+          <Image source={require('@/assets/ui/welcome-hero.png')} style={{ width: w, height: w * (800 / 780) }} resizeMode="cover" accessibilityIgnoresInvertColors />
         </View>
-        <View style={{ paddingHorizontal: 28, paddingBottom: 24, gap: 14, maxWidth: 520, width: '100%', alignSelf: 'center' }}>
-          <Text style={{ fontSize: 40, lineHeight: 46, fontWeight: '500', color: colors.ink, letterSpacing: -1.2 }}>{t('All your money, beautifully simple.')}</Text>
-          <Text style={{ fontSize: 16, lineHeight: 23, color: colors.muted }}>{t('Send, pay, travel and grow your money. One secure app.')}</Text>
-          <View style={{ height: 10 }} />
-          <Button label={t('Create an account')} onPress={() => { setMode('signup'); setIntro(false); }} />
-          <Pressable accessibilityRole="button" onPress={() => { setMode('signin'); setIntro(false); }} style={{ minHeight: 44, alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={{ fontSize: 15, color: colors.ink }}>{t('I already have an account')}</Text>
+        <View style={{ paddingHorizontal: 28, paddingBottom: 20, gap: 16, maxWidth: 520, width: '100%', alignSelf: 'center' }}>
+          <Text style={{ fontSize: 38, lineHeight: 44, fontWeight: '400', color: colors.ink, letterSpacing: -1 }}>{t('All your money, beautifully simple.')}</Text>
+          <Text style={{ fontSize: 16, lineHeight: 22, color: '#A9A9AE' }}>{t('Send, pay, travel and grow your money. One secure app.')}</Text>
+          <View style={{ height: 28 }} />
+          <Pressable accessibilityRole="button" onPress={() => { setMode('signup'); setIntro(false); }} style={({ pressed }) => ({ height: 66, borderRadius: 999, backgroundColor: colors.primary, alignItems: 'center', justifyContent: 'center', opacity: pressed ? 0.85 : 1 })}>
+            <Text style={{ fontSize: 17, color: colors.onPrimary }}>{t('Create an account')}</Text>
           </Pressable>
-          <Pressable accessibilityRole="button" onPress={() => router.replace('/')} style={{ alignItems: 'center' }}>
-            <Text style={{ fontSize: 13, color: colors.muted }}>{t('Explore the demo first')}</Text>
+          <Pressable accessibilityRole="button" onPress={() => { setMode('signin'); setIntro(false); }} style={{ minHeight: 36, alignItems: 'center', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 14, color: colors.muted }}>{t('I already have an account')}</Text>
           </Pressable>
         </View>
       </SafeAreaView>

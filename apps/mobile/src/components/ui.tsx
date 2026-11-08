@@ -216,6 +216,7 @@ const ICONS = {
   more: require('@/assets/ui/i-more.png'), bill: require('@/assets/ui/i-bill.png'), globe: require('@/assets/ui/i-globe.png'),
   plane: require('@/assets/ui/i-plane.png'), sim: require('@/assets/ui/i-sim.png'), coins: require('@/assets/ui/i-coins.png'),
   shield: require('@/assets/ui/i-shield.png'), gift: require('@/assets/ui/i-gift.png'), back: require('@/assets/ui/i-back.png'),
+  swap: require('@/assets/ui/i-swap.png'), chat: require('@/assets/ui/i-chat.png'),
 } satisfies Record<string, ImageSourcePropType>;
 export type IconName = keyof typeof ICONS;
 

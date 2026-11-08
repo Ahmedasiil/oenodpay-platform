@@ -4,7 +4,7 @@
  */
 export const colors = {
   /** Primary action fill: cream pill with near-black label. */
-  primary: '#F5F1E3',
+  primary: '#FAF7EB',
   primaryDark: '#E4DFCD',
   onPrimary: '#111113',
   /** Quiet raised fill (secondary buttons, selected chips). */
@@ -16,10 +16,10 @@ export const colors = {
   ink: '#F4F2EC',
   muted: '#8E8E96',
   /** Raised panels on the charcoal screen. */
-  surface: '#222226',
-  surfaceHigh: '#2C2C31',
-  background: '#161618',
-  navy: '#222226',
+  surface: '#2A2A2D',
+  surfaceHigh: '#363639',
+  background: '#1C1C1E',
+  navy: '#2A2A2D',
   black: '#0C0C0E',
   border: '#2E2E34',
   positive: '#63D49B',
