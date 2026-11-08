@@ -3,9 +3,11 @@ import { Pressable, ScrollView, StyleSheet, Text, TextInput, View, type TextInpu
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 
+import { useT } from '@/lib/i18n';
 import { colors, radius, space } from '@/lib/theme';
 
 export function Screen({ title, back, children }: { title?: string; back?: boolean; children: ReactNode }) {
+  const t = useT();
   return (
     <SafeAreaView style={styles.safe} edges={['top']}>
       <ScrollView contentContainerStyle={styles.scroll} keyboardShouldPersistTaps="handled">
@@ -14,7 +16,7 @@ export function Screen({ title, back, children }: { title?: string; back?: boole
             {back ? (
               <Pressable
                 accessibilityRole="button"
-                accessibilityLabel="Back"
+                accessibilityLabel={t('Back')}
                 onPress={() => (router.canGoBack() ? router.back() : router.replace('/'))}
                 style={styles.iconButton}>
                 <Text style={styles.backGlyph}>‹</Text>

@@ -6,39 +6,42 @@ import { formatMoney } from '@oenodpay/shared';
 import { Body, Button, Card, Heading, ListRow, Screen } from '@/components/ui';
 import { api, hasSession } from '@/lib/api';
 import { sampleActivity, sampleUser } from '@/lib/sample';
+import { m, useT } from '@/lib/i18n';
 import { colors, radius } from '@/lib/theme';
 
 const actions: { label: string; short: string; href: Href }[] = [
-  { label: 'Send', short: 'SE', href: '/send' },
-  { label: 'Pay bills', short: 'BI', href: '/bills' },
-  { label: 'Global', short: 'GL', href: '/global' },
-  { label: 'Card', short: 'CA', href: '/card' },
-  { label: 'Travel', short: 'TR', href: '/travel' },
-  { label: 'eSIM', short: 'ES', href: '/esim' },
-  { label: 'Loans', short: 'LO', href: '/loans' },
-  { label: 'Invest', short: 'IN', href: '/invest' },
+  { label: m('Send'), short: 'SE', href: '/send' },
+  { label: m('Pay bills'), short: 'BI', href: '/bills' },
+  { label: m('Global'), short: 'GL', href: '/global' },
+  { label: m('Card'), short: 'CA', href: '/card' },
+  { label: m('Travel'), short: 'TR', href: '/travel' },
+  { label: m('eSIM'), short: 'ES', href: '/esim' },
+  { label: m('Loans'), short: 'LO', href: '/loans' },
+  { label: m('Invest'), short: 'IN', href: '/invest' },
 ];
 
 type Account = 'guest' | 'unverified' | 'verified';
 
 /** Nudges the person to the next step: create an account, then verify their identity. */
 function NextStep({ account }: { account: Account }) {
+  const t = useT();
   if (account === 'verified') return null;
   const guest = account === 'guest';
   return (
     <Card style={{ borderColor: colors.ink, borderWidth: 1.5 }}>
-      <Heading>{guest ? 'Open your oenodPay account' : 'Verify your identity'}</Heading>
+      <Heading>{guest ? t('Open your oenodPay account') : t('Verify your identity')}</Heading>
       <Body muted>
         {guest
-          ? 'You’re exploring a demo with sample money. Create an account in under a minute.'
-          : 'One quick ID check and you can send money, pay bills and get your card.'}
+          ? t('You’re exploring a demo with sample money. Create an account in under a minute.')
+          : t('One quick ID check and you can send money, pay bills and get your card.')}
       </Body>
-      <Button label={guest ? 'Create account or sign in' : 'Verify now · 2 min'} onPress={() => router.push(guest ? '/welcome' : '/verify')} />
+      <Button label={guest ? t('Create account or sign in') : t('Verify now · 2 min')} onPress={() => router.push(guest ? '/welcome' : '/verify')} />
     </Card>
   );
 }
 
 export default function Home() {
+  const t = useT();
   const [account, setAccount] = useState<Account>('guest');
   useEffect(() => {
     void (async () => {
@@ -60,7 +63,7 @@ export default function Home() {
         <Link href="/security" asChild>
           <Pressable
             accessibilityRole="button"
-            accessibilityLabel="Security center"
+            accessibilityLabel={t('Security center')}
             style={{ width: 44, height: 44, borderRadius: 22, backgroundColor: colors.navy, alignItems: 'center', justifyContent: 'center' }}>
             <Text style={{ fontSize: 14, fontWeight: '700', color: '#FFFFFF' }}>{sampleUser.firstName.slice(0, 2).toUpperCase()}</Text>
           </Pressable>
@@ -71,22 +74,22 @@ export default function Home() {
         <View pointerEvents="none" style={{ position: 'absolute', width: 260, height: 260, borderRadius: 130, backgroundColor: colors.accent, opacity: 0.35, top: -140, right: -90 }} />
         <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: '55%', backgroundColor: colors.black, opacity: 0.45 }} />
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Text style={{ color: '#AFC2FF', fontSize: 14, fontWeight: '600' }}>Total balance · CAD</Text>
-          <Text style={{ color: '#FFFFFF', fontSize: 12, fontWeight: '700' }}>Hi {sampleUser.firstName}</Text>
+          <Text style={{ color: '#AFC2FF', fontSize: 14, fontWeight: '600' }}>{t('Total balance · CAD')}</Text>
+          <Text style={{ color: '#FFFFFF', fontSize: 12, fontWeight: '700' }}>{t('Hi {name}', { name: sampleUser.firstName })}</Text>
         </View>
         <Text
           style={{ color: '#FFFFFF', fontSize: 50, fontWeight: '800', letterSpacing: -2 }}
           adjustsFontSizeToFit
           numberOfLines={1}
-          accessibilityLabel="Wallet balance">
+          accessibilityLabel={t('Wallet balance')}>
           {formatMoney({ minor: sampleUser.balanceMinor, currency: 'CAD' })}
         </Text>
         <View style={{ flexDirection: 'row', gap: 10, paddingTop: 8 }}>
           <Pressable accessibilityRole="button" style={{ flex: 1, minHeight: 50, borderRadius: 999, backgroundColor: '#FFFFFF', alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={{ color: colors.navy, fontSize: 15, fontWeight: '700' }}>Add money</Text>
+            <Text style={{ color: colors.navy, fontSize: 15, fontWeight: '700' }}>{t('Add money')}</Text>
           </Pressable>
           <Pressable accessibilityRole="button" onPress={() => router.push('/send')} style={{ flex: 1, minHeight: 50, borderRadius: 999, backgroundColor: colors.black, alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={{ color: '#FFFFFF', fontSize: 15, fontWeight: '700' }}>Send</Text>
+            <Text style={{ color: '#FFFFFF', fontSize: 15, fontWeight: '700' }}>{t('Send')}</Text>
           </Pressable>
         </View>
       </View>
@@ -99,7 +102,7 @@ export default function Home() {
                 <View style={{ width: 34, height: 34, borderRadius: 11, backgroundColor: colors.primarySoft, alignItems: 'center', justifyContent: 'center' }}>
                   <Text style={{ fontSize: 11, fontWeight: '800', color: colors.accent, letterSpacing: 0.5 }}>{a.short}</Text>
                 </View>
-                <Text style={{ fontSize: 12, fontWeight: '600', color: colors.ink }}>{a.label}</Text>
+                <Text style={{ fontSize: 12, fontWeight: '600', color: colors.ink }}>{t(a.label)}</Text>
               </View>
             </Pressable>
           </Link>
@@ -109,12 +112,12 @@ export default function Home() {
       <Link href="/card" asChild>
         <Pressable
           accessibilityRole="button"
-          accessibilityLabel="Visa debit card ending 2049"
+          accessibilityLabel={t('Visa debit card ending {last4}', { last4: '2049' })}
           style={{ height: 150, borderRadius: radius.xxl, backgroundColor: colors.black, borderWidth: 1, borderColor: '#1F2A44', padding: 22, justifyContent: 'space-between', overflow: 'hidden' }}>
           <View pointerEvents="none" style={{ position: 'absolute', width: 220, height: 220, borderRadius: 110, backgroundColor: colors.accent, opacity: 0.3, top: -120, right: -60 }} />
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
             <Image source={require('@/assets/brand/oenodpay-logo-white-2000.png')} style={{ width: 111, height: 15 }} resizeMode="contain" />
-            <Text style={{ color: '#B9C0D4', fontSize: 11, fontWeight: '700', letterSpacing: 2 }}>DEBIT</Text>
+            <Text style={{ color: '#B9C0D4', fontSize: 11, fontWeight: '700', letterSpacing: 2 }}>{t('DEBIT')}</Text>
           </View>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end' }}>
             <Text style={{ color: '#FFFFFF', fontSize: 16, letterSpacing: 3 }}>•••• 2049</Text>
@@ -128,26 +131,26 @@ export default function Home() {
       <Card>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
           <View style={{ flex: 1 }}>
-            <Text style={{ fontSize: 13, color: colors.muted }}>Rewards</Text>
-            <Text style={{ fontSize: 18, fontWeight: '700', color: colors.ink }}>{sampleUser.points.toLocaleString('en-CA')} points</Text>
-            <Text style={{ fontSize: 12, color: colors.muted }}>Redeem for flights, hotels or eSIM data</Text>
+            <Text style={{ fontSize: 13, color: colors.muted }}>{t('Rewards')}</Text>
+            <Text style={{ fontSize: 18, fontWeight: '700', color: colors.ink }}>{t('{points} points', { points: sampleUser.points.toLocaleString('en-CA') })}</Text>
+            <Text style={{ fontSize: 12, color: colors.muted }}>{t('Redeem for flights, hotels or eSIM data')}</Text>
           </View>
-          <Button label="Redeem" variant="soft" onPress={() => router.push('/travel')} />
+          <Button label={t('Redeem')} variant="soft" onPress={() => router.push('/travel')} />
         </View>
       </Card>
 
-      <Heading>Recent activity</Heading>
+      <Heading>{t('Recent activity')}</Heading>
       <Card>
-        {sampleActivity.map((t) => (
+        {sampleActivity.map((a) => (
           <ListRow
-            key={t.id}
-            leading={t.initials}
-            title={t.name}
-            subtitle={t.meta}
+            key={a.id}
+            leading={a.initials}
+            title={t(a.name)}
+            subtitle={t(a.meta)}
             trailing={
-              <Text style={{ fontSize: 14, fontWeight: '600', color: t.amountMinor > 0 ? colors.positive : colors.ink }}>
-                {t.amountMinor > 0 ? '+' : ''}
-                {formatMoney({ minor: t.amountMinor, currency: 'CAD' })}
+              <Text style={{ fontSize: 14, fontWeight: '600', color: a.amountMinor > 0 ? colors.positive : colors.ink }}>
+                {a.amountMinor > 0 ? '+' : ''}
+                {formatMoney({ minor: a.amountMinor, currency: 'CAD' })}
               </Text>
             }
           />

@@ -4,6 +4,7 @@ import { router } from 'expo-router';
 
 import { Body, Button, Card, Heading, Screen } from '@/components/ui';
 import { ApiError, api, hasSession } from '@/lib/api';
+import { m, useT } from '@/lib/i18n';
 import { colors } from '@/lib/theme';
 
 interface Status {
@@ -13,12 +14,13 @@ interface Status {
 }
 
 const steps = [
-  { n: '1', title: 'Photo of your ID', desc: 'Driver’s licence, passport or provincial ID card' },
-  { n: '2', title: 'Quick selfie video', desc: 'Proves it’s really you holding the phone' },
-  { n: '3', title: 'Done in about 2 minutes', desc: 'Most people are approved right away' },
+  { n: '1', title: m('Photo of your ID'), desc: m('Driver’s licence, passport or provincial ID card') },
+  { n: '2', title: m('Quick selfie video'), desc: m('Proves it’s really you holding the phone') },
+  { n: '3', title: m('Done in about 2 minutes'), desc: m('Most people are approved right away') },
 ];
 
 export default function Verify() {
+  const t = useT();
   const [signedIn, setSignedIn] = useState<boolean | null>(null);
   const [status, setStatus] = useState<Status | null>(null);
   const [busy, setBusy] = useState(false);
@@ -39,7 +41,7 @@ export default function Verify() {
       await fn();
       await load();
     } catch (e) {
-      setError(e instanceof ApiError && e.code === 'already_verified' ? 'You’re already verified.' : 'That didn’t work. Try again.');
+      setError(e instanceof ApiError && e.code === 'already_verified' ? t('You’re already verified.') : t('That didn’t work. Try again.'));
     } finally {
       setBusy(false);
     }
@@ -59,19 +61,18 @@ export default function Verify() {
     : status?.kycStatus === 'rejected' ? 'rejected' : 'not_started';
 
   return (
-    <Screen title="Verify your identity" back>
+    <Screen title={t('Verify your identity')} back>
       {state === 'verified' ? (
         <Card dark>
-          <Text style={{ color: colors.mint, fontSize: 13, fontWeight: '700' }}>VERIFIED</Text>
-          <Text style={{ color: '#FFFFFF', fontSize: 20, fontWeight: '700' }}>You’re all set</Text>
-          <Body light>You can now send money, pay bills and order your card.</Body>
-          <Button label="Go to my wallet" variant="soft" onPress={() => router.replace('/')} />
+          <Text style={{ color: colors.mint, fontSize: 13, fontWeight: '700' }}>{t('VERIFIED')}</Text>
+          <Text style={{ color: '#FFFFFF', fontSize: 20, fontWeight: '700' }}>{t('You’re all set')}</Text>
+          <Body light>{t('You can now send money, pay bills and order your card.')}</Body>
+          <Button label={t('Go to my wallet')} variant="soft" onPress={() => router.replace('/')} />
         </Card>
       ) : (
         <>
           <Body muted>
-            Canadian law requires us to confirm who you are before you can send money. It keeps your account,
-            and everyone else’s, safe from fraud.
+            {t('Canadian law requires us to confirm who you are before you can send money. It keeps your account, and everyone else’s, safe from fraud.')}
           </Body>
           <Card>
             {steps.map((s) => (
@@ -80,8 +81,8 @@ export default function Verify() {
                   <Text style={{ color: colors.primary, fontWeight: '700' }}>{s.n}</Text>
                 </View>
                 <View style={{ flex: 1 }}>
-                  <Text style={{ fontSize: 14, fontWeight: '600', color: colors.ink }}>{s.title}</Text>
-                  <Text style={{ fontSize: 12, color: colors.muted }}>{s.desc}</Text>
+                  <Text style={{ fontSize: 14, fontWeight: '600', color: colors.ink }}>{t(s.title)}</Text>
+                  <Text style={{ fontSize: 12, color: colors.muted }}>{t(s.desc)}</Text>
                 </View>
               </View>
             ))}
@@ -89,37 +90,36 @@ export default function Verify() {
 
           {state === 'rejected' ? (
             <Card>
-              <Heading>We couldn’t verify you</Heading>
-              <Body muted>This happens with blurry photos or glare. You can try again with your ID on a dark, flat surface.</Body>
+              <Heading>{t('We couldn’t verify you')}</Heading>
+              <Body muted>{t('This happens with blurry photos or glare. You can try again with your ID on a dark, flat surface.')}</Body>
             </Card>
           ) : null}
 
           {signedIn === false ? (
-            <Button label="Create an account to start" onPress={() => router.push('/welcome')} />
+            <Button label={t('Create an account to start')} onPress={() => router.push('/welcome')} />
           ) : state === 'in_progress' ? (
             <Card>
-              <Heading>Checking your documents…</Heading>
-              <Body muted>We’ll let you know as soon as it’s done. This usually takes under a minute.</Body>
+              <Heading>{t('Checking your documents…')}</Heading>
+              <Body muted>{t('We’ll let you know as soon as it’s done. This usually takes under a minute.')}</Body>
               {status?.sandbox ? (
                 <View style={{ gap: 8 }}>
-                  <Text style={{ fontSize: 12, color: colors.muted }}>Test mode: choose the result</Text>
+                  <Text style={{ fontSize: 12, color: colors.muted }}>{t('Test mode: choose the result')}</Text>
                   <View style={{ flexDirection: 'row', gap: 10 }}>
-                    <View style={{ flex: 1 }}><Button label="Approve" onPress={() => decide('verified')} disabled={busy} /></View>
-                    <View style={{ flex: 1 }}><Button label="Reject" variant="secondary" onPress={() => decide('rejected')} disabled={busy} /></View>
+                    <View style={{ flex: 1 }}><Button label={t('Approve')} onPress={() => decide('verified')} disabled={busy} /></View>
+                    <View style={{ flex: 1 }}><Button label={t('Reject')} variant="secondary" onPress={() => decide('rejected')} disabled={busy} /></View>
                   </View>
                 </View>
               ) : null}
             </Card>
           ) : (
-            <Button label={busy ? 'Starting…' : state === 'rejected' ? 'Try again' : 'Start verification'} onPress={start} disabled={busy || signedIn === null} />
+            <Button label={busy ? t('Starting…') : state === 'rejected' ? t('Try again') : t('Start verification')} onPress={start} disabled={busy || signedIn === null} />
           )}
           {error ? <Text accessibilityRole="alert" style={{ color: colors.danger, fontSize: 13 }}>{error}</Text> : null}
 
           <Card>
-            <Text style={{ fontSize: 13, fontWeight: '600', color: colors.ink }}>Your privacy</Text>
+            <Text style={{ fontSize: 13, fontWeight: '600', color: colors.ink }}>{t('Your privacy')}</Text>
             <Body muted>
-              Your ID photos and selfie go straight to our certified verification partner over an encrypted connection.
-              oenodPay keeps only the result, never the images.
+              {t('Your ID photos and selfie go straight to our certified verification partner over an encrypted connection. oenodPay keeps only the result, never the images.')}
             </Body>
           </Card>
         </>

@@ -2,11 +2,13 @@ import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
+import { LanguageProvider } from '@/lib/i18n';
 import { colors } from '@/lib/theme';
 
 export default function RootLayout() {
   return (
     <SafeAreaProvider>
+      <LanguageProvider>
       <StatusBar style="dark" />
       <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.background } }}>
         <Stack.Screen name="(tabs)" />
@@ -18,6 +20,7 @@ export default function RootLayout() {
         <Stack.Screen name="welcome" />
         <Stack.Screen name="verify" />
       </Stack>
+      </LanguageProvider>
     </SafeAreaProvider>
   );
 }

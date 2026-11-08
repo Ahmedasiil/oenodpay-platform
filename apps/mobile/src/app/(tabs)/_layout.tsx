@@ -1,6 +1,7 @@
 import { Tabs } from 'expo-router/js-tabs';
 import { View, type ColorValue } from 'react-native';
 
+import { useT } from '@/lib/i18n';
 import { colors } from '@/lib/theme';
 
 function Dot({ color, focused }: { color: ColorValue; focused: boolean }) {
@@ -8,6 +9,7 @@ function Dot({ color, focused }: { color: ColorValue; focused: boolean }) {
 }
 
 export default function TabsLayout() {
+  const t = useT();
   return (
     <Tabs
       screenOptions={{
@@ -18,11 +20,11 @@ export default function TabsLayout() {
         tabBarLabelStyle: { fontSize: 11, fontWeight: '600' },
         tabBarIcon: ({ color, focused }) => <Dot color={color} focused={focused} />,
       }}>
-      <Tabs.Screen name="index" options={{ title: 'Home' }} />
-      <Tabs.Screen name="send" options={{ title: 'Send' }} />
-      <Tabs.Screen name="card" options={{ title: 'Card' }} />
-      <Tabs.Screen name="loans" options={{ title: 'Loans' }} />
-      <Tabs.Screen name="invest" options={{ title: 'Invest' }} />
+      <Tabs.Screen name="index" options={{ title: t('Home') }} />
+      <Tabs.Screen name="send" options={{ title: t('Send') }} />
+      <Tabs.Screen name="card" options={{ title: t('Card') }} />
+      <Tabs.Screen name="loans" options={{ title: t('Loans') }} />
+      <Tabs.Screen name="invest" options={{ title: t('Invest') }} />
     </Tabs>
   );
 }

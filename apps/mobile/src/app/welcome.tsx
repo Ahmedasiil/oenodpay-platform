@@ -4,16 +4,18 @@ import { router } from 'expo-router';
 
 import { Body, Button, Card, Field, Screen, Segmented } from '@/components/ui';
 import { ApiError, api, deviceName, saveSession, type SignedIn } from '@/lib/api';
+import { m, useT } from '@/lib/i18n';
 import { colors } from '@/lib/theme';
 
 const messages: Record<string, string> = {
-  invalid_credentials: 'That email and password don’t match.',
-  email_taken: 'An account with this email already exists. Sign in instead.',
-  invalid_request: 'Check the details and try again. Passwords need at least 12 characters.',
-  too_many_requests: 'Too many tries. Wait a minute and try again.',
+  invalid_credentials: m('That email and password don’t match.'),
+  email_taken: m('An account with this email already exists. Sign in instead.'),
+  invalid_request: m('Check the details and try again. Passwords need at least 12 characters.'),
+  too_many_requests: m('Too many tries. Wait a minute and try again.'),
 };
 
 export default function Welcome() {
+  const t = useT();
   const [mode, setMode] = useState<'signin' | 'signup'>('signup');
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
@@ -30,7 +32,7 @@ export default function Welcome() {
       await saveSession(res);
       router.replace(res.user.kycStatus === 'verified' ? '/' : '/verify');
     } catch (e) {
-      setError(e instanceof ApiError ? messages[e.code] ?? 'Something went wrong. Try again.' : 'Can’t reach oenodPay. Check your connection.');
+      setError(e instanceof ApiError ? t(messages[e.code] ?? 'Something went wrong. Try again.') : t('Can’t reach oenodPay. Check your connection.'));
     } finally {
       setBusy(false);
     }
@@ -45,41 +47,41 @@ export default function Welcome() {
           style={{ width: 160, height: 99 }}
           resizeMode="contain"
         />
-        <Text style={{ fontSize: 15, color: colors.muted, textAlign: 'center' }}>Send, pay, travel and grow your money. One secure app.</Text>
+        <Text style={{ fontSize: 15, color: colors.muted, textAlign: 'center' }}>{t('Send, pay, travel and grow your money. One secure app.')}</Text>
       </View>
 
       <Segmented
-        options={[{ id: 'signup', label: 'Create account' }, { id: 'signin', label: 'Sign in' }]}
+        options={[{ id: 'signup', label: t('Create account') }, { id: 'signin', label: t('Sign in') }]}
         value={mode}
         onChange={(m) => { setMode(m); setError(null); }}
       />
 
       <Card>
         {mode === 'signup' ? (
-          <Field label="Full legal name" value={fullName} onChangeText={setFullName} autoComplete="name" textContentType="name" placeholder="As shown on your ID" />
+          <Field label={t('Full legal name')} value={fullName} onChangeText={setFullName} autoComplete="name" textContentType="name" placeholder={t('As shown on your ID')} />
         ) : null}
-        <Field label="Email" value={email} onChangeText={setEmail} autoCapitalize="none" autoComplete="email" keyboardType="email-address" textContentType="emailAddress" />
+        <Field label={t('Email')} value={email} onChangeText={setEmail} autoCapitalize="none" autoComplete="email" keyboardType="email-address" textContentType="emailAddress" />
         <Field
-          label="Password"
+          label={t('Password')}
           value={password}
           onChangeText={setPassword}
           secureTextEntry
           autoComplete={mode === 'signup' ? 'new-password' : 'current-password'}
           textContentType={mode === 'signup' ? 'newPassword' : 'password'}
-          placeholder={mode === 'signup' ? 'At least 12 characters' : undefined}
+          placeholder={mode === 'signup' ? t('At least 12 characters') : undefined}
         />
         {error ? <Text accessibilityRole="alert" style={{ color: colors.danger, fontSize: 13 }}>{error}</Text> : null}
-        <Button label={busy ? 'Please wait…' : mode === 'signup' ? 'Create account' : 'Sign in'} onPress={submit} disabled={busy} />
+        <Button label={busy ? t('Please wait…') : mode === 'signup' ? t('Create account') : t('Sign in')} onPress={submit} disabled={busy} />
       </Card>
 
       <Card>
-        <Text style={{ fontSize: 14, fontWeight: '600', color: colors.ink }}>Face ID sign-in comes next</Text>
-        <Body muted>After you sign in, you can add a passkey so you never need this password again.</Body>
+        <Text style={{ fontSize: 14, fontWeight: '600', color: colors.ink }}>{t('Face ID sign-in comes next')}</Text>
+        <Body muted>{t('After you sign in, you can add a passkey so you never need this password again.')}</Body>
       </Card>
 
-      <Button label="Explore the demo first" variant="secondary" onPress={() => router.replace('/')} />
+      <Button label={t('Explore the demo first')} variant="secondary" onPress={() => router.replace('/')} />
       <Text style={{ fontSize: 12, color: colors.muted, textAlign: 'center' }}>
-        Protected with passkeys, device-bound sessions and bank-grade encryption.
+        {t('Protected with passkeys, device-bound sessions and bank-grade encryption.')}
       </Text>
     </Screen>
   );
