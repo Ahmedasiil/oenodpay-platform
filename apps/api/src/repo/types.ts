@@ -124,6 +124,8 @@ export interface Repository {
   /** Adds an email to the launch list. Returns false if it was already there. */
   joinWaitlist(email: string, source: string | null): Promise<boolean>;
   waitlistCount(): Promise<number>;
+  /** Stores a contact-form message and returns its reference number. */
+  saveContactMessage(input: { name: string; email: string; topic: string; message: string }): Promise<string>;
 
   // Audit trail (append-only; never passwords, tokens or full card numbers)
   record(actor: string | null, action: string, detail?: Record<string, unknown>): Promise<void>;

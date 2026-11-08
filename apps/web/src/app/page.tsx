@@ -1,4 +1,5 @@
 import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 import { EarlyAccess } from "@/components/landing/early-access";
 import { Playground } from "@/components/landing/playground";
 
@@ -111,12 +112,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="foot2">
-        <div className="wrap">
-          <span><span className="logo">oenod<b>Pay</b></span>&nbsp; A product of OENOD.</span>
-          <span>Demos use pretend money and example rates. No real accounts, cards or transfers.</span>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

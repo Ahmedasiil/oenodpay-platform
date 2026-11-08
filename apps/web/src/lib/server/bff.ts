@@ -71,7 +71,7 @@ export async function signInVia(req: NextRequest, path: string): Promise<NextRes
 /** Endpoints the browser may reach through the proxy. Anything else is refused. */
 const ALLOWED = [
   /^me$/, /^wallet$/, /^sessions(\/[\w-]+)?$/, /^passkeys(\/[\w-]+)?$/, /^passkeys\/register\/(options|verify)$/,
-  /^kyc\/(sessions|status|sandbox\/decide)$/, /^transfers\/wallet$/, /^quotes$/, /^corridors$/, /^auth\/logout$/, /^waitlist$/,
+  /^kyc\/(sessions|status|sandbox\/decide)$/, /^transfers\/wallet$/, /^quotes$/, /^corridors$/, /^auth\/logout$/, /^waitlist$/, /^contact$/,
 ];
 
 export async function proxy(req: NextRequest, segments: string[]): Promise<NextResponse> {

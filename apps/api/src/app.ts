@@ -4,7 +4,7 @@ import rateLimit from '@fastify/rate-limit';
 import cors from '@fastify/cors';
 import { z, ZodError } from 'zod';
 import {
-  CORRIDORS, QuoteError, loginSchema, quoteSchema, waitlistSchema, quoteTransfer, registerSchema, walletTransferSchema,
+  CORRIDORS, QuoteError, loginSchema, quoteSchema, waitlistSchema, contactSchema, quoteTransfer, registerSchema, walletTransferSchema,
 } from '@oenodpay/shared';
 import type { Config } from './config';
 import { LedgerError } from './ledger/ledger';
@@ -337,6 +337,14 @@ export async function buildApp(
     const added = await repo.joinWaitlist(input.email, input.source ?? null);
     if (added) await repo.record(null, 'waitlist.joined', { source: input.source ?? null });
     return reply.status(202).send({ status: 'listed' });
+  });
+
+  // Website contact form. Complaints and privacy requests are logged so their deadlines can be tracked.
+  app.post('/v1/contact', { config: { rateLimit: { max: 3, timeWindow: '1 minute' } } }, async (req, reply) => {
+    const input = contactSchema.parse(req.body);
+    const reference = await repo.saveContactMessage(input);
+    await repo.record(null, 'contact.received', { reference, topic: input.topic });
+    return reply.status(201).send({ reference });
   });
 
   app.get('/v1/corridors', async () => ({ corridors: CORRIDORS, sampleData: true }));

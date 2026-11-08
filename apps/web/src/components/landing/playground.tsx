@@ -1,10 +1,13 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { DEMOS } from "./demos";
 import { FEATURES, ORDER, cad, initialState, type FeatureId } from "./demo-state";
 
 interface Tile { id: FeatureId; span: 4 | 5 | 7; cat: string; title: string; body: string; dark?: boolean; preview: React.ReactNode }
+
+const PAGE: Record<FeatureId, string> = { send: "send-money-abroad", card: "debit-card", bills: "pay-bills", esim: "esim", travel: "travel", invest: "invest", lend: "lend", credit: "credit-score" };
 
 const TILES: Tile[] = [
   { id: "send", span: 7, cat: "Move money", title: "Send money abroad", body: "Seven countries. See the rate and fee first, then pick wallet, bank or cash pickup.",
@@ -65,6 +68,7 @@ export function Playground() {
                 <button type="button" className="try" onClick={(e) => { opener.current = e.currentTarget; setOpen(t.id); }}>
                   Try it now <span aria-hidden="true">→</span>
                 </button>
+                <Link href={`/features/${PAGE[t.id]}`} className="tmore">Learn more</Link>
                 <span className="tried">{s.tried[t.id] ? "✓ Tried" : ""}</span>
               </div>
             </div>

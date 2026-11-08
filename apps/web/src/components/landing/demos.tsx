@@ -22,8 +22,8 @@ function Send({ s, set }: DemoProps) {
   const [amount, setAmount] = useState(100);
   const [msg, setMsg] = useState<React.ReactNode>(null);
   const cents = Math.round(Math.min(3000, Math.max(1, amount || 0)) * 100);
-  const quote = quoteTransfer(corridor.countryCode, method.id, cents);
-  const total = cents + quote.fee.minor;
+  const quote = quoteTransfer(corridor.countryCode, method.id, Math.max(cents, method.feeMinor + 100));
+  const total = cents; // the fee comes out of what you send, as in the app
   return (
     <>
       <div className="row">
@@ -50,7 +50,7 @@ function Send({ s, set }: DemoProps) {
       </div>
       <div className="panel">
         <div className="kv"><span>Rate</span><span className="num">1 CAD = {quote.rate} {corridor.currency}</span></div>
-        <div className="kv"><span>Fee</span><span className="num">{formatMoney(quote.fee)}</span></div>
+        <div className="kv"><span>Fee (included)</span><span className="num">{formatMoney(quote.fee)}</span></div>
         <div className="kv"><span>Arrives</span><span>{quote.eta}</span></div>
         <div className="kv" style={{ borderTop: "1px solid var(--line)", marginTop: 6, paddingTop: 12 }}>
           <span>They get</span><span className="num big" style={{ fontSize: 24 }}>{formatMoney(quote.receive)}</span>

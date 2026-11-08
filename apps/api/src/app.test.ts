@@ -65,6 +65,16 @@ describe.each(repoKinds)('API (%s)', (kind) => {
     await app.close();
   });
 
+  it('accepts contact messages with a reference number and rejects incomplete ones', async () => {
+    const app = await setup();
+    const ok = await app.inject({ method: 'POST', url: '/v1/contact', payload: { name: 'Ada Lovelace', email: 'ada@example.com', topic: 'complaint', message: 'My transfer is late, please check.' } });
+    expect(ok.statusCode).toBe(201);
+    expect(ok.json().reference).toMatch(/^OP-\d{6}$/);
+    const bad = await app.inject({ method: 'POST', url: '/v1/contact', payload: { name: 'A', email: 'x', topic: 'other', message: 'hi' } });
+    expect(bad.statusCode).toBe(400);
+    await app.close();
+  });
+
   it('blocks protected routes without a valid token', async () => {
     const app = await setup();
     const res = await app.inject({ method: 'GET', url: '/v1/wallet', headers: { authorization: 'Bearer forged' } });

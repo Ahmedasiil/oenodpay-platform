@@ -386,6 +386,14 @@ export class PostgresRepository implements Repository {
     return Number(rows[0]!.n);
   }
 
+  async saveContactMessage(input: { name: string; email: string; topic: string; message: string }) {
+    const { rows } = await this.pool.query<{ id: string }>(
+      'INSERT INTO contact_messages (name, email, topic, message) VALUES ($1, $2, $3, $4) RETURNING id',
+      [input.name, input.email, input.topic, input.message],
+    );
+    return `OP-${String(rows[0]!.id).padStart(6, '0')}`;
+  }
+
   // Audit -----------------------------------------------------------------------
 
   async record(actor: string | null, action: string, detail: Record<string, unknown> = {}) {
