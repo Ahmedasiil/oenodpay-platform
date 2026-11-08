@@ -3,7 +3,7 @@
   display:flex;min-height:100vh;background:var(--bg);color:var(--ink);font-family:var(--font-geist),Inter,system-ui,sans-serif;font-size:14px}
 .adm a{color:var(--blue);text-decoration:none}
 .adm-side{width:256px;flex:none;background:var(--navy);padding:20px 14px;display:flex;flex-direction:column;gap:22px;position:sticky;top:0;height:100vh;box-sizing:border-box;overflow-y:auto}
-.adm-brand{display:flex;align-items:center;gap:10px;padding:4px 8px}
+.adm-brand{display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:4px 8px}
 .adm-brand b{font-weight:800;color:#fff;font-size:15px;letter-spacing:.02em}.adm-brand b i{font-style:normal;color:#7C9BFF}
 .adm-brand small{display:block;font-size:10.5px;color:#8C97B5;font-weight:600;letter-spacing:.1em}
 .adm-nav{display:flex;flex-direction:column;gap:2px}

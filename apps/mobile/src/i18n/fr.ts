@@ -233,6 +233,14 @@ const fr: Record<string, string> = {
   "{n} min ago": "il y a {n} min",
   "{n} shares": "{n} actions",
   "{points} points": "{points} points",
+  "Your balance": "Votre solde",
+  "Add": "Ajouter",
+  "Cards": "Cartes",
+  "Transactions": "Transactions",
+  "More": "Plus",
+  "All your money, beautifully simple.": "Tout votre argent, d'une simplicité absolue.",
+  "Create an account": "Créer un compte",
+  "I already have an account": "J'ai déjà un compte",
 };
 
 export default fr;

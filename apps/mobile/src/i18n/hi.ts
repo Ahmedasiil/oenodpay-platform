@@ -233,6 +233,14 @@ const hi: Record<string, string> = {
   "{n} min ago": "{n} मिनट पहले",
   "{n} shares": "{n} शेयर",
   "{points} points": "{points} पॉइंट्स",
+  "Your balance": "आपका बैलेंस",
+  "Add": "जोड़ें",
+  "Cards": "कार्ड",
+  "Transactions": "लेनदेन",
+  "More": "और",
+  "All your money, beautifully simple.": "आपका सारा पैसा, बेहद आसान।",
+  "Create an account": "खाता बनाएं",
+  "I already have an account": "मेरा पहले से खाता है",
 };
 
 export default hi;

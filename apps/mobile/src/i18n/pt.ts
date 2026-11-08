@@ -233,6 +233,14 @@ const pt: Record<string, string> = {
   "{n} min ago": "há {n} min",
   "{n} shares": "{n} ações",
   "{points} points": "{points} pontos",
+  "Your balance": "Seu saldo",
+  "Add": "Adicionar",
+  "Cards": "Cartões",
+  "Transactions": "Transações",
+  "More": "Mais",
+  "All your money, beautifully simple.": "Todo o seu dinheiro, incrivelmente simples.",
+  "Create an account": "Criar uma conta",
+  "I already have an account": "Já tenho uma conta",
 };
 
 export default pt;

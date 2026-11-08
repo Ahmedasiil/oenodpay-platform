@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, TextInput, View, type TextInputProps, type ViewStyle } from 'react-native';
+import { Image, Pressable, ScrollView, StyleSheet, Text, TextInput, View, type ImageSourcePropType, type TextInputProps, type ViewStyle } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 
@@ -19,7 +19,7 @@ export function Screen({ title, back, children }: { title?: string; back?: boole
                 accessibilityLabel={t('Back')}
                 onPress={() => (router.canGoBack() ? router.back() : router.replace('/'))}
                 style={styles.iconButton}>
-                <Text style={styles.backGlyph}>‹</Text>
+                <Image source={require('@/assets/ui/i-back.png')} style={{ width: 22, height: 22, tintColor: colors.ink }} />
               </Pressable>
             ) : null}
             <Text style={styles.title} accessibilityRole="header">
@@ -138,7 +138,7 @@ export function Field({ label, ...props }: TextInputProps & { label: string }) {
       <Text style={styles.fieldLabel}>{label}</Text>
       <TextInput
         accessibilityLabel={label}
-        placeholderTextColor="#7F8BA6"
+        placeholderTextColor="#6E6E76"
         style={styles.input}
         {...props}
       />
@@ -160,51 +160,76 @@ export function Chip({ label, selected, onPress }: { label: string; selected?: b
 
 export const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.background },
-  scroll: { padding: space.xl, gap: space.lg, paddingBottom: 48 },
+  scroll: { padding: space.xl, gap: space.lg, paddingBottom: 120 },
   header: { flexDirection: 'row', alignItems: 'center', gap: space.md },
-  title: { fontSize: 28, fontWeight: '800', color: colors.ink, letterSpacing: -0.6 },
+  title: { fontSize: 28, fontWeight: '600', color: colors.ink, letterSpacing: -0.8 },
   iconButton: {
-    width: 44, height: 44, borderRadius: radius.md, borderWidth: 1, borderColor: colors.border,
+    width: 46, height: 46, borderRadius: 23,
     backgroundColor: colors.surface, alignItems: 'center', justifyContent: 'center',
   },
   backGlyph: { fontSize: 28, lineHeight: 30, color: colors.ink },
-  card: { backgroundColor: colors.surface, borderRadius: radius.xxl, borderWidth: 1, borderColor: colors.border, padding: space.lg, gap: space.md },
-  cardDark: { backgroundColor: colors.black, borderColor: '#1F2A44' },
-  heading: { fontSize: 17, fontWeight: '600', color: colors.ink },
+  card: { backgroundColor: colors.surface, borderRadius: radius.xxl, padding: space.xl, gap: space.md },
+  cardDark: { backgroundColor: colors.black },
+  heading: { fontSize: 17, fontWeight: '500', color: colors.ink },
   body: { fontSize: 14, color: colors.ink, lineHeight: 20 },
   muted: { color: colors.muted },
-  light: { color: '#B9C0D4' },
-  button: { minHeight: 54, borderRadius: radius.pill, alignItems: 'center', justifyContent: 'center', paddingHorizontal: space.lg },
+  light: { color: '#B5B5BC' },
+  button: { minHeight: 58, borderRadius: radius.pill, alignItems: 'center', justifyContent: 'center', paddingHorizontal: space.lg },
   btn_primary: { backgroundColor: colors.primary },
-  btn_secondary: { backgroundColor: 'transparent', borderWidth: 1.5, borderColor: colors.ink },
+  btn_secondary: { backgroundColor: 'transparent', borderWidth: 1, borderColor: '#4A4A52' },
   btn_soft: { backgroundColor: colors.primarySoft },
   btn_danger: { backgroundColor: colors.danger },
-  buttonText: { fontSize: 16, fontWeight: '600' },
+  buttonText: { fontSize: 16, fontWeight: '500' },
   btnText_primary: { color: colors.onPrimary },
   btnText_secondary: { color: colors.ink },
   btnText_soft: { color: colors.ink },
   btnText_danger: { color: '#FFFFFF' },
   pressed: { opacity: 0.7 },
-  segmented: { flexDirection: 'row', backgroundColor: '#EBEEF4', borderRadius: radius.md, padding: 4, gap: 4 },
-  segment: { flex: 1, minHeight: 40, borderRadius: 11, alignItems: 'center', justifyContent: 'center' },
+  segmented: { flexDirection: 'row', backgroundColor: colors.surface, borderRadius: radius.pill, padding: 5, gap: 4 },
+  segment: { flex: 1, minHeight: 42, borderRadius: radius.pill, alignItems: 'center', justifyContent: 'center' },
   segmentSelected: { backgroundColor: colors.primary },
   segmentText: { fontSize: 13, fontWeight: '600', color: colors.muted },
   segmentTextSelected: { color: colors.onPrimary },
   row: { flexDirection: 'row', alignItems: 'center', gap: space.md, paddingVertical: space.md, minHeight: 44 },
-  avatar: { width: 40, height: 40, borderRadius: 12, backgroundColor: colors.background, alignItems: 'center', justifyContent: 'center' },
-  avatarText: { fontSize: 12, fontWeight: '700', color: colors.ink },
-  rowTitle: { fontSize: 14, fontWeight: '600', color: colors.ink },
+  avatar: { width: 46, height: 46, borderRadius: 23, backgroundColor: colors.surfaceHigh, alignItems: 'center', justifyContent: 'center' },
+  avatarText: { fontSize: 13, fontWeight: '600', color: colors.ink },
+  rowTitle: { fontSize: 15, fontWeight: '500', color: colors.ink },
   rowSubtitle: { fontSize: 12, color: colors.muted },
-  rowTrailing: { fontSize: 14, fontWeight: '600', color: colors.ink },
+  rowTrailing: { fontSize: 15, fontWeight: '500', color: colors.ink },
   fieldLabel: { fontSize: 13, color: colors.muted },
   input: {
-    minHeight: 48, borderRadius: radius.md, borderWidth: 1, borderColor: colors.border, paddingHorizontal: 14,
+    minHeight: 52, borderRadius: radius.lg, borderWidth: 1, borderColor: colors.border, paddingHorizontal: 16,
     fontSize: 15, backgroundColor: colors.background, color: colors.ink,
   },
   chip: {
-    minHeight: 44, paddingHorizontal: 14, borderRadius: radius.pill, borderWidth: 1, borderColor: colors.border,
+    minHeight: 44, paddingHorizontal: 16, borderRadius: radius.pill, borderWidth: 1, borderColor: colors.border,
     backgroundColor: colors.surface, alignItems: 'center', justifyContent: 'center',
   },
-  chipSelected: { borderWidth: 2, borderColor: colors.ink, backgroundColor: colors.primarySoft },
+  chipSelected: { borderColor: colors.primary, backgroundColor: colors.surfaceHigh },
   chipText: { fontSize: 13, fontWeight: '600', color: colors.ink },
 });
+
+const ICONS = {
+  home: require('@/assets/ui/i-home.png'), send: require('@/assets/ui/i-send.png'), receive: require('@/assets/ui/i-receive.png'),
+  plus: require('@/assets/ui/i-plus.png'), card: require('@/assets/ui/i-card.png'), chart: require('@/assets/ui/i-chart.png'),
+  user: require('@/assets/ui/i-user.png'), grid: require('@/assets/ui/i-grid.png'), bell: require('@/assets/ui/i-bell.png'),
+  more: require('@/assets/ui/i-more.png'), bill: require('@/assets/ui/i-bill.png'), globe: require('@/assets/ui/i-globe.png'),
+  plane: require('@/assets/ui/i-plane.png'), sim: require('@/assets/ui/i-sim.png'), coins: require('@/assets/ui/i-coins.png'),
+  shield: require('@/assets/ui/i-shield.png'), gift: require('@/assets/ui/i-gift.png'), back: require('@/assets/ui/i-back.png'),
+} satisfies Record<string, ImageSourcePropType>;
+export type IconName = keyof typeof ICONS;
+
+/** Line icon from the oenodPay set, tinted to any colour. */
+export function Icon({ name, size = 22, color = colors.ink }: { name: IconName; size?: number; color?: string }) {
+  return <Image source={ICONS[name]} style={{ width: size, height: size, tintColor: color }} accessibilityIgnoresInvertColors />;
+}
+
+/** Round icon button, like the reference's top-bar and transaction avatars. */
+export function IconCircle({ name, size = 52, light, onPress, label }: { name: IconName; size?: number; light?: boolean; onPress?: () => void; label?: string }) {
+  const body = (
+    <View style={{ width: size, height: size, borderRadius: size / 2, backgroundColor: light ? colors.primary : colors.surfaceHigh, alignItems: 'center', justifyContent: 'center' }}>
+      <Icon name={name} size={size * 0.42} color={light ? colors.onPrimary : colors.ink} />
+    </View>
+  );
+  return onPress ? <Pressable accessibilityRole="button" accessibilityLabel={label} onPress={onPress}>{body}</Pressable> : body;
+}

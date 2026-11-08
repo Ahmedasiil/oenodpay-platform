@@ -233,6 +233,14 @@ const ar: Record<string, string> = {
   "{n} min ago": "منذ {n} دقيقة",
   "{n} shares": "{n} سهم",
   "{points} points": "{points} نقطة",
+  "Your balance": "رصيدك",
+  "Add": "إضافة",
+  "Cards": "البطاقات",
+  "Transactions": "المعاملات",
+  "More": "المزيد",
+  "All your money, beautifully simple.": "كل أموالك، ببساطة رائعة.",
+  "Create an account": "إنشاء حساب",
+  "I already have an account": "لدي حساب بالفعل",
 };
 
 export default ar;

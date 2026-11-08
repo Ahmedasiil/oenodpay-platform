@@ -63,7 +63,7 @@ export function SiteHeader({ lang = "en", path = "/" }: { lang?: Locale; path?: 
       <div className="wrap">
         <Link href={homeHref(lang)} className="logo" aria-label="oenodPay home" dir="ltr">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/oenodpay-logo-white.svg" alt="OENODPAY" width={133} height={18} />
+          <img src="/oenodpay-logo-white.svg" alt="OENODPAY" width={135} height={22} />
         </Link>
         <ul className="mm-list">
           <Menu label={t.nav.personal} wide>

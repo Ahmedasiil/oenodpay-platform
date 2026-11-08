@@ -47,10 +47,15 @@ const nextConfig: NextConfig = {
   // The mobile app preview is a single-page web export: every screen path loads its index.html.
   async rewrites() {
     return {
-      // The bare /mobile-preview path would otherwise be taken by the [lang] route.
-      beforeFiles: [{ source: "/mobile-preview", destination: "/mobile-preview/index.html" }],
+      // Screen paths go to the app's index.html before any website route can claim them
+      // (for example /mobile-preview/security would otherwise hit the [lang]/security page).
+      beforeFiles: [
+        { source: "/mobile-preview", destination: "/mobile-preview/index.html" },
+        { source: "/mobile-preview/:path((?!_expo/|assets/|favicon\\.ico|metadata\\.json|index\\.html).*)", destination: "/mobile-preview/index.html" },
+      ],
       afterFiles: [],
-      fallback: [{ source: "/mobile-preview/:path*", destination: "/mobile-preview/index.html" }] };
+      fallback: [],
+    };
   },
 };
 

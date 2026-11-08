@@ -233,6 +233,14 @@ const zh: Record<string, string> = {
   "{n} min ago": "{n} 分钟前",
   "{n} shares": "{n} 股",
   "{points} points": "{points} 积分",
+  "Your balance": "您的余额",
+  "Add": "添加",
+  "Cards": "卡片",
+  "Transactions": "交易记录",
+  "More": "更多",
+  "All your money, beautifully simple.": "您的所有资金，简单得令人惊叹。",
+  "Create an account": "创建账户",
+  "I already have an account": "我已有账户",
 };
 
 export default zh;

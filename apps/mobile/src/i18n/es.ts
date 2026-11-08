@@ -233,6 +233,14 @@ const es: Record<string, string> = {
   "{n} min ago": "hace {n} min",
   "{n} shares": "{n} acciones",
   "{points} points": "{points} puntos",
+  "Your balance": "Tu saldo",
+  "Add": "Añadir",
+  "Cards": "Tarjetas",
+  "Transactions": "Movimientos",
+  "More": "Más",
+  "All your money, beautifully simple.": "Todo tu dinero, maravillosamente simple.",
+  "Create an account": "Crear una cuenta",
+  "I already have an account": "Ya tengo una cuenta",
 };
 
 export default es;

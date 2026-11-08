@@ -1,23 +1,21 @@
 import { useEffect, useState } from 'react';
 import { Link, router, type Href } from 'expo-router';
-import { Image, Pressable, Text, View } from 'react-native';
+import { Image, Pressable, ScrollView, Text, View } from 'react-native';
 import { formatMoney } from '@oenodpay/shared';
 
-import { Body, Button, Card, Heading, ListRow, Screen } from '@/components/ui';
+import { Body, Button, Card, Heading, Icon, IconCircle, Screen, type IconName } from '@/components/ui';
 import { api, hasSession } from '@/lib/api';
 import { sampleActivity, sampleUser } from '@/lib/sample';
 import { m, useT } from '@/lib/i18n';
 import { colors, radius } from '@/lib/theme';
 
-const actions: { label: string; short: string; href: Href }[] = [
-  { label: m('Send'), short: 'SE', href: '/send' },
-  { label: m('Pay bills'), short: 'BI', href: '/bills' },
-  { label: m('Global'), short: 'GL', href: '/global' },
-  { label: m('Card'), short: 'CA', href: '/card' },
-  { label: m('Travel'), short: 'TR', href: '/travel' },
-  { label: m('eSIM'), short: 'ES', href: '/esim' },
-  { label: m('Loans'), short: 'LO', href: '/loans' },
-  { label: m('Invest'), short: 'IN', href: '/invest' },
+const services: { label: string; icon: IconName; href: Href }[] = [
+  { label: m('Global'), icon: 'globe', href: '/global' },
+  { label: m('Pay bills'), icon: 'bill', href: '/bills' },
+  { label: m('Travel'), icon: 'plane', href: '/travel' },
+  { label: m('eSIM'), icon: 'sim', href: '/esim' },
+  { label: m('Loans'), icon: 'coins', href: '/loans' },
+  { label: m('Invest'), icon: 'chart', href: '/invest' },
 ];
 
 type Account = 'guest' | 'unverified' | 'verified';
@@ -28,7 +26,7 @@ function NextStep({ account }: { account: Account }) {
   if (account === 'verified') return null;
   const guest = account === 'guest';
   return (
-    <Card style={{ borderColor: colors.ink, borderWidth: 1.5 }}>
+    <Card>
       <Heading>{guest ? t('Open your oenodPay account') : t('Verify your identity')}</Heading>
       <Body muted>
         {guest
@@ -37,6 +35,17 @@ function NextStep({ account }: { account: Account }) {
       </Body>
       <Button label={guest ? t('Create account or sign in') : t('Verify now · 2 min')} onPress={() => router.push(guest ? '/welcome' : '/verify')} />
     </Card>
+  );
+}
+
+function Pill({ icon, label, onPress }: { icon: IconName; label: string; onPress?: () => void }) {
+  return (
+    <Pressable accessibilityRole="button" onPress={onPress} style={({ pressed }) => ({ flex: 1, minHeight: 60, borderRadius: radius.pill, backgroundColor: colors.primary, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 8, gap: 10, opacity: pressed ? 0.8 : 1 })}>
+      <View style={{ width: 44, height: 44, borderRadius: 22, backgroundColor: colors.onPrimary, alignItems: 'center', justifyContent: 'center' }}>
+        <Icon name={icon} size={18} color={colors.primary} />
+      </View>
+      <Text style={{ fontSize: 16, fontWeight: '500', color: colors.onPrimary }}>{label}</Text>
+    </Pressable>
   );
 }
 
@@ -51,110 +60,97 @@ export default function Home() {
     })();
   }, []);
 
+  const balance = formatMoney({ minor: sampleUser.balanceMinor, currency: 'CAD' });
+
   return (
     <Screen>
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-        <Image
-          source={require('@/assets/brand/oenodpay-logo-2000.png')}
-          accessibilityLabel="OENODPAY"
-          style={{ width: 148, height: 20 }}
-          resizeMode="contain"
-        />
-        <Link href="/security" asChild>
-          <Pressable
-            accessibilityRole="button"
-            accessibilityLabel={t('Security center')}
-            style={{ width: 44, height: 44, borderRadius: 22, backgroundColor: colors.navy, alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={{ fontSize: 14, fontWeight: '700', color: '#FFFFFF' }}>{sampleUser.firstName.slice(0, 2).toUpperCase()}</Text>
-          </Pressable>
-        </Link>
+        <IconCircle name="grid" label={t('Security center')} onPress={() => router.push('/security')} />
+        <Image source={require('@/assets/brand/oenodpay-logo-white-2000.png')} accessibilityLabel="OENODPAY" style={{ width: 123, height: 20 }} resizeMode="contain" />
+        <View>
+          <IconCircle name="bell" label={t('Security center')} onPress={() => router.push('/security')} />
+          <View style={{ position: 'absolute', top: 12, right: 13, width: 9, height: 9, borderRadius: 5, backgroundColor: '#FF5A4E', borderWidth: 2, borderColor: colors.surfaceHigh }} />
+        </View>
       </View>
 
-      <View style={{ backgroundColor: colors.navy, borderRadius: radius.hero, padding: 24, gap: 6, overflow: 'hidden' }}>
-        <View pointerEvents="none" style={{ position: 'absolute', width: 260, height: 260, borderRadius: 130, backgroundColor: colors.accent, opacity: 0.35, top: -140, right: -90 }} />
-        <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: '55%', backgroundColor: colors.black, opacity: 0.45 }} />
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Text style={{ color: '#AFC2FF', fontSize: 14, fontWeight: '600' }}>{t('Total balance · CAD')}</Text>
-          <Text style={{ color: '#FFFFFF', fontSize: 12, fontWeight: '700' }}>{t('Hi {name}', { name: sampleUser.firstName })}</Text>
-        </View>
-        <Text
-          style={{ color: '#FFFFFF', fontSize: 50, fontWeight: '800', letterSpacing: -2 }}
-          adjustsFontSizeToFit
-          numberOfLines={1}
-          accessibilityLabel={t('Wallet balance')}>
-          {formatMoney({ minor: sampleUser.balanceMinor, currency: 'CAD' })}
+      <View style={{ alignItems: 'center', paddingTop: 28, paddingBottom: 8, gap: 6 }}>
+        <Text style={{ fontSize: 15, color: colors.muted }}>{t('Your balance')}</Text>
+        <Text style={{ fontSize: 50, fontWeight: '400', color: colors.ink, letterSpacing: -1.5 }} adjustsFontSizeToFit numberOfLines={1} accessibilityLabel={t('Wallet balance')}>
+          {balance}
         </Text>
-        <View style={{ flexDirection: 'row', gap: 10, paddingTop: 8 }}>
-          <Pressable accessibilityRole="button" style={{ flex: 1, minHeight: 50, borderRadius: 999, backgroundColor: '#FFFFFF', alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={{ color: colors.navy, fontSize: 15, fontWeight: '700' }}>{t('Add money')}</Text>
-          </Pressable>
-          <Pressable accessibilityRole="button" onPress={() => router.push('/send')} style={{ flex: 1, minHeight: 50, borderRadius: 999, backgroundColor: colors.black, alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={{ color: '#FFFFFF', fontSize: 15, fontWeight: '700' }}>{t('Send')}</Text>
-          </Pressable>
+      </View>
+
+      <View style={{ marginHorizontal: -20 }}>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} snapToInterval={292} decelerationRate="fast" contentContainerStyle={{ paddingHorizontal: 20, gap: 12 }}>
+          <Link href="/card" asChild>
+            <Pressable accessibilityRole="button" accessibilityLabel={t('Visa debit card ending {last4}', { last4: '2049' })}>
+              <Image source={require('@/assets/ui/card-silver.png')} style={{ width: 280, height: 176, borderRadius: 22 }} />
+            </Pressable>
+          </Link>
+          <Image source={require('@/assets/ui/card-blue.png')} style={{ width: 280, height: 176, borderRadius: 22 }} accessibilityLabel={t('Cards')} />
+        </ScrollView>
+      </View>
+
+      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor: colors.surface, borderRadius: radius.pill, paddingVertical: 8, paddingLeft: 20, paddingRight: 8 }}>
+        <Text style={{ fontSize: 15, color: colors.muted }}>{t('Cards')}</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+          <IconCircle name="plus" size={40} onPress={() => router.push('/card')} label={t('Card')} />
+          <Image source={require('@/assets/ui/card-silver.png')} style={{ width: 62, height: 39, borderRadius: 7 }} />
+          <Image source={require('@/assets/ui/card-blue.png')} style={{ width: 62, height: 39, borderRadius: 7 }} />
         </View>
       </View>
 
-      <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginHorizontal: -5 }}>
-        {actions.map((a) => (
-          <Link key={a.label} href={a.href} asChild>
-            <Pressable accessibilityRole="button" style={{ width: '25%', padding: 5 }}>
-              <View style={{ height: 88, borderRadius: 22, backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.border, alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-                <View style={{ width: 34, height: 34, borderRadius: 11, backgroundColor: colors.primarySoft, alignItems: 'center', justifyContent: 'center' }}>
-                  <Text style={{ fontSize: 11, fontWeight: '800', color: colors.accent, letterSpacing: 0.5 }}>{a.short}</Text>
-                </View>
-                <Text style={{ fontSize: 12, fontWeight: '600', color: colors.ink }}>{t(a.label)}</Text>
-              </View>
+      <View style={{ flexDirection: 'row', gap: 10, alignItems: 'center' }}>
+        <Pill icon="plus" label={t('Add')} />
+        <Pill icon="send" label={t('Send')} onPress={() => router.push('/send')} />
+        <IconCircle name="more" size={60} label={t('More')} onPress={() => router.push('/global')} />
+      </View>
+
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', rowGap: 16, paddingTop: 4 }}>
+        {services.map((s) => (
+          <Link key={s.label} href={s.href} asChild>
+            <Pressable accessibilityRole="button" style={{ width: '33.33%', alignItems: 'center', gap: 8 }}>
+              <IconCircle name={s.icon} size={56} />
+              <Text style={{ fontSize: 13, color: colors.ink }}>{t(s.label)}</Text>
             </Pressable>
           </Link>
         ))}
       </View>
 
-      <Link href="/card" asChild>
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel={t('Visa debit card ending {last4}', { last4: '2049' })}
-          style={{ height: 150, borderRadius: radius.xxl, backgroundColor: colors.black, borderWidth: 1, borderColor: '#1F2A44', padding: 22, justifyContent: 'space-between', overflow: 'hidden' }}>
-          <View pointerEvents="none" style={{ position: 'absolute', width: 220, height: 220, borderRadius: 110, backgroundColor: colors.accent, opacity: 0.3, top: -120, right: -60 }} />
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Image source={require('@/assets/brand/oenodpay-logo-white-2000.png')} style={{ width: 111, height: 15 }} resizeMode="contain" />
-            <Text style={{ color: '#B9C0D4', fontSize: 11, fontWeight: '700', letterSpacing: 2 }}>{t('DEBIT')}</Text>
-          </View>
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end' }}>
-            <Text style={{ color: '#FFFFFF', fontSize: 16, letterSpacing: 3 }}>•••• 2049</Text>
-            <Text style={{ color: '#FFFFFF', fontSize: 22, fontWeight: '800', fontStyle: 'italic' }}>VISA</Text>
-          </View>
-        </Pressable>
-      </Link>
-
       <NextStep account={account} />
 
-      <Card>
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
-          <View style={{ flex: 1 }}>
-            <Text style={{ fontSize: 13, color: colors.muted }}>{t('Rewards')}</Text>
-            <Text style={{ fontSize: 18, fontWeight: '700', color: colors.ink }}>{t('{points} points', { points: sampleUser.points.toLocaleString('en-CA') })}</Text>
-            <Text style={{ fontSize: 12, color: colors.muted }}>{t('Redeem for flights, hotels or eSIM data')}</Text>
-          </View>
-          <Button label={t('Redeem')} variant="soft" onPress={() => router.push('/travel')} />
-        </View>
-      </Card>
+      <Text style={{ fontSize: 15, color: colors.muted, paddingTop: 4 }}>{t('Transactions')}</Text>
+      <View style={{ gap: 18 }}>
+        {sampleActivity.map((a) => {
+          const incoming = a.amountMinor > 0;
+          const [kind, when] = t(a.meta).split(' · ');
+          return (
+            <View key={a.id} style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+              <IconCircle name={incoming ? 'receive' : a.id === '2' ? 'bill' : 'send'} size={54} />
+              <View style={{ flex: 1, gap: 3 }}>
+                <Text style={{ fontSize: 16, color: colors.ink }}>{t(a.name)}</Text>
+                <Text style={{ fontSize: 13, color: colors.muted }}>{when ?? kind}</Text>
+              </View>
+              <View style={{ alignItems: 'flex-end', gap: 3 }}>
+                <Text style={{ fontSize: 16, color: incoming ? colors.positive : colors.ink }}>
+                  {incoming ? '+' : ''}{formatMoney({ minor: a.amountMinor, currency: 'CAD' })}
+                </Text>
+                <Text style={{ fontSize: 13, color: colors.muted }}>{when ? kind : ''}</Text>
+              </View>
+            </View>
+          );
+        })}
+      </View>
 
-      <Heading>{t('Recent activity')}</Heading>
-      <Card>
-        {sampleActivity.map((a) => (
-          <ListRow
-            key={a.id}
-            leading={a.initials}
-            title={t(a.name)}
-            subtitle={t(a.meta)}
-            trailing={
-              <Text style={{ fontSize: 14, fontWeight: '600', color: a.amountMinor > 0 ? colors.positive : colors.ink }}>
-                {a.amountMinor > 0 ? '+' : ''}
-                {formatMoney({ minor: a.amountMinor, currency: 'CAD' })}
-              </Text>
-            }
-          />
-        ))}
+      <Card style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+        <IconCircle name="gift" size={48} />
+        <View style={{ flex: 1 }}>
+          <Text style={{ fontSize: 16, color: colors.ink }}>{t('{points} points', { points: sampleUser.points.toLocaleString('en-CA') })}</Text>
+          <Text style={{ fontSize: 13, color: colors.muted }}>{t('Redeem for flights, hotels or eSIM data')}</Text>
+        </View>
+        <Pressable accessibilityRole="button" onPress={() => router.push('/travel')} style={{ paddingHorizontal: 16, minHeight: 40, borderRadius: 20, backgroundColor: colors.primary, justifyContent: 'center' }}>
+          <Text style={{ color: colors.onPrimary, fontWeight: '500' }}>{t('Redeem')}</Text>
+        </Pressable>
       </Card>
     </Screen>
   );

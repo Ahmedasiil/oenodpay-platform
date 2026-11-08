@@ -74,8 +74,8 @@ export function Hub() {
       <header className="pv-top">
         <a className="pv-brand" href="/" target="_blank" rel="noreferrer">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/oenodpay-symbol-white.svg" alt="" width={26} height={26} />
-          <span><b>OENOD<i>PAY</i></b><small>LIVE PREVIEW</small></span>
+          <img src="/oenodpay-logo-white.svg" alt="OENODPAY" width={117} height={19} />
+          <small>LIVE PREVIEW</small>
         </a>
         <nav className="pv-tabs" aria-label="What to show">
           {tabs.map(([v, l]) => (

@@ -233,6 +233,14 @@ const tl: Record<string, string> = {
   "{n} min ago": "{n} min na ang nakalipas",
   "{n} shares": "{n} shares",
   "{points} points": "{points} points",
+  "Your balance": "Iyong balanse",
+  "Add": "Magdagdag",
+  "Cards": "Mga card",
+  "Transactions": "Mga transaksyon",
+  "More": "Higit pa",
+  "All your money, beautifully simple.": "Lahat ng pera mo, napakasimple.",
+  "Create an account": "Gumawa ng account",
+  "I already have an account": "May account na ako",
 };
 
 export default tl;

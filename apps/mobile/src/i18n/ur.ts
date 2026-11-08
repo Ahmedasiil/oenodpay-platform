@@ -233,6 +233,14 @@ const ur: Record<string, string> = {
   "{n} min ago": "{n} منٹ پہلے",
   "{n} shares": "{n} شیئرز",
   "{points} points": "{points} پوائنٹس",
+  "Your balance": "آپ کا بیلنس",
+  "Add": "شامل کریں",
+  "Cards": "کارڈز",
+  "Transactions": "لین دین",
+  "More": "مزید",
+  "All your money, beautifully simple.": "آپ کی ساری رقم، انتہائی آسان۔",
+  "Create an account": "اکاؤنٹ بنائیں",
+  "I already have an account": "میرا پہلے سے اکاؤنٹ ہے",
 };
 
 export default ur;

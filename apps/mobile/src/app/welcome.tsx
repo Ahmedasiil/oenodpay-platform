@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Image, Text, View } from 'react-native';
+import { Image, Pressable, Text, View, useWindowDimensions } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 
 import { Body, Button, Card, Field, Screen, Segmented } from '@/components/ui';
@@ -17,6 +18,8 @@ const messages: Record<string, string> = {
 export default function Welcome() {
   const t = useT();
   const [mode, setMode] = useState<'signin' | 'signup'>('signup');
+  const [intro, setIntro] = useState(true);
+  const { width } = useWindowDimensions();
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -38,13 +41,39 @@ export default function Welcome() {
     }
   };
 
+  if (intro) {
+    const w = Math.min(width, 520);
+    return (
+      <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }} edges={['bottom']}>
+        <View style={{ flex: 1, alignItems: 'center' }}>
+          <Image source={require('@/assets/ui/welcome-hero.png')} style={{ width: w, height: w * (800 / 780), marginTop: -20 }} resizeMode="cover" accessibilityIgnoresInvertColors />
+          <SafeAreaView edges={['top']} style={{ position: 'absolute', top: 0, left: 0, right: 0, alignItems: 'center' }}>
+            <Image source={require('@/assets/brand/oenodpay-logo-white-2000.png')} accessibilityLabel="OENODPAY" style={{ marginTop: 14, width: 123, height: 20 }} resizeMode="contain" />
+          </SafeAreaView>
+        </View>
+        <View style={{ paddingHorizontal: 28, paddingBottom: 24, gap: 14, maxWidth: 520, width: '100%', alignSelf: 'center' }}>
+          <Text style={{ fontSize: 40, lineHeight: 46, fontWeight: '500', color: colors.ink, letterSpacing: -1.2 }}>{t('All your money, beautifully simple.')}</Text>
+          <Text style={{ fontSize: 16, lineHeight: 23, color: colors.muted }}>{t('Send, pay, travel and grow your money. One secure app.')}</Text>
+          <View style={{ height: 10 }} />
+          <Button label={t('Create an account')} onPress={() => { setMode('signup'); setIntro(false); }} />
+          <Pressable accessibilityRole="button" onPress={() => { setMode('signin'); setIntro(false); }} style={{ minHeight: 44, alignItems: 'center', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 15, color: colors.ink }}>{t('I already have an account')}</Text>
+          </Pressable>
+          <Pressable accessibilityRole="button" onPress={() => router.replace('/')} style={{ alignItems: 'center' }}>
+            <Text style={{ fontSize: 13, color: colors.muted }}>{t('Explore the demo first')}</Text>
+          </Pressable>
+        </View>
+      </SafeAreaView>
+    );
+  }
+
   return (
     <Screen>
       <View style={{ alignItems: 'center', gap: 10, paddingTop: 24, paddingBottom: 8 }}>
         <Image
-          source={require('@/assets/brand/oenodpay-stacked-2000.png')}
+          source={require('@/assets/brand/oenodpay-logo-white-2000.png')}
           accessibilityLabel="OENODPAY"
-          style={{ width: 160, height: 99 }}
+          style={{ width: 210, height: 34 }}
           resizeMode="contain"
         />
         <Text style={{ fontSize: 15, color: colors.muted, textAlign: 'center' }}>{t('Send, pay, travel and grow your money. One secure app.')}</Text>

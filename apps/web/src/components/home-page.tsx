@@ -60,17 +60,10 @@ export function HomePage({ lang }: { lang: Locale }) {
             <div className="float-card fc2" style={{ animationDelay: "1.5s" }}><span className="dot" style={{ background: "var(--accent-soft)", color: "var(--accent)" }}><Icon name="shield" size={18} /></span><span><b>{t.fc.device}</b><small>{t.fc.deviceSub}</small></span></div>
             <div className="float-card fc3" style={{ animationDelay: "3s" }}><span className="dot"><Icon name="gauge" size={18} /></span><span><b>{t.fc.score}</b><small>{t.fc.scoreSub}</small></span></div>
             <div className="phone">
-              <div className="screen">
-                <div className="hi"><span>Good morning, Ahmed</span><span className="av">AA</span></div>
-                <div className="bal"><span>Balance · CAD</span><b>$2,480.50</b></div>
-                <div className="acts"><div><i />Send</div><div><i />Bills</div><div><i />Card</div><div><i />Travel</div></div>
-                <div className="tx">
-                  <div><span>Maria · Manila</span><b>−$500.00</b></div>
-                  <div><span>Toronto Hydro</span><b>−$84.20</b></div>
-                  <div><span>Payroll</span><b className="pos">+$2,150.00</b></div>
-                  <div><span>Lend interest</span><b className="pos">+$6.12</b></div>
-                </div>
-              </div>
+              
+              {/* The real oenodPay app home screen, captured from the app itself. */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/img/app-home.png" alt="" width={390} height={844} />
             </div>
           </div>
         </div>
