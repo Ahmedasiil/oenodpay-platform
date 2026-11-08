@@ -372,6 +372,20 @@ export class PostgresRepository implements Repository {
     });
   }
 
+  // Early access -----------------------------------------------------------------
+
+  async joinWaitlist(email: string, source: string | null) {
+    const { rowCount } = await this.pool.query(
+      'INSERT INTO waitlist (email, source) VALUES ($1, $2) ON CONFLICT (email) DO NOTHING', [email, source],
+    );
+    return rowCount === 1;
+  }
+
+  async waitlistCount() {
+    const { rows } = await this.pool.query<{ n: string }>('SELECT count(*) AS n FROM waitlist');
+    return Number(rows[0]!.n);
+  }
+
   // Audit -----------------------------------------------------------------------
 
   async record(actor: string | null, action: string, detail: Record<string, unknown> = {}) {

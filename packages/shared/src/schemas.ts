@@ -28,7 +28,14 @@ export const quoteSchema = z.object({
   amountMinor,
 });
 
+/** Early-access sign-up from the website. */
+export const waitlistSchema = z.object({
+  email: z.string().trim().toLowerCase().email().max(254),
+  source: z.string().max(40).optional(),
+});
+
 export type RegisterInput = z.infer<typeof registerSchema>;
 export type LoginInput = z.infer<typeof loginSchema>;
 export type WalletTransferInput = z.infer<typeof walletTransferSchema>;
 export type QuoteInput = z.infer<typeof quoteSchema>;
+export type WaitlistInput = z.infer<typeof waitlistSchema>;

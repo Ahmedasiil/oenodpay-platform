@@ -52,6 +52,19 @@ describe.each(repoKinds)('API (%s)', (kind) => {
     expect(dup.statusCode).toBe(409);
   });
 
+  it('adds emails to the early-access list once and answers the same for repeats', async () => {
+    const app = await setup();
+    const first = await app.inject({ method: 'POST', url: '/v1/waitlist', payload: { email: 'Early@Example.com', source: 'website' } });
+    const again = await app.inject({ method: 'POST', url: '/v1/waitlist', payload: { email: 'early@example.com' } });
+    expect(first.statusCode).toBe(202);
+    expect(again.statusCode).toBe(202);
+    expect(again.json()).toEqual(first.json());
+    expect(await repo.waitlistCount()).toBe(1);
+    const bad = await app.inject({ method: 'POST', url: '/v1/waitlist', payload: { email: 'not-an-email' } });
+    expect(bad.statusCode).toBe(400);
+    await app.close();
+  });
+
   it('blocks protected routes without a valid token', async () => {
     const app = await setup();
     const res = await app.inject({ method: 'GET', url: '/v1/wallet', headers: { authorization: 'Bearer forged' } });

@@ -120,6 +120,11 @@ export interface Repository {
   /** Records the vendor's decision and updates the person's status in one step. Only the first decision counts. */
   completeKycCheck(providerRef: string, status: 'verified' | 'rejected', reason: string | null): Promise<KycCheck | undefined>;
 
+  // Early access
+  /** Adds an email to the launch list. Returns false if it was already there. */
+  joinWaitlist(email: string, source: string | null): Promise<boolean>;
+  waitlistCount(): Promise<number>;
+
   // Audit trail (append-only; never passwords, tokens or full card numbers)
   record(actor: string | null, action: string, detail?: Record<string, unknown>): Promise<void>;
   auditFor(actor: string): Promise<AuditEvent[]>;

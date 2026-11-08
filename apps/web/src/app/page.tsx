@@ -1,148 +1,122 @@
-import Link from "next/link";
-import { CORRIDORS } from "@oenodpay/shared";
 import { SiteHeader } from "@/components/site-header";
+import { EarlyAccess } from "@/components/landing/early-access";
+import { Playground } from "@/components/landing/playground";
 
-const features = [
-  { title: "Wallet and transfers", body: "Free instant transfers to other oenodPay users, plus Interac e-Transfer and EFT to any Canadian bank." },
-  { title: "Bill pay", body: "Utilities, phone, internet and taxes in one list, with reminders and auto-pay." },
-  { title: "Debit card", body: "A virtual card the moment you join, a physical Visa or Mastercard by mail, Apple Pay and Google Pay, freeze in one tap." },
-  { title: "Travel", body: "Book flights and hotels, pay with your wallet or points, and earn rewards on every trip." },
-  { title: "eSIM data", body: "Data plans for 190+ countries, installed in the app before you land." },
-  { title: "Rewards", body: "Points on card spend, bills and referrals, redeemable for travel and eSIM." },
-  { title: "Credit score", body: "Your free score and report, with alerts and tips to raise it." },
-  { title: "Investing", body: "Buy Canadian and US stocks and ETFs, including fractional shares." },
+const STEPS = [
+  { t: "Open your account", b: "Download the app and verify your ID in about five minutes." },
+  { t: "Add money", b: "Move money in from any Canadian bank, or get paid straight into oenodPay." },
+  { t: "Do everything", b: "Send, spend, pay bills, travel and invest from one balance." },
 ];
 
-const protections = [
-  { title: "Passkeys, not passwords", body: "Sign in with Face ID or your fingerprint. Nothing to phish or reuse." },
-  { title: "Trusted devices only", body: "A new phone must be approved from your current one, and SIM swaps are detected." },
-  { title: "24/7 fraud monitoring", body: "Every login and payment is checked in real time, with scam warnings before risky transfers." },
-  { title: "Encrypted and in Canada", body: "Data encrypted in transit and at rest, with keys in hardware and Canadian data stored in Canada." },
+const SECURITY = [
+  { t: "Passkey sign-in", b: "Log in with Face ID or your fingerprint. There's no password to steal." },
+  { t: "Instant card controls", b: "Freeze your card, block online payments or set limits in one tap." },
+  { t: "Alerts on every payment", b: "Know the second money moves, so you can spot anything strange right away." },
+  { t: "Encrypted data", b: "Your information is encrypted in transit and at rest, and kept in Canada." },
+];
+
+const FAQ = [
+  { q: "What is oenodPay?", a: "One app for your everyday money in Canada: sending abroad, bills, a Visa debit card, travel, eSIMs, credit score, investing and lending." },
+  { q: "Is the money in the demos real?", a: "No. The demos use pretend money so you can see how the app works. Nothing is charged and nothing is sent." },
+  { q: "When can I open an account?", a: "We're launching in Canada first. Join early access and we'll email you when your account is ready." },
+  { q: "How much does it cost?", a: "Opening an account is free. You always see any fee, like the transfer fee, before you confirm." },
+  { q: "Are the rates on this page real?", a: "They're examples. In the app you see the live rate before you send." },
 ];
 
 export default function Home() {
   return (
-    <>
+    <div className="lp" style={{ flex: 1 }}>
       <SiteHeader />
-      <main className="flex-1">
-        <section className="mx-auto max-w-6xl px-6 pt-16 pb-14 grid gap-12 md:grid-cols-[1.2fr_1fr] items-center">
-          <div className="flex flex-col gap-6">
-            <span className="self-start text-[13px] font-semibold text-ink bg-brand-soft rounded-full px-3 py-1.5">Launching in Canada</span>
-            <h1 className="font-display text-4xl sm:text-5xl md:text-[56px] leading-[1.05] font-semibold tracking-tight">
-              One app to pay, send, travel and grow your money.
-            </h1>
-            <p className="text-lg leading-relaxed text-muted">
-              Pay bills, send money to friends, banks and family abroad, book flights and hotels, buy eSIM data, get a debit
-              card, check your credit and invest. On iPhone, Android and the web, with one secure account.
+
+      <header className="top">
+        <div className="wrap">
+          <div>
+            <span className="pill">Launching first in Canada</span>
+            <h1>All your money.<br /><em>One simple app.</em></h1>
+            <p className="lead">
+              Send money abroad, pay bills, spend with a Visa card, travel, and grow your savings. oenodPay puts it all in
+              one place, with clear prices and strong security.
             </p>
-            <div id="download" className="flex flex-wrap gap-3">
-              <a href="#" className="h-13 px-6 rounded-2xl bg-black text-white flex items-center font-semibold">Download for iPhone</a>
-              <a href="#" className="h-13 px-6 rounded-2xl bg-black text-white flex items-center font-semibold">Download for Android</a>
-              <Link href="/app" className="h-13 px-6 rounded-2xl border border-black flex items-center font-semibold">Open web app</Link>
+            <div className="ctas">
+              <a className="btn light" href="#features">See what you can do</a>
+              <a className="btn line" href="#join">Get early access</a>
             </div>
+            <p className="small">Every feature below has a free demo. No sign-up needed.</p>
           </div>
-          <div className="flex justify-center">
-            <div className="w-[300px] rounded-[40px] bg-black p-3.5">
-              <div className="rounded-[28px] bg-canvas p-5 flex flex-col gap-3.5">
-                <span className="text-[13px] text-muted">Good evening, Ahmed</span>
-                <div className="rounded-[22px] bg-navy text-white p-4 flex flex-col gap-2">
-                  <span className="text-xs font-semibold opacity-75">Total balance · CAD</span>
-                  <span className="font-display text-[34px] leading-none font-bold tracking-tight">$2,480.50</span>
-                </div>
-                <div className="rounded-2xl bg-surface border border-line p-3">
-                  <p className="text-[13px] font-semibold">Maria, Philippines</p>
-                  <p className="text-xs text-muted">Sent to mobile wallet · arrived in 2 min</p>
-                </div>
-                <div className="rounded-2xl bg-surface border border-line p-3">
-                  <p className="text-[13px] font-semibold">Electricity bill</p>
-                  <p className="text-xs text-muted">Paid · auto-pay on</p>
-                </div>
+          <div className="phone" aria-hidden="true">
+            <div className="screen">
+              <div className="hi"><span>Good morning, Ahmed</span><span className="av">AA</span></div>
+              <div className="bal"><span>Balance · CAD</span><b>$2,480.50</b></div>
+              <div className="acts"><div><i />Send</div><div><i />Bills</div><div><i />Card</div><div><i />Travel</div></div>
+              <div className="tx">
+                <div><span>Maria · Manila</span><b>−$500.00</b></div>
+                <div><span>Toronto Hydro</span><b>−$84.20</b></div>
+                <div><span>Payroll</span><b className="pos">+$2,150.00</b></div>
+                <div><span>Lend interest</span><b className="pos">+$6.12</b></div>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </header>
 
-        <section id="send" className="bg-black text-white">
-          <div className="mx-auto max-w-6xl px-6 py-16 flex flex-col gap-6">
-            <h2 className="font-display text-3xl md:text-4xl font-semibold tracking-tight">Pick a country. See every way to send.</h2>
-            <p className="max-w-2xl text-lg leading-relaxed text-mist">
-              Bank deposit, mobile wallet or cash pickup: oenodPay shows what works in each country, with the fee, the rate
-              and the arrival time before you send.
-            </p>
-            <ul className="flex flex-wrap gap-2.5">
-              {CORRIDORS.map((c) => (
-                <li key={c.countryCode} className="h-11 px-4 rounded-full border border-[#39405A] flex items-center">
-                  {c.countryName}
-                </li>
-              ))}
-              <li className="h-11 px-4 rounded-full bg-white text-black flex items-center font-semibold">More coming</li>
-            </ul>
-          </div>
-        </section>
+      <div className="trust">
+        <div className="wrap">
+          <span>Made for Canada</span><span>Passkey sign-in</span><span>Encrypted end to end</span><span>Freeze your card anytime</span><span>Send to 7 countries</span>
+        </div>
+      </div>
 
-        <section id="features" className="mx-auto max-w-6xl px-6 py-16 flex flex-col gap-8">
-          <h2 className="font-display text-3xl md:text-4xl font-semibold tracking-tight">Everything in one place</h2>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {features.map((f) => (
-              <div key={f.title} className="bg-surface border border-line rounded-3xl p-6 flex flex-col gap-2">
-                <h3 className="text-lg font-semibold">{f.title}</h3>
-                <p className="text-[15px] leading-relaxed text-muted">{f.body}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+      <section className="sec alt" id="how">
+        <div className="wrap">
+          <div className="head"><span className="eyebrow">How it works</span><h2>Up and running in three steps</h2></div>
+          <ol className="steps3">
+            {STEPS.map((s) => <li key={s.t}><h3>{s.t}</h3><p>{s.b}</p></li>)}
+          </ol>
+        </div>
+      </section>
 
-        <section id="loans" className="mx-auto max-w-6xl px-6 pb-16 grid gap-4 md:grid-cols-2">
-          <div className="bg-surface border border-line rounded-3xl p-8 flex flex-col gap-3">
-            <span className="text-sm font-semibold text-brand">Borrow</span>
-            <h2 className="font-display text-3xl font-semibold">Loans that build your future</h2>
-            <p className="leading-relaxed text-muted">
-              Credit-builder loans for newcomers, personal loans with fixed payments, and Pay in 4 on travel and shopping.
-              Check your rate without affecting your score.
-            </p>
+      <section className="sec" id="features">
+        <div className="wrap">
+          <div className="head row2">
+            <div><span className="eyebrow">Features</span><h2>Everything you need. Nothing you don&apos;t.</h2></div>
+            <p>Eight features, one balance. Tap &ldquo;Try it now&rdquo; on any of them to test it with demo money.</p>
           </div>
-          <div className="bg-black text-white rounded-3xl p-8 flex flex-col gap-3">
-            <span className="text-sm font-semibold text-mint">Lend and earn</span>
-            <h2 className="font-display text-3xl font-semibold">Fund loans, earn interest</h2>
-            <p className="leading-relaxed text-mist">
-              Subscribe to oenodPay Lend, choose your risk level, and get repayments plus interest back every month. Lending
-              carries risk and is not CDIC insured.
-            </p>
-          </div>
-        </section>
+          <Playground />
+        </div>
+      </section>
 
-        <section id="security" className="bg-surface border-y border-line">
-          <div className="mx-auto max-w-6xl px-6 py-16 flex flex-col gap-8">
-            <div className="max-w-2xl flex flex-col gap-3">
-              <h2 className="font-display text-3xl md:text-4xl font-semibold tracking-tight">Security built in from day one</h2>
-              <p className="text-lg leading-relaxed text-muted">
-                Your money and your identity are protected by the same kinds of controls banks use, on every device.
-              </p>
-            </div>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {protections.map((p) => (
-                <div key={p.title} className="border border-line rounded-3xl p-6 flex flex-col gap-2">
-                  <h3 className="text-lg font-semibold">{p.title}</h3>
-                  <p className="text-[15px] leading-relaxed text-muted">{p.body}</p>
-                </div>
-              ))}
-            </div>
+      <section className="sec secure" id="security">
+        <div className="wrap">
+          <div className="head"><span className="eyebrow">Security</span><h2>Your money is protected at every step</h2><p>Security is built into oenodPay from day one, not added later.</p></div>
+          <div className="sgrid">
+            {SECURITY.map((s) => <div key={s.t}><h3>{s.t}</h3><p>{s.b}</p></div>)}
           </div>
-        </section>
-      </main>
+        </div>
+      </section>
 
-      <footer className="mx-auto max-w-6xl w-full px-6 pt-10 pb-14 flex flex-wrap justify-between gap-6 text-sm text-muted">
-        <p className="max-w-xl">
-          [COMPANY LEGAL NAME]. [FINTRAC MSB AND BANK OF CANADA PSP REGISTRATION DETAILS]. oenodPay is not a bank. Wallet funds
-          are held with [PARTNER INSTITUTION].
-        </p>
-        <nav aria-label="Footer" className="flex flex-wrap gap-5 text-ink">
-          <a href="#">Privacy</a>
-          <a href="#">Terms</a>
-          <Link href="/#security">Security</Link>
-          <a href="#">Help</a>
-        </nav>
+      <section className="sec" id="faq">
+        <div className="wrap">
+          <div className="head"><span className="eyebrow">Questions</span><h2>Common questions</h2></div>
+          <div className="faq2">
+            {FAQ.map((f) => <details key={f.q}><summary>{f.q}</summary><p>{f.a}</p></details>)}
+          </div>
+        </div>
+      </section>
+
+      <section className="sec" id="join" style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <div className="join">
+            <div><h2>Be first when oenodPay launches</h2><p>Leave your email and we&apos;ll let you know when you can open your account.</p></div>
+            <EarlyAccess />
+          </div>
+        </div>
+      </section>
+
+      <footer className="foot2">
+        <div className="wrap">
+          <span><span className="logo">oenod<b>Pay</b></span>&nbsp; A product of OENOD.</span>
+          <span>Demos use pretend money and example rates. No real accounts, cards or transfers.</span>
+        </div>
       </footer>
-    </>
+    </div>
   );
 }

@@ -183,7 +183,7 @@ export const styles = StyleSheet.create({
   btnText_soft: { color: colors.ink },
   btnText_danger: { color: '#FFFFFF' },
   pressed: { opacity: 0.7 },
-  segmented: { flexDirection: 'row', backgroundColor: colors.surface, borderRadius: radius.md, padding: 4, gap: 4 },
+  segmented: { flexDirection: 'row', backgroundColor: '#EBEEF4', borderRadius: radius.md, padding: 4, gap: 4 },
   segment: { flex: 1, minHeight: 40, borderRadius: 11, alignItems: 'center', justifyContent: 'center' },
   segmentSelected: { backgroundColor: colors.primary },
   segmentText: { fontSize: 13, fontWeight: '600', color: colors.muted },

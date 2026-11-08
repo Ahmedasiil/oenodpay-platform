@@ -67,9 +67,11 @@ export default function Home() {
         </Link>
       </View>
 
-      <View style={{ backgroundColor: colors.navy, borderRadius: radius.hero, padding: 24, gap: 6 }}>
+      <View style={{ backgroundColor: colors.navy, borderRadius: radius.hero, padding: 24, gap: 6, overflow: 'hidden' }}>
+        <View pointerEvents="none" style={{ position: 'absolute', width: 260, height: 260, borderRadius: 130, backgroundColor: colors.accent, opacity: 0.35, top: -140, right: -90 }} />
+        <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: '55%', backgroundColor: colors.black, opacity: 0.45 }} />
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Text style={{ color: '#B9C3D9', fontSize: 14, fontWeight: '600' }}>Total balance · CAD</Text>
+          <Text style={{ color: '#AFC2FF', fontSize: 14, fontWeight: '600' }}>Total balance · CAD</Text>
           <Text style={{ color: '#FFFFFF', fontSize: 12, fontWeight: '700' }}>Hi {sampleUser.firstName}</Text>
         </View>
         <Text
@@ -93,8 +95,10 @@ export default function Home() {
         {actions.map((a) => (
           <Link key={a.label} href={a.href} asChild>
             <Pressable accessibilityRole="button" style={{ width: '25%', padding: 5 }}>
-              <View style={{ height: 82, borderRadius: 24, backgroundColor: colors.surface, alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-                <Text style={{ fontSize: 13, fontWeight: '800', color: colors.ink, letterSpacing: 1 }}>{a.short}</Text>
+              <View style={{ height: 88, borderRadius: 22, backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.border, alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+                <View style={{ width: 34, height: 34, borderRadius: 11, backgroundColor: colors.primarySoft, alignItems: 'center', justifyContent: 'center' }}>
+                  <Text style={{ fontSize: 11, fontWeight: '800', color: colors.accent, letterSpacing: 0.5 }}>{a.short}</Text>
+                </View>
                 <Text style={{ fontSize: 12, fontWeight: '600', color: colors.ink }}>{a.label}</Text>
               </View>
             </Pressable>
@@ -106,7 +110,8 @@ export default function Home() {
         <Pressable
           accessibilityRole="button"
           accessibilityLabel="Visa debit card ending 2049"
-          style={{ height: 150, borderRadius: radius.xxl, backgroundColor: colors.black, borderWidth: 1, borderColor: '#1F2A44', padding: 22, justifyContent: 'space-between' }}>
+          style={{ height: 150, borderRadius: radius.xxl, backgroundColor: colors.black, borderWidth: 1, borderColor: '#1F2A44', padding: 22, justifyContent: 'space-between', overflow: 'hidden' }}>
+          <View pointerEvents="none" style={{ position: 'absolute', width: 220, height: 220, borderRadius: 110, backgroundColor: colors.accent, opacity: 0.3, top: -120, right: -60 }} />
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
             <Image source={require('@/assets/brand/oenodpay-logo-white-2000.png')} style={{ width: 95, height: 20 }} resizeMode="contain" />
             <Text style={{ color: '#B9C0D4', fontSize: 11, fontWeight: '700', letterSpacing: 2 }}>DEBIT</Text>

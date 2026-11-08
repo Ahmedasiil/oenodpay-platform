@@ -4,7 +4,7 @@ import rateLimit from '@fastify/rate-limit';
 import cors from '@fastify/cors';
 import { z, ZodError } from 'zod';
 import {
-  CORRIDORS, QuoteError, loginSchema, quoteSchema, quoteTransfer, registerSchema, walletTransferSchema,
+  CORRIDORS, QuoteError, loginSchema, quoteSchema, waitlistSchema, quoteTransfer, registerSchema, walletTransferSchema,
 } from '@oenodpay/shared';
 import type { Config } from './config';
 import { LedgerError } from './ledger/ledger';
@@ -328,6 +328,15 @@ export async function buildApp(
     ]);
     await repo.record(user.id, 'transfer.wallet', { entryId: entry.id, to: recipient.id, amountMinor: input.amountMinor });
     return reply.status(201).send({ transferId: entry.id, balanceMinor: await repo.balance(user.walletAccountId) });
+  });
+
+  // Early access. The answer is the same whether or not the email was already listed,
+  // so the form can't be used to check who has signed up.
+  app.post('/v1/waitlist', { config: { rateLimit: { max: 5, timeWindow: '1 minute' } } }, async (req, reply) => {
+    const input = waitlistSchema.parse(req.body);
+    const added = await repo.joinWaitlist(input.email, input.source ?? null);
+    if (added) await repo.record(null, 'waitlist.joined', { source: input.source ?? null });
+    return reply.status(202).send({ status: 'listed' });
   });
 
   app.get('/v1/corridors', async () => ({ corridors: CORRIDORS, sampleData: true }));

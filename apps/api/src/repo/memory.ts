@@ -18,6 +18,7 @@ export class MemoryRepository implements Repository {
   private challenges = new Map<string, { purpose: ChallengePurpose; userId: string | null; challenge: string; expiresAt: Date }>();
   private kyc = new Map<string, KycCheck>();
   private audit: AuditEvent[] = [];
+  private waitlist = new Map<string, string | null>();
 
   constructor() {
     const open = (kind: 'funding_clearing' | 'payout_clearing' | 'fee_revenue') =>
@@ -190,6 +191,16 @@ export class MemoryRepository implements Repository {
       await this.setKycStatus(check.userId, status);
     }
     return { ...check };
+  }
+
+  async joinWaitlist(email: string, source: string | null) {
+    if (this.waitlist.has(email)) return false;
+    this.waitlist.set(email, source);
+    return true;
+  }
+
+  async waitlistCount() {
+    return this.waitlist.size;
   }
 
   async record(actor: string | null, action: string, detail: Record<string, unknown> = {}) {
