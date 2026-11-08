@@ -1,42 +1,33 @@
 import { useState } from 'react';
-import { Text, View } from 'react-native';
+import { Image, Text, View, useWindowDimensions } from 'react-native';
 
 import { Body, Button, Card, Screen } from '@/components/ui';
+import { useT } from '@/lib/i18n';
 import { colors } from '@/lib/theme';
 
 export default function CardScreen() {
+  const t = useT();
   const [frozen, setFrozen] = useState(false);
+  const cw = Math.min(useWindowDimensions().width, 560) - 40;
   return (
-    <Screen title="Your card">
-      <View
-        accessibilityLabel={frozen ? 'Debit card, frozen' : 'Debit card, active'}
-        style={{ height: 210, borderRadius: 22, backgroundColor: colors.ink, padding: 22, justifyContent: 'space-between', opacity: frozen ? 0.45 : 1 }}>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-          <Text style={{ color: '#FFFFFF', fontSize: 20, fontWeight: '700' }}>oenodPay</Text>
-          <Text style={{ color: '#B9C0D4', fontSize: 12 }}>Debit</Text>
-        </View>
-        <View style={{ width: 44, height: 32, borderRadius: 6, backgroundColor: '#C9CEDC' }} />
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end' }}>
-          <View>
-            <Text style={{ color: '#FFFFFF', fontSize: 16, letterSpacing: 2 }}>•••• •••• •••• 2049</Text>
-            <Text style={{ color: '#B9C0D4', fontSize: 12 }}>AHMED ASIL · 09/30</Text>
-          </View>
-          <Text style={{ color: '#FFFFFF', fontSize: 18, fontWeight: '800', fontStyle: 'italic' }}>VISA</Text>
-        </View>
+    <Screen title={t('Your card')}>
+      <View accessibilityLabel={frozen ? t('Debit card, frozen') : t('Debit card, active')} style={{ opacity: frozen ? 0.4 : 1 }}>
+        <Image source={require('@/assets/ui/card-silver.png')} style={{ width: cw, height: cw * (428 / 680), borderRadius: 26 }} resizeMode="cover" />
+        <Text style={{ position: 'absolute', left: 24, top: '58%', color: '#2A2A2E', fontSize: 12, fontWeight: '600', letterSpacing: 1 }}>AHMED ASIL · 09/30</Text>
       </View>
       <View style={{ flexDirection: 'row', gap: 10 }}>
-        <View style={{ flex: 1 }}><Button label={frozen ? 'Unfreeze' : 'Freeze card'} variant="secondary" onPress={() => setFrozen(!frozen)} /></View>
-        <View style={{ flex: 1 }}><Button label="Show details" variant="secondary" /></View>
+        <View style={{ flex: 1 }}><Button label={frozen ? t('Unfreeze') : t('Freeze card')} variant="secondary" onPress={() => setFrozen(!frozen)} /></View>
+        <View style={{ flex: 1 }}><Button label={t('Show details')} variant="secondary" /></View>
       </View>
       <Card>
         <Text style={{ fontWeight: '600', fontSize: 14, color: colors.ink }}>
-          {frozen ? 'Card frozen: no purchases or withdrawals until you unfreeze it' : 'Card active: purchases and ATM withdrawals allowed'}
+          {frozen ? t('Card frozen: no purchases or withdrawals until you unfreeze it') : t('Card active: purchases and ATM withdrawals allowed')}
         </Text>
-        <Body muted>Spent this month: $642.18 of $3,000</Body>
-        <Body muted>Cashback earned: +320 points</Body>
+        <Body muted>{t('Spent this month: {spent} of {limit}', { spent: '$642.18', limit: '$3,000' })}</Body>
+        <Body muted>{t('Cashback earned: +{points} points', { points: 320 })}</Body>
       </Card>
-      <Button label="Add to Apple Pay or Google Pay" />
-      <Body muted>Card numbers are shown by the card partner's secure view and never stored on oenodPay servers.</Body>
+      <Button label={t('Add to Apple Pay or Google Pay')} />
+      <Body muted>{t('Card numbers are shown by the card partner’s secure view and never stored on oenodPay servers.')}</Body>
     </Screen>
   );
 }

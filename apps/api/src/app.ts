@@ -4,7 +4,7 @@ import rateLimit from '@fastify/rate-limit';
 import cors from '@fastify/cors';
 import { z, ZodError } from 'zod';
 import {
-  CORRIDORS, QuoteError, loginSchema, quoteSchema, quoteTransfer, registerSchema, walletTransferSchema,
+  CORRIDORS, QuoteError, loginSchema, quoteSchema, waitlistSchema, contactSchema, quoteTransfer, registerSchema, walletTransferSchema,
 } from '@oenodpay/shared';
 import type { Config } from './config';
 import { LedgerError } from './ledger/ledger';
@@ -328,6 +328,46 @@ export async function buildApp(
     ]);
     await repo.record(user.id, 'transfer.wallet', { entryId: entry.id, to: recipient.id, amountMinor: input.amountMinor });
     return reply.status(201).send({ transferId: entry.id, balanceMinor: await repo.balance(user.walletAccountId) });
+  });
+
+  // Early access. The answer is the same whether or not the email was already listed,
+  // so the form can't be used to check who has signed up.
+  app.post('/v1/waitlist', { config: { rateLimit: { max: 5, timeWindow: '1 minute' } } }, async (req, reply) => {
+    const input = waitlistSchema.parse(req.body);
+    const added = await repo.joinWaitlist(input.email, input.source ?? null);
+    if (added) await repo.record(null, 'waitlist.joined', { source: input.source ?? null });
+    return reply.status(202).send({ status: 'listed' });
+  });
+
+  // Website contact form. Complaints and privacy requests are logged so their deadlines can be tracked.
+  app.post('/v1/contact', { config: { rateLimit: { max: 3, timeWindow: '1 minute' } } }, async (req, reply) => {
+    const input = contactSchema.parse(req.body);
+    const reference = await repo.saveContactMessage(input);
+    await repo.record(null, 'contact.received', { reference, topic: input.topic });
+    return reply.status(201).send({ reference });
+  });
+
+  // Public price calculator for the website: same maths as a real quote, no account needed.
+  app.post('/v1/public/quotes', { config: { rateLimit: { max: 30, timeWindow: '1 minute' } } }, async (req) => {
+    const input = quoteSchema.parse(req.body);
+    return { quote: quoteTransfer(input.countryCode, input.methodId, input.amountMinor), sampleData: true };
+  });
+
+  // Public status page. Reports each part of the service without exposing internals.
+  app.get('/v1/status', async () => {
+    const started = Date.now();
+    const db = await repo.ping().then(() => 'operational' as const, () => 'outage' as const);
+    const components = [
+      { id: 'api', name: 'Website and app API', status: 'operational' as const },
+      { id: 'ledger', name: 'Accounts and balances', status: db },
+      { id: 'transfers', name: 'Transfers in Canada', status: db },
+      { id: 'international', name: 'International transfers', status: db },
+      { id: 'identity', name: 'Identity verification', status: 'operational' as const },
+    ];
+    return {
+      status: components.every((c) => c.status === 'operational') ? 'operational' : 'degraded',
+      components, latencyMs: Date.now() - started, checkedAt: new Date().toISOString(),
+    };
   });
 
   app.get('/v1/corridors', async () => ({ corridors: CORRIDORS, sampleData: true }));

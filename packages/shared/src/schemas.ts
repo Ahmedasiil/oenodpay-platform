@@ -28,7 +28,24 @@ export const quoteSchema = z.object({
   amountMinor,
 });
 
+/** Early-access sign-up from the website. */
+export const waitlistSchema = z.object({
+  email: z.string().trim().toLowerCase().email().max(254),
+  source: z.string().max(40).optional(),
+});
+
+/** Messages from the website's contact form. */
+export const CONTACT_TOPICS = ['support', 'privacy', 'complaint', 'security', 'press', 'partnerships', 'careers'] as const;
+export const contactSchema = z.object({
+  name: z.string().trim().min(2).max(120),
+  email: z.string().trim().toLowerCase().email().max(254),
+  topic: z.enum(CONTACT_TOPICS),
+  message: z.string().trim().min(10, 'Tell us a little more (at least 10 characters)').max(4000),
+});
+
 export type RegisterInput = z.infer<typeof registerSchema>;
 export type LoginInput = z.infer<typeof loginSchema>;
 export type WalletTransferInput = z.infer<typeof walletTransferSchema>;
 export type QuoteInput = z.infer<typeof quoteSchema>;
+export type WaitlistInput = z.infer<typeof waitlistSchema>;
+export type ContactInput = z.infer<typeof contactSchema>;

@@ -1,18 +1,26 @@
 @import "tailwindcss";
+@import "./landing.css";
+@import "./site.css";
+@import "./design-dark.css";
 
+/* Shared tokens for every web page. They match packages/shared/src/theme.ts. */
 @theme inline {
-  --color-brand: #3530D9;
-  --color-brand-dark: #221EA8;
-  --color-brand-soft: #ECEBFF;
-  --color-ink: #0B1020;
-  --color-muted: #4A5368;
-  --color-mist: #B9C0D4;
-  --color-canvas: #F4F5F9;
-  --color-line: #E3E6EE;
-  --color-mint: #7CE0C3;
-  --color-positive: #0B7A6B;
-  --font-sans: var(--font-inter);
-  --font-display: var(--font-space-grotesk);
+  --color-brand: #0A1633;
+  --color-brand-dark: #05070D;
+  --color-brand-soft: #E7EDFC;
+  --color-navy: #0A1633;
+  --color-accent: #2252D1;
+  --color-surface: #FFFFFF;
+  --color-ink: #0B1B3F;
+  --color-muted: #5A6480;
+  --color-mist: #C5D3FF;
+  --color-canvas: #F6F7FA;
+  --color-line: #E2E6EE;
+  --color-mint: #FFFFFF;
+  --color-positive: #0F8A5F;
+  --font-sans: var(--font-geist);
+  --font-display: var(--font-geist);
+  --font-mono: var(--font-geist-mono);
 }
 
 body {

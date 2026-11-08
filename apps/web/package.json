@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "test": "echo \"no tests yet\""
+    "test": "vitest run",
+    "i18n:record": "tsx scripts/i18n.ts demo && rm -f .i18n-record.jsonl && I18N_RECORD=$PWD/.i18n-record.jsonl next build && tsx scripts/i18n.ts source .i18n-record.jsonl",
+    "i18n:check": "tsx scripts/i18n.ts check"
   },
   "dependencies": {
     "@oenodpay/shared": "workspace:*",
@@ -25,7 +27,8 @@
     "eslint": "^9",
     "eslint-config-next": "16.4.5",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^3.2.7"
   },
   "packageManager": "pnpm@10.28.0"
 }

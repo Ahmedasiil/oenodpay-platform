@@ -39,3 +39,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+.i18n-record.jsonl
+src/i18n/catalog/missing-*.tsv

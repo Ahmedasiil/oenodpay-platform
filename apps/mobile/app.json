@@ -28,9 +28,9 @@
       [
         "expo-splash-screen",
         {
-          "backgroundColor": "#FFFFFF",
-          "image": "./assets/brand/oenodpay-stacked-2000.png",
-          "imageWidth": 200
+          "backgroundColor": "#161618",
+          "image": "./assets/brand/oenodpay-logo-white-2000.png",
+          "imageWidth": 220
         }
       ]
     ],

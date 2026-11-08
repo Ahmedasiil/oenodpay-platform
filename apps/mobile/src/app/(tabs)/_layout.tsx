@@ -1,28 +1,64 @@
 import { Tabs } from 'expo-router/js-tabs';
-import { View, type ColorValue } from 'react-native';
+import { Pressable, View } from 'react-native';
+import { router } from 'expo-router';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { Icon, type IconName } from '@/components/ui';
+import { useT } from '@/lib/i18n';
 import { colors } from '@/lib/theme';
 
-function Dot({ color, focused }: { color: ColorValue; focused: boolean }) {
-  return <View style={{ width: focused ? 20 : 6, height: 6, borderRadius: 3, backgroundColor: color }} />;
+const ICON: Record<string, IconName> = { index: 'home', send: 'swap', card: 'card' };
+/** Tabs shown in the bar. Loans and Invest open from the home screen's "more" sheet. */
+const SHOWN = ['index', 'send', 'card'];
+
+type BarProps = {
+  state: { index: number; routes: { key: string; name: string }[] };
+  descriptors: Record<string, { options: { title?: string } }>;
+  navigation: { emit: (e: { type: 'tabPress'; target: string; canPreventDefault: true }) => { defaultPrevented: boolean }; navigate: (name: string) => void };
+};
+
+/** Floating pill tab bar: round icon buttons, the open tab in cream. */
+function PillBar({ state, descriptors, navigation }: BarProps) {
+  const insets = useSafeAreaInsets();
+  const t = useT();
+  return (
+    <View pointerEvents="box-none" style={{ position: 'absolute', left: 0, right: 0, bottom: Math.max(insets.bottom, 14), alignItems: 'center' }}>
+      <View style={{ flexDirection: 'row', gap: 8, padding: 7, borderRadius: 999, backgroundColor: 'rgba(28,28,30,0.72)', shadowColor: '#000', shadowOpacity: 0.5, shadowRadius: 20, shadowOffset: { width: 0, height: 10 } }}>
+        {state.routes.map((r, i) => {
+          if (!SHOWN.includes(r.name)) return null;
+          const focused = state.index === i;
+          return (
+            <Pressable
+              key={r.key}
+              accessibilityRole="tab"
+              accessibilityState={{ selected: focused }}
+              accessibilityLabel={descriptors[r.key]?.options.title}
+              onPress={() => {
+                const e = navigation.emit({ type: 'tabPress', target: r.key, canPreventDefault: true });
+                if (!focused && !e.defaultPrevented) navigation.navigate(r.name);
+              }}
+              style={{ width: 52, height: 52, borderRadius: 26, alignItems: 'center', justifyContent: 'center', backgroundColor: focused ? colors.primary : '#3A3A3E' }}>
+              <Icon name={ICON[r.name] ?? 'home'} size={21} color={focused ? colors.onPrimary : colors.ink} />
+            </Pressable>
+          );
+        })}
+        <Pressable accessibilityRole="button" accessibilityLabel={t('Security center')} onPress={() => router.push('/security')} style={{ width: 52, height: 52, borderRadius: 26, alignItems: 'center', justifyContent: 'center', backgroundColor: '#3A3A3E' }}>
+          <Icon name="user" size={21} color={colors.ink} />
+        </Pressable>
+      </View>
+    </View>
+  );
 }
 
 export default function TabsLayout() {
+  const t = useT();
   return (
-    <Tabs
-      screenOptions={{
-        headerShown: false,
-        tabBarActiveTintColor: colors.primary,
-        tabBarInactiveTintColor: colors.muted,
-        tabBarStyle: { backgroundColor: colors.surface, borderTopColor: colors.border },
-        tabBarLabelStyle: { fontSize: 11, fontWeight: '600' },
-        tabBarIcon: ({ color, focused }) => <Dot color={color} focused={focused} />,
-      }}>
-      <Tabs.Screen name="index" options={{ title: 'Home' }} />
-      <Tabs.Screen name="send" options={{ title: 'Send' }} />
-      <Tabs.Screen name="card" options={{ title: 'Card' }} />
-      <Tabs.Screen name="loans" options={{ title: 'Loans' }} />
-      <Tabs.Screen name="invest" options={{ title: 'Invest' }} />
+    <Tabs screenOptions={{ headerShown: false }} tabBar={(p) => <PillBar {...(p as unknown as BarProps)} />}>
+      <Tabs.Screen name="index" options={{ title: t('Home') }} />
+      <Tabs.Screen name="send" options={{ title: t('Send') }} />
+      <Tabs.Screen name="card" options={{ title: t('Card') }} />
+      <Tabs.Screen name="loans" options={{ title: t('Loans') }} />
+      <Tabs.Screen name="invest" options={{ title: t('Invest') }} />
     </Tabs>
   );
 }
