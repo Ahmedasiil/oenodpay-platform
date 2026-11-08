@@ -200,6 +200,8 @@ export class MemoryRepository implements Repository {
     return true;
   }
 
+  async ping() {}
+
   async waitlistCount() {
     return this.waitlist.size;
   }

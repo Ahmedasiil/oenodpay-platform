@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
+import { IconChip } from "@/components/icon";
 import { PROVINCES, VALUES } from "@/content/company";
 
 export const metadata: Metadata = { title: "About us | oenodPay", description: "Who we are, where we operate and how we're regulated." };
@@ -15,13 +16,14 @@ const REGS = [
 
 export default function About() {
   return (
-    <PageShell eyebrow="Company" title="One app for all your money, made in Canada" lead="oenodPay is built by OENOD for people who live in Canada and have family, plans and money that cross borders." crumbs={[{ href: "/about", t: "About us" }]}
+    <PageShell eyebrow="Company" title="One app for all your money," accent="made in Canada."
+      stats={[{ k: "Provinces and territories at launch", v: "12 of 13" }, { k: "Features in one app", v: "11" }, { k: "Countries you can send to", v: "7" }]} lead="oenodPay is built by OENOD for people who live in Canada and have family, plans and money that cross borders." crumbs={[{ href: "/about", t: "About us" }]}
       actions={<><Link href="/careers" className="btn light">Join the team</Link><Link href="/press" className="btn line">Press</Link></>}>
       <section className="pg">
         <div className="wrap">
           <h2>Why we exist</h2>
           <p className="sub">Newcomers and families in Canada juggle a bank, a transfer app, a prepaid card, a travel site and a credit app. Each has its own fees and its own sign-in. oenodPay puts them in one place with one balance, clear prices and strong security.</p>
-          <div className="grid2">{VALUES.map((v) => <div key={v.t} className="box"><h3>{v.t}</h3><p>{v.b}</p></div>)}</div>
+          <div className="grid2">{VALUES.map((v, i) => <div key={v.t} className="box"><IconChip name={["scale", "shield", "globe", "doc"][i] ?? "check"} /><h3>{v.t}</h3><p>{v.b}</p></div>)}</div>
         </div>
       </section>
       <section className="pg alt">
@@ -31,7 +33,7 @@ export default function About() {
           <div className="grid3">{PROVINCES.map((p) => <div key={p.name} className="box"><h3>{p.name}</h3><span className={`tag${p.status === "At launch" ? " ok" : " later"}`}>{p.status}</span></div>)}</div>
         </div>
       </section>
-      <section className="pg">
+      <section className="pg" id="regulation">
         <div className="wrap">
           <h2>How we&apos;re regulated</h2>
           <p className="sub">We register with every regulator that oversees what we do, before we do it. This table shows honest, current status.</p>

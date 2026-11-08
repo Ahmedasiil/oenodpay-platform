@@ -4,6 +4,7 @@ import { COUNTRIES } from "@/content/countries";
 
 const COMPANY = [
   { href: "/about", t: "About us", d: "Who we are and where we operate" },
+  { href: "/trust", t: "Trust centre", d: "How we protect you and your money" },
   { href: "/security", t: "Security", d: "How we protect your money and data" },
   { href: "/careers", t: "Careers", d: "Join the team" },
   { href: "/press", t: "Press", d: "News and media kit" },
@@ -13,6 +14,8 @@ const SUPPORT = [
   { href: "/help", t: "Help centre", d: "Answers to common questions" },
   { href: "/pricing", t: "Fees and limits", d: "Every price in one place" },
   { href: "/contact", t: "Contact us", d: "Support, complaints, privacy" },
+  { href: "/scams", t: "Scams and fraud", d: "Spot a scam and what to do" },
+  { href: "/status", t: "System status", d: "Live health of every service" },
   { href: "/legal", t: "Legal", d: "Agreements and policies" },
 ];
 
@@ -45,12 +48,19 @@ export function SiteHeader() {
                 {FEATURES.filter((f) => f.group === g).map((f) => <Item key={f.slug} href={`/features/${f.slug}`} t={f.name} d={f.tagline} />)}
               </div>
             ))}
+            <div className="mm-col">
+              <span className="mm-h">Made for</span>
+              <Item href="/newcomers" t="New to Canada" d="Bank, send home and build credit" />
+              <Item href="/business" t="Business" d="Accounts and cards for owners" />
+              <Item href="/features" t="All features" d="Everything in one place" />
+            </div>
           </Menu>
           <Menu label="Send money">
             <div className="mm-col">
               <span className="mm-h">Countries</span>
               {COUNTRIES.map((c) => <Item key={c.slug} href={`/send-money/${c.slug}`} t={`Send to ${c.countryName}`} />)}
               <Item href="/send-money" t="All countries and requirements" />
+              <Item href="/send-money" t="Fee calculator" />
             </div>
           </Menu>
           <Menu label="Company"><div className="mm-col">{COMPANY.map((i) => <Item key={i.href} {...i} />)}</div></Menu>
@@ -63,6 +73,8 @@ export function SiteHeader() {
           <div className="mob-panel">
             <span className="mm-h">Personal</span>
             {FEATURES.map((f) => <Link key={f.slug} href={`/features/${f.slug}`}>{f.name}</Link>)}
+            <Link href="/newcomers">New to Canada</Link>
+            <Link href="/business">Business</Link>
             <span className="mm-h">Send money</span>
             <Link href="/send-money">Countries and requirements</Link>
             <span className="mm-h">Company and support</span>

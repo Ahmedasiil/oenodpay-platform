@@ -1,6 +1,9 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
+import { Icon, IconChip } from "@/components/icon";
+
+const IC: Record<string, string> = {"Passkey sign-in": "key", "New device approval": "phone", "Step-up checks": "shield", "Session control": "eye", "Safeguarded funds": "bank", "Card controls": "card", "Real-time alerts": "bell", "Fraud monitoring": "pulse", "Encryption": "lock", "Stored in Canada": "server", "Least access": "user", "No selling data": "eye", "Secure development": "doc", "Independent testing": "check", "Card security": "card", "Incident response": "alert"};
 
 export const metadata: Metadata = { title: "Security | oenodPay", description: "How oenodPay protects your money, your account and your data." };
 
@@ -13,12 +16,14 @@ const LAYERS = [
 
 export default function Security() {
   return (
-    <PageShell eyebrow="Security" title="Built to keep your money safe" lead="Security isn't a feature we added later. Here is exactly how we protect your account, your money and your data." crumbs={[{ href: "/security", t: "Security" }]}>
+    <PageShell eyebrow="Security" title="Built to keep" accent="your money safe."
+      aside={<div className="glass"><h3>Always on</h3>{[["key", "Passkeys, not passwords"], ["lock", "AES-256 encryption at rest"], ["server", "Data kept in Canada"], ["bank", "Customer funds held separately"], ["bell", "An alert for every payment"]].map(([i, t]) => <div key={t} className="gl-row" style={{ justifyContent: "flex-start", alignItems: "center" }}><span style={{ color: "#A9B8FF", display: "grid" }}><Icon name={i!} size={20} /></span><b style={{ textAlign: "left" }}>{t}</b></div>)}</div>} lead="Security isn't a feature we added later. Here is exactly how we protect your account, your money and your data." crumbs={[{ href: "/security", t: "Security" }]}>
       {LAYERS.map((l, i) => (
         <section key={l.h} className={`pg${i % 2 ? " alt" : ""}`}>
           <div className="wrap">
-            <h2>{l.h}</h2>
-            <div className="grid2">{l.items.map(([t, b]) => <div key={t} className="box"><h3>{t}</h3><p>{b}</p></div>)}</div>
+            <span className="eyebrow">Layer {i + 1} of {LAYERS.length}</span>
+            <h2>Protecting {l.h.toLowerCase()}</h2>
+            <div className="grid2">{l.items.map(([t, b]) => <div key={t} className="box"><IconChip name={IC[t!] ?? "check"} /><h3>{t}</h3><p>{b}</p></div>)}</div>
           </div>
         </section>
       ))}

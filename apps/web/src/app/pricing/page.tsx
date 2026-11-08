@@ -7,7 +7,8 @@ export const metadata: Metadata = { title: "Fees and limits | oenodPay", descrip
 
 export default function Pricing() {
   return (
-    <PageShell eyebrow="Fees and limits" title="Every price, in one place" lead="No monthly fee and no hidden exchange markups. If something costs money, it's on this page and shown before you confirm." crumbs={[{ href: "/pricing", t: "Fees and limits" }]}>
+    <PageShell eyebrow="Fees and limits" title="Every price, in one place" aside={<div className="glass"><h3>Your account</h3><div className="big">$0<span style={{ fontSize: 18, color: "rgba(255,255,255,.6)" }}> /month</span></div><div className="gl-row"><span>Opening an account</span><b>Free</b></div><div className="gl-row"><span>Sending to oenodPay users</span><b>Free, instant</b></div><div className="gl-row"><span>Card fee</span><b>None</b></div><div className="gl-row"><span>Inactivity fee</span><b>None</b></div></div>}
+      lead="No monthly fee and no hidden exchange markups. If something costs money, it's on this page and shown before you confirm." crumbs={[{ href: "/pricing", t: "Fees and limits" }]}>
       <section className="pg">
         <div className="wrap" style={{ maxWidth: 900 }}>
           {PRICING.map((g) => (

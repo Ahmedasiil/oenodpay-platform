@@ -2,7 +2,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
-import { FEATURES, featureBySlug } from "@/content/features";
+import { FEATURES, FEATURE_ICON, featureBySlug } from "@/content/features";
+import { IconChip } from "@/components/icon";
+import { Calculator } from "@/components/calculator";
 
 export const generateStaticParams = () => FEATURES.map((f) => ({ slug: f.slug }));
 
@@ -18,22 +20,30 @@ export default async function FeaturePage({ params }: { params: Promise<{ slug: 
   return (
     <PageShell eyebrow={`${f.group} · ${f.status}`} title={f.name} lead={f.intro}
       crumbs={[{ href: "/features", t: "Features" }, { href: `/features/${f.slug}`, t: f.name }]}
-      actions={<><Link href="/#join" className="btn light">Get early access</Link><Link href="/#features" className="btn line">Try the demo</Link></>}>
+      actions={<><Link href="/#join" className="btn light">Get early access</Link><Link href="/#features" className="btn line">Try the demo</Link></>}
+      aside={f.slug === "send-money-abroad" ? <Calculator /> : (
+        <div className="glass">
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 14 }}><IconChip name={FEATURE_ICON[f.slug] ?? "check"} dark /><b style={{ fontSize: 17 }}>{f.name}</b></div>
+          {f.facts.slice(0, 5).map((x) => <div key={x.k} className="gl-row"><span>{x.k}</span><b>{x.v}</b></div>)}
+        </div>
+      )}>
       <section className="pg">
         <div className="wrap">
-          <h2>How it works</h2>
+          <span className="eyebrow">How it works</span>
+          <h2>Set up in minutes</h2>
           <div className="steps">{f.steps.map((s) => <div key={s.t} className="box"><h3>{s.t}</h3><p>{s.b}</p></div>)}</div>
         </div>
       </section>
       <section className="pg alt">
         <div className="wrap grid2" style={{ alignItems: "start", gap: 40 }}>
-          <div><h2>Key facts</h2><dl className="facts">{f.facts.map((x) => <div key={x.k}><dt>{x.k}</dt><dd>{x.v}</dd></div>)}</dl></div>
-          <div><h2>What you need</h2><ul className="checks">{f.needs.map((n) => <li key={n}>{n}</li>)}</ul></div>
+          <div><span className="eyebrow">At a glance</span><h2>Key facts</h2><dl className="facts">{f.facts.map((x) => <div key={x.k}><dt>{x.k}</dt><dd>{x.v}</dd></div>)}</dl></div>
+          <div><span className="eyebrow">Before you start</span><h2>What you need</h2><ul className="checks">{f.needs.map((n) => <li key={n}>{n}</li>)}</ul></div>
         </div>
       </section>
       <section className="pg">
         <div className="wrap">
-          <h2>Questions</h2>
+          <span className="eyebrow">Questions</span>
+          <h2>What people ask</h2>
           <div className="faq2">{f.faq.map((q) => <details key={q.q}><summary>{q.q}</summary><p>{q.a}</p></details>)}</div>
           {f.legal && f.legal.length > 0 && (
             <p className="note" style={{ marginTop: 32 }}>Read the full terms: {f.legal.map((l, i) => <span key={l.href}>{i ? ", " : ""}<Link href={l.href}>{l.label}</Link></span>)}.</p>
@@ -44,7 +54,7 @@ export default async function FeaturePage({ params }: { params: Promise<{ slug: 
         <section className="pg alt">
           <div className="wrap">
             <h2>More in {f.group}</h2>
-            <div className="grid3">{others.map((o) => <Link key={o.slug} href={`/features/${o.slug}`} className="box"><h3>{o.name}</h3><p>{o.tagline}</p><span className="more">Learn more →</span></Link>)}</div>
+            <div className="grid3">{others.map((o) => <Link key={o.slug} href={`/features/${o.slug}`} className="box"><IconChip name={FEATURE_ICON[o.slug] ?? "check"} /><h3>{o.name}</h3><p>{o.tagline}</p><span className="more">Learn more →</span></Link>)}</div>
           </div>
         </section>
       )}

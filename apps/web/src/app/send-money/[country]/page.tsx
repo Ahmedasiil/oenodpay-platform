@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
+import { Calculator } from "@/components/calculator";
 import { COUNTRIES, LABEL, RECIPIENT_NEEDS, SENDER_NEEDS, countryBySlug } from "@/content/countries";
 
 export const generateStaticParams = () => COUNTRIES.map((c) => ({ country: c.slug }));
@@ -21,9 +22,11 @@ export default async function CountryPage({ params }: { params: Promise<{ countr
     <PageShell eyebrow={`Send money · ${c.currency}`} title={`Send money to ${c.countryName}`}
       lead={`Send Canadian dollars and your recipient gets ${c.currency}. The most popular way is ${c.popular.toLowerCase()}.`}
       crumbs={[{ href: "/send-money", t: "Send money" }, { href: `/send-money/${c.slug}`, t: c.countryName }]}
-      actions={<Link href="/#join" className="btn light">Get early access</Link>}>
+      actions={<Link href="/#join" className="btn light">Get early access</Link>}
+      aside={<Calculator country={c.countryCode} />}>
       <section className="pg">
         <div className="wrap">
+          <span className="eyebrow">Fees and speed</span>
           <h2>Ways to send and fees</h2>
           <div className="tblwrap">
             <table className="tbl">

@@ -124,6 +124,8 @@ export interface Repository {
   /** Adds an email to the launch list. Returns false if it was already there. */
   joinWaitlist(email: string, source: string | null): Promise<boolean>;
   waitlistCount(): Promise<number>;
+  /** Cheap round trip to the data store, for the public status page. */
+  ping(): Promise<void>;
   /** Stores a contact-form message and returns its reference number. */
   saveContactMessage(input: { name: string; email: string; topic: string; message: string }): Promise<string>;
 

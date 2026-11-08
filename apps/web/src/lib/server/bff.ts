@@ -46,8 +46,10 @@ export function deviceName(req: NextRequest): string {
   return os ? `${browser} on ${os}` : browser;
 }
 
-async function callApi(path: string, init: { method: string; body?: string; token?: string; idempotencyKey?: string | null }) {
+async function callApi(path: string, init: { method: string; body?: string; token?: string; idempotencyKey?: string | null; clientIp?: string | null }) {
   const headers: Record<string, string> = {};
+  // Pass the visitor's address on, so the API rate-limits each visitor rather than this server as a whole.
+  if (init.clientIp) headers["x-forwarded-for"] = init.clientIp;
   if (init.body !== undefined) headers["content-type"] = "application/json";
   if (init.token) headers.authorization = `Bearer ${init.token}`;
   if (init.idempotencyKey) headers["idempotency-key"] = init.idempotencyKey;
@@ -71,7 +73,7 @@ export async function signInVia(req: NextRequest, path: string): Promise<NextRes
 /** Endpoints the browser may reach through the proxy. Anything else is refused. */
 const ALLOWED = [
   /^me$/, /^wallet$/, /^sessions(\/[\w-]+)?$/, /^passkeys(\/[\w-]+)?$/, /^passkeys\/register\/(options|verify)$/,
-  /^kyc\/(sessions|status|sandbox\/decide)$/, /^transfers\/wallet$/, /^quotes$/, /^corridors$/, /^auth\/logout$/, /^waitlist$/, /^contact$/,
+  /^kyc\/(sessions|status|sandbox\/decide)$/, /^transfers\/wallet$/, /^quotes$/, /^corridors$/, /^auth\/logout$/, /^waitlist$/, /^contact$/, /^public\/quotes$/, /^status$/,
 ];
 
 export async function proxy(req: NextRequest, segments: string[]): Promise<NextResponse> {
@@ -81,7 +83,8 @@ export async function proxy(req: NextRequest, segments: string[]): Promise<NextR
 
   const body = req.method === "GET" || req.method === "DELETE" ? undefined : await req.text();
   const send = (token?: string) => callApi(`/v1/${path}`, {
-    method: req.method, body: body || undefined, token, idempotencyKey: req.headers.get("idempotency-key")
+    method: req.method, body: body || undefined, token, idempotencyKey: req.headers.get("idempotency-key"),
+    clientIp: req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? null,
   });
 
   let refreshed: TokenPair | undefined;

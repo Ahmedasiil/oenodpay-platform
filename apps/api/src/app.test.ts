@@ -65,6 +65,19 @@ describe.each(repoKinds)('API (%s)', (kind) => {
     await app.close();
   });
 
+  it('quotes transfers publicly and reports service status', async () => {
+    const app = await setup();
+    const q = await app.inject({ method: 'POST', url: '/v1/public/quotes', payload: { countryCode: 'PH', methodId: 'ph-wallet', amountMinor: 50000 } });
+    expect(q.statusCode).toBe(200);
+    expect(q.json().quote.fee.minor).toBe(299);
+    const bad = await app.inject({ method: 'POST', url: '/v1/public/quotes', payload: { countryCode: 'PH', methodId: 'ph-wallet', amountMinor: -5 } });
+    expect(bad.statusCode).toBe(400);
+    const st = await app.inject({ method: 'GET', url: '/v1/status' });
+    expect(st.json().status).toBe('operational');
+    expect(st.json().components.length).toBe(5);
+    await app.close();
+  });
+
   it('accepts contact messages with a reference number and rejects incomplete ones', async () => {
     const app = await setup();
     const ok = await app.inject({ method: 'POST', url: '/v1/contact', payload: { name: 'Ada Lovelace', email: 'ada@example.com', topic: 'complaint', message: 'My transfer is late, please check.' } });

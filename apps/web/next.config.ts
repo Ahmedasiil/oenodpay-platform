@@ -10,6 +10,24 @@ const securityHeaders = [
   { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
 ];
 
+// Content Security Policy: only our own origin may load code, styles, fonts or be called from the page.
+// 'unsafe-inline' scripts are needed by statically rendered Next.js pages; 'unsafe-eval' only in development.
+const dev = process.env.NODE_ENV !== "production";
+const csp = [
+  "default-src 'self'",
+  `script-src 'self' 'unsafe-inline'${dev ? " 'unsafe-eval'" : ""}`,
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: blob:",
+  "font-src 'self'",
+  `connect-src 'self'${dev ? " ws:" : ""}`,
+  "frame-ancestors 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "object-src 'none'",
+  ...(dev ? [] : ["upgrade-insecure-requests"]),
+].join("; ");
+securityHeaders.push({ key: "Content-Security-Policy", value: csp });
+
 const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,

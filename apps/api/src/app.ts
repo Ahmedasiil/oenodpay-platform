@@ -347,6 +347,29 @@ export async function buildApp(
     return reply.status(201).send({ reference });
   });
 
+  // Public price calculator for the website: same maths as a real quote, no account needed.
+  app.post('/v1/public/quotes', { config: { rateLimit: { max: 30, timeWindow: '1 minute' } } }, async (req) => {
+    const input = quoteSchema.parse(req.body);
+    return { quote: quoteTransfer(input.countryCode, input.methodId, input.amountMinor), sampleData: true };
+  });
+
+  // Public status page. Reports each part of the service without exposing internals.
+  app.get('/v1/status', async () => {
+    const started = Date.now();
+    const db = await repo.ping().then(() => 'operational' as const, () => 'outage' as const);
+    const components = [
+      { id: 'api', name: 'Website and app API', status: 'operational' as const },
+      { id: 'ledger', name: 'Accounts and balances', status: db },
+      { id: 'transfers', name: 'Transfers in Canada', status: db },
+      { id: 'international', name: 'International transfers', status: db },
+      { id: 'identity', name: 'Identity verification', status: 'operational' as const },
+    ];
+    return {
+      status: components.every((c) => c.status === 'operational') ? 'operational' : 'degraded',
+      components, latencyMs: Date.now() - started, checkedAt: new Date().toISOString(),
+    };
+  });
+
   app.get('/v1/corridors', async () => ({ corridors: CORRIDORS, sampleData: true }));
 
   app.post('/v1/quotes', { preHandler: requireUser }, async (req) => {

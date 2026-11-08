@@ -381,6 +381,10 @@ export class PostgresRepository implements Repository {
     return rowCount === 1;
   }
 
+  async ping() {
+    await this.pool.query('SELECT 1');
+  }
+
   async waitlistCount() {
     const { rows } = await this.pool.query<{ n: string }>('SELECT count(*) AS n FROM waitlist');
     return Number(rows[0]!.n);

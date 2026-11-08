@@ -214,3 +214,8 @@ export const FEATURES: Feature[] = [
 ];
 
 export const featureBySlug = (slug: string) => FEATURES.find((f) => f.slug === slug);
+
+export const FEATURE_ICON: Record<string, string> = {
+  "send-money-abroad": "send", "wallet-transfers": "wallet", "pay-bills": "bill", "debit-card": "card", travel: "plane",
+  esim: "sim", rewards: "gift", "credit-score": "gauge", invest: "chart", loans: "coins", lend: "handshake",
+};
