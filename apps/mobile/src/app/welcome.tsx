@@ -42,7 +42,7 @@ export default function Welcome() {
         <Image
           source={require('@/assets/brand/oenodpay-stacked-2000.png')}
           accessibilityLabel="OENODPAY"
-          style={{ width: 160, height: 108 }}
+          style={{ width: 160, height: 99 }}
           resizeMode="contain"
         />
         <Text style={{ fontSize: 15, color: colors.muted, textAlign: 'center' }}>Send, pay, travel and grow your money. One secure app.</Text>

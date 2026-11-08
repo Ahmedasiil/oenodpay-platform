@@ -12,7 +12,7 @@ export default function CardScreen() {
         accessibilityLabel={frozen ? 'Debit card, frozen' : 'Debit card, active'}
         style={{ height: 210, borderRadius: 26, backgroundColor: colors.black, borderWidth: 1, borderColor: '#1F2A44', padding: 22, justifyContent: 'space-between', opacity: frozen ? 0.45 : 1 }}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-          <Image source={require('@/assets/brand/oenodpay-logo-white-2000.png')} accessibilityLabel="OENODPAY" style={{ width: 114, height: 24 }} resizeMode="contain" />
+          <Image source={require('@/assets/brand/oenodpay-logo-white-2000.png')} accessibilityLabel="OENODPAY" style={{ width: 126, height: 17 }} resizeMode="contain" />
           <Text style={{ color: '#B9C0D4', fontSize: 12 }}>Debit</Text>
         </View>
         <View style={{ width: 44, height: 32, borderRadius: 6, backgroundColor: '#C9CEDC' }} />

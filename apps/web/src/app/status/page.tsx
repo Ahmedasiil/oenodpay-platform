@@ -1,19 +1,8 @@
-import Link from "next/link";
-import type { Metadata } from "next";
-import { PageShell } from "@/components/page-shell";
-import { StatusBoard } from "@/components/status-board";
+// The page lives in src/views; this file only wires up the route.
+import { Status, statusMeta } from "@/views/support";
 
-export const metadata: Metadata = { title: "System status | oenodPay", description: "Live health of every part of oenodPay." };
+export const metadata = statusMeta("en");
 
-export default function Status() {
-  return (
-    <PageShell eyebrow="Status" title="System status" lead="Checked live against our servers every 30 seconds." crumbs={[{ href: "/trust", t: "Trust centre" }, { href: "/status", t: "Status" }]} cta={false}>
-      <section className="pg">
-        <div className="wrap" style={{ maxWidth: 860 }}>
-          <StatusBoard />
-          <p className="note" style={{ marginTop: 24 }}>If something isn&apos;t working and this page says everything is fine, please <Link href="/contact?topic=support">tell us</Link>.</p>
-        </div>
-      </section>
-    </PageShell>
-  );
+export default function Page() {
+  return <Status lang="en" />;
 }

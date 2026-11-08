@@ -270,3 +270,4 @@ select.calc-cur{cursor:pointer;appearance:auto}
 @media (max-width:980px){.svc-groups{grid-template-columns:1fr}}
 /* scripts without letter-case: no tracking or uppercase styling on labels */
 :is([dir="rtl"],:lang(zh),:lang(hi),:lang(ur),:lang(ar)) :is(.eyebrow,.mm-h,.svc-h,.f-h,.svc-soon){letter-spacing:0;font-family:var(--sans);font-size:12.5px}
+.logo img{display:block;height:18px;width:auto}.foot3 .logo img{height:20px}.nav .logo{display:flex;align-items:center;text-decoration:none}

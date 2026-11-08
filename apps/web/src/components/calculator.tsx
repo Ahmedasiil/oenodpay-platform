@@ -7,7 +7,8 @@ import { en } from "@/i18n/en";
 import type { Dict } from "@/i18n/types";
 
 /** Live price calculator. Prices come from the oenodPay API, the same maths the app uses. */
-export function Calculator({ country = "PH", compact, t = en.calc, joinHref = "/#join" }: { country?: string; compact?: boolean; t?: Dict["calc"]; joinHref?: string }) {
+export function Calculator({ country = "PH", compact, t = en.calc, joinHref = "/#join", names }: { country?: string; compact?: boolean; t?: Dict["calc"]; joinHref?: string; names?: Record<string, string> }) {
+  const n = (s: string) => names?.[s] ?? s;
   const [code, setCode] = useState(country);
   const corridor = useMemo(() => CORRIDORS.find((c) => c.countryCode === code) ?? CORRIDORS[0]!, [code]);
   const [methodId, setMethodId] = useState(corridor.methods[0]!.id);
@@ -46,28 +47,28 @@ export function Calculator({ country = "PH", compact, t = en.calc, joinHref = "/
       <div className="calc-row">
         <label className="calc-in">
           <span>{t.send}</span>
-          <input inputMode="decimal" value={amount} onChange={(e) => setAmount(e.target.value)} aria-label="Amount in Canadian dollars" />
+          <input inputMode="decimal" value={amount} onChange={(e) => setAmount(e.target.value)} aria-label={n("Amount in Canadian dollars")} />
         </label>
         <span className="calc-cur"><i className="flag">🇨🇦</i>CAD</span>
       </div>
       <div className="calc-mid">
         <div><span>{t.fee}</span><b className="num">{formatMoney({ minor: method.feeMinor, currency: "CAD" })}</b></div>
         <div><span>{t.rate}</span><b className="num">1 CAD = {corridor.sampleRate} {corridor.currency}</b></div>
-        <div><span>{t.arrives}</span><b>{method.eta}</b></div>
+        <div><span>{t.arrives}</span><b>{n(method.eta)}</b></div>
       </div>
       <div className="calc-row out">
         <label className="calc-in">
           <span>{t.get}</span>
           <output className="num">{quote ? (quote.receive.minor / 100).toLocaleString("en-CA", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "—"}</output>
         </label>
-        <select className="calc-cur" value={code} aria-label="Destination country"
+        <select className="calc-cur" value={code} aria-label={n("Destination country")}
           onChange={(e) => { const c = CORRIDORS.find((x) => x.countryCode === e.target.value)!; setCode(c.countryCode); setMethodId(c.methods[0]!.id); }}>
-          {CORRIDORS.map((c) => <option key={c.countryCode} value={c.countryCode}>{c.currency} · {c.countryName}</option>)}
+          {CORRIDORS.map((c) => <option key={c.countryCode} value={c.countryCode}>{c.currency} · {n(c.countryName)}</option>)}
         </select>
       </div>
-      <div className="calc-methods" role="radiogroup" aria-label="How they receive it">
+      <div className="calc-methods" role="radiogroup" aria-label={n("How they receive it")}>
         {corridor.methods.map((m) => (
-          <button key={m.id} type="button" role="radio" aria-checked={m.id === method.id} className={m.id === method.id ? "on" : ""} onClick={() => setMethodId(m.id)}>{m.name}</button>
+          <button key={m.id} type="button" role="radio" aria-checked={m.id === method.id} className={m.id === method.id ? "on" : ""} onClick={() => setMethodId(m.id)}>{n(m.name)}</button>
         ))}
       </div>
       {error ? <p className="calc-err" role="alert">{error}</p> : null}

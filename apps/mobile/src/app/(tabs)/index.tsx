@@ -54,7 +54,7 @@ export default function Home() {
         <Image
           source={require('@/assets/brand/oenodpay-logo-2000.png')}
           accessibilityLabel="OENODPAY"
-          style={{ width: 133, height: 28 }}
+          style={{ width: 148, height: 20 }}
           resizeMode="contain"
         />
         <Link href="/security" asChild>
@@ -113,7 +113,7 @@ export default function Home() {
           style={{ height: 150, borderRadius: radius.xxl, backgroundColor: colors.black, borderWidth: 1, borderColor: '#1F2A44', padding: 22, justifyContent: 'space-between', overflow: 'hidden' }}>
           <View pointerEvents="none" style={{ position: 'absolute', width: 220, height: 220, borderRadius: 110, backgroundColor: colors.accent, opacity: 0.3, top: -120, right: -60 }} />
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Image source={require('@/assets/brand/oenodpay-logo-white-2000.png')} style={{ width: 95, height: 20 }} resizeMode="contain" />
+            <Image source={require('@/assets/brand/oenodpay-logo-white-2000.png')} style={{ width: 111, height: 15 }} resizeMode="contain" />
             <Text style={{ color: '#B9C0D4', fontSize: 11, fontWeight: '700', letterSpacing: 2 }}>DEBIT</Text>
           </View>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end' }}>

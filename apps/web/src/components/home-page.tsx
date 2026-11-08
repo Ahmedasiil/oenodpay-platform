@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { L } from "@/i18n/t";
+import { calcProps } from "@/i18n/server";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Calculator } from "@/components/calculator";
@@ -84,7 +86,7 @@ export function HomePage({ lang }: { lang: Locale }) {
                   {FEATURES.filter((f) => f.group === g).map((f) => {
                     const tx = t.f[f.slug as keyof typeof t.f];
                     return (
-                      <Link key={f.slug} href={`/features/${f.slug}`} className="svc">
+                      <Link key={f.slug} href={L(lang, `/features/${f.slug}`)} className="svc">
                         <IconChip name={FEATURE_ICON[f.slug] ?? "check"} />
                         <span className="svc-tx"><b>{tx.n}</b><span>{tx.t}</span></span>
                         {f.status !== "At launch" && <em className="svc-soon">{t.soon}</em>}
@@ -121,11 +123,11 @@ export function HomePage({ lang }: { lang: Locale }) {
             <div className="head" style={{ marginBottom: 28 }}><span className="eyebrow">{t.send.eyebrow}</span><h2>{t.send.h2a} <span style={{ color: "var(--accent)" }}>{t.send.h2b}</span> {t.send.h2c}</h2><p>{t.send.p}</p></div>
             <ul className="list-ic">
               {t.send.items.map((it, i) => (
-                <li key={it.t}><IconChip name={["globe", "send", "doc"][i]!} /><div><b>{it.t}</b><p>{i === 2 ? <Link href="/send-money">{it.b}</Link> : it.b}</p></div></li>
+                <li key={it.t}><IconChip name={["globe", "send", "doc"][i]!} /><div><b>{it.t}</b><p>{i === 2 ? <Link href={L(lang, "/send-money")}>{it.b}</Link> : it.b}</p></div></li>
               ))}
             </ul>
           </div>
-          <Calculator t={t.calc} joinHref={join} />
+          <Calculator {...calcProps(lang)} />
         </div>
       </section>
 
@@ -133,8 +135,8 @@ export function HomePage({ lang }: { lang: Locale }) {
         <div className="wrap">
           <div className="statband">{t.stats.map((s) => <div key={s.b}><b dir="ltr">{s.b}</b><span>{s.s}</span></div>)}</div>
           <div className="grid2" style={{ marginTop: 16 }}>
-            <Link href="/newcomers" className="box made"><IconChip name="globe" /><h3>{t.made.nt}</h3><p>{t.made.nb}</p><span className="more">{t.made.nm}</span></Link>
-            <Link href="/business" className="box made"><IconChip name="briefcase" /><h3>{t.made.bt}</h3><p>{t.made.bb}</p><span className="more">{t.made.bm}</span></Link>
+            <Link href={L(lang, "/newcomers")} className="box made"><IconChip name="globe" /><h3>{t.made.nt}</h3><p>{t.made.nb}</p><span className="more">{t.made.nm}</span></Link>
+            <Link href={L(lang, "/business")} className="box made"><IconChip name="briefcase" /><h3>{t.made.bt}</h3><p>{t.made.bb}</p><span className="more">{t.made.bm}</span></Link>
           </div>
         </div>
       </section>
@@ -145,7 +147,7 @@ export function HomePage({ lang }: { lang: Locale }) {
           <div className="sgrid">
             {t.sec.items.map((s, i) => <div key={s.t}><IconChip name={["key", "card", "bell", "lock"][i] ?? "check"} dark /><h3 style={{ marginTop: 14 }}>{s.t}</h3><p>{s.b}</p></div>)}
           </div>
-          <div className="ctas" style={{ marginTop: 32, display: "flex", gap: 12, flexWrap: "wrap" }}><Link href="/trust" className="btn light">{t.sec.trust}</Link><Link href="/security" className="btn line">{t.sec.how}</Link></div>
+          <div className="ctas" style={{ marginTop: 32, display: "flex", gap: 12, flexWrap: "wrap" }}><Link href={L(lang, "/trust")} className="btn light">{t.sec.trust}</Link><Link href={L(lang, "/security")} className="btn line">{t.sec.how}</Link></div>
         </div>
       </section>
 

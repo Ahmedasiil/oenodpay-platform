@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { STATUS_TEXT, type StatusText } from "@/views/support-text";
 
 interface Status { status: "operational" | "degraded"; checkedAt: string; components: { id: string; name: string; status: "operational" | "outage" }[] }
 
-export function StatusBoard() {
+export function StatusBoard({ text = { ...STATUS_TEXT, names: {}, locale: "en-CA" } }: { text?: StatusText }) {
   const [data, setData] = useState<Status | null>(null);
   const [down, setDown] = useState(false);
 
@@ -23,18 +24,18 @@ export function StatusBoard() {
     return () => { alive = false; clearInterval(t); };
   }, []);
 
-  if (down) return <div className="st-head bad" role="status"><span className="st-dot" />We can&apos;t reach our servers right now. We&apos;re looking into it.</div>;
-  if (!data) return <div className="st-head" role="status" style={{ background: "var(--sunk)", color: "var(--muted)" }}><span className="st-dot" />Checking…</div>;
+  if (down) return <div className="st-head bad" role="status"><span className="st-dot" />{text.down}</div>;
+  if (!data) return <div className="st-head" role="status" style={{ background: "var(--sunk)", color: "var(--muted)" }}><span className="st-dot" />{text.checking}</div>;
   const ok = data.status === "operational";
   return (
     <>
-      <div className={`st-head${ok ? "" : " bad"}`} role="status"><span className="st-dot" />{ok ? "All systems operational" : "Some systems are having problems"}</div>
+      <div className={`st-head${ok ? "" : " bad"}`} role="status"><span className="st-dot" />{ok ? text.ok : text.bad}</div>
       <div className="st-list">
         {data.components.map((c) => (
-          <div key={c.id}><span>{c.name}</span><span className={c.status === "operational" ? "st-ok" : "st-bad"}>{c.status === "operational" ? "Operational" : "Outage"}</span></div>
+          <div key={c.id}><span>{text.names[c.name] ?? c.name}</span><span className={c.status === "operational" ? "st-ok" : "st-bad"}>{c.status === "operational" ? text.operational : text.outage}</span></div>
         ))}
       </div>
-      <p className="calc-note" style={{ marginTop: 12 }}>Last checked {new Date(data.checkedAt).toLocaleTimeString("en-CA")}.</p>
+      <p className="calc-note" style={{ marginTop: 12 }}>{text.last.replace("{time}", new Date(data.checkedAt).toLocaleTimeString(text.locale))}</p>
     </>
   );
 }
