@@ -11,6 +11,8 @@ type Choice = { essential: true; analytics: boolean; at: string };
 /** Asks before any non-essential cookie is set (Quebec Law 25 and PIPEDA consent). Essential cookies only by default. */
 export function CookieConsent() {
   const seg = usePathname()?.split("/")[1];
+  // The staff console and the preview hub are not public pages and set no cookies of their own.
+  const hidden = seg === "admin" || seg === "preview";
   const t = DICTS[isLocale(seg) ? seg : "en"].cookie;
   const [open, setOpen] = useState(false);
   const [custom, setCustom] = useState(false);
@@ -31,7 +33,7 @@ export function CookieConsent() {
     setOpen(false);
   };
 
-  if (!open) return null;
+  if (!open || hidden) return null;
   return (
     <div className="cookie" dir={isLocale(seg) && (seg === "ar" || seg === "ur") ? "rtl" : undefined} role="dialog" aria-labelledby="ck-title" aria-live="polite">
       <h2 id="ck-title">{t.title}</h2>
